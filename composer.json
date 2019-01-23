@@ -4,6 +4,7 @@
     "description": "Mini CMS framework for PHP.",
     "keywords": ["Nubersoft","PHP","framework","cms"],
     "homepage": "https://github.com/rasclatt/cms",
+    "version": "1.0.0",
     "license": "MIT",
     "authors": [
         {
