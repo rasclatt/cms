@@ -6,3 +6,7 @@ The functions, classes, and namespaces are all fairly self-explanitory and usual
 It requires the `rasclatt/nubersoft` repository to function. You can download this rep directly and place into:
 
 `{directory_root}/vendor/Nubersoft/{classes_here}`
+
+You can also install from composer:
+
+`rasclatt/nubersoft`
