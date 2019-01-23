@@ -1,0 +1,18 @@
+{
+    "name": "rasclatt/cms",
+    "type": "library",
+    "description": "Mini CMS framework for PHP.",
+    "keywords": ["Nubersoft","PHP","framework","cms"],
+    "homepage": "https://github.com/rasclatt/cms",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ryan Rayner",
+            "email": "rasclatt@me.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "rasclatt/nubersoft": ">=0"
+    }
+}
