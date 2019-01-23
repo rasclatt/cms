@@ -15,4 +15,8 @@
     "require": {
         "rasclatt/nubersoft": ">=0"
     }
+    ,
+    "config": {
+        "vendor-dir": "~"
+    },
 }
