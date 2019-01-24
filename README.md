@@ -10,3 +10,7 @@ It requires the `rasclatt/nubersoft` repository to function. You can download th
 You can also install from composer:
 
 `create-project rasclatt/cms {directory_root}`
+
+## Install Manually CMS & Nubersoft Class Library
+
+All you need do is extract this repository into your root folder and follow the instructions on the (nubersoft)[https://github.com/rasclatt/nubersoft] repository install that library into a `vendor` folder. The `vendor`folder is required for the Nubersoft library to properly resolve namespacing in the autoloader.
