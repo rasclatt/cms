@@ -13,7 +13,7 @@
         }
     ],
     "require": {
-        "rasclatt/nubersoft": "1.*"
+        "rasclatt/nubersoft": "dev-master"
     },
     "config": {
         "vendor-dir": "~"
