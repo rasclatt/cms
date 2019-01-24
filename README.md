@@ -3,10 +3,10 @@ nUberSoft is a small in-the-works CMS framework for PHP. It is a mix of old and 
 
 The functions, classes, and namespaces are all fairly self-explanitory and usually are easy to follow along. The workings of the application can be automated using an xml file. This is the default for this application.
 
-It requires the `rasclatt/nubersoft` repository to function. You can download this rep directly and place into:
+It requires the `rasclatt/nubersoft` repository to function. You can download this rep directly and place the contents of the `src` folder into:
 
 `{directory_root}/vendor/Nubersoft/{classes_here}`
 
 You can also install from composer:
 
-`rasclatt/nubersoft`
+`create-project rasclatt/cms {directory_root}`
