@@ -14,11 +14,5 @@
     ],
     "require": {
         "rasclatt/nubersoft": "1.*"
-    },
-    "scripts": {
-        "post-package-install": [
-        	"Nubersoft\\System\\Installer\\Composer::createRoot"
-        ]
     }
-    
 }
