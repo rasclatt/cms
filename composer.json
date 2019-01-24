@@ -1,6 +1,6 @@
 {
     "name": "rasclatt/cms",
-    "type": "library",
+    "type": "project",
     "description": "Mini CMS framework for PHP.",
     "keywords": ["Nubersoft","PHP","framework","cms"],
     "homepage": "https://github.com/rasclatt/cms",
@@ -15,7 +15,10 @@
     "require": {
         "rasclatt/nubersoft": "1.*"
     },
-    "config": {
-        "vendor-dir": "~"
+    "scripts": {
+        "post-package-install": [
+        	"Nubersoft\\System\\Installer\\Composer::createRoot"
+        ]
     }
+    
 }
