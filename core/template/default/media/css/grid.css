@@ -89,6 +89,10 @@
 .col-count-3.offset {
 	grid-template-columns: 1fr 1200px 1fr;
 }
+#admin-container .col-count-3.offset,
+.col-count-3.offset.edit-btn {
+	grid-template-columns: 1fr 5fr 1fr;
+}
 .col-count-4 {
 	grid-template-columns: repeat(4, 25%);
 }
