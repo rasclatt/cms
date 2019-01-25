@@ -91,12 +91,21 @@ if(!empty($err)): ?>
 <?php endif ?>
 
 <h1>Update system software</h1>
-<a href="?action=update_system_software" class="medi-btn green">Update Nubersoft</a>
+<form action="?action=update_system_software" method="post">
+	<label style="font-size: 1.25em; margin-bottom: 0.5em;">
+		<input type="checkbox" name="update[cms]" checked="checked" />&nbsp;CMS Updater v.<?php echo file_get_contents(__DIR__.DS.'..'.DS.'..'.DS.'settings'.DS.'version.flag') ?> (<a href="https://github.com/rasclatt/cms/" target="_blank">rasclatt/cms</a>)
+	</label>
+	<label style="font-size: 1.25em; margin-bottom: 0.5em;">
+		<input type="checkbox" name="update[nubersoft]" />&nbsp;Framework Updater (<a href="https://github.com/rasclatt/nubersoft/" target="_blank">rasclatt/nubersoft</a>)
+	</label>
+	<?php if(is_dir(NBR_ROOT_DIR.DS.'vendor'.DS.'rasclatt'.DS.'nubersoft')): ?><div class="nbr_error">The class library appears to be installed by Composer! You can use <code style="font-family: Courier; background-color: #888; padding: 0 5px;">composer update rasclatt/nubersoft</code> in the terminal. If you update this way, it will still work, but Composer is preferred.</div><?php endif ?>
+	<input type="submit" class="medi-btn green" value="Update Nubersoft" style="text-transform: uppercase;" />
+</form>
 <div class="pad-top" id="update-log">
 <?php
 if($this->getGet('action') == 'update_system_software') {
 	
-	foreach(['nubersoft','cms'] as $package) {
+	foreach($this->getPost('update') as $package) {
 		
 		$is_composer	=	(is_dir(NBR_ROOT_DIR.DS.'vendor'.DS.'rasclatt'.DS.$package));
 		
