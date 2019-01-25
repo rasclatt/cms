@@ -17,6 +17,7 @@ $iconlib	=	[
 ?>
 <nav id="admin-menubar">
 	<div>
+		<div id="window-width"></div>
 		<a href="<?php echo $this->localeUrl($adminPage) ?>"><img src="<?php echo $this->localeUrl($imgpath."/core/{$title}.png") ?>" style="max-height: 25px; width: auto; margin: 0;" /></a>
 		<?php if($this->getPage('is_admin') != 1):?>
 		<a href="<?php echo $this->localeUrl($this->getPage('full_path')."?action=set_edit_mode&active=".$editActive) ?>"><img src="<?php echo $this->localeUrl($imgpath."/core/icn_{$icn}.png") ?>" style="max-height: 25px; width: auto;" /></a>
@@ -52,3 +53,13 @@ $iconlib	=	[
 		<a href="?action=logout">Sign Out</a>
 	</div>
 </nav>
+<script>
+	$(function(){
+		var win	=	$('#window-width');
+		win.text('width:'+$(window).width()+'px');
+		
+		$(window).on('resize', function(e){
+			win.text('width:'+$(this).width()+'px');
+		});
+	});
+</script>
