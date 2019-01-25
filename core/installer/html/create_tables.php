@@ -48,8 +48,14 @@ if(empty($fetch['data']['tables'])) {
 
 	include(__DIR__.DS.'..'.DS.'database.php');
 
-	foreach($create as $sql)
-		$this->getHelper("nQuery")->query($sql);
+	foreach($create as $sql) {
+		try {
+			$this->getHelper("nQuery")->query($sql);
+		}
+		catch (\PDOException $e) {
+			echo 'Error: '.$e->getMessage().'<br />';
+		}
+	}
 
 	foreach($insert as $sql)
 		$this->getHelper("nQuery")->query($sql);
