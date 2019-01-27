@@ -1,4 +1,6 @@
-/* CSS Document */
+/* 
+Ured - #be1522
+*/
 @import url('https://fonts.googleapis.com/css?family=Cairo:300,400,700');
 
 #admin-menubar {
@@ -48,11 +50,6 @@
 	justify-content: center;
 	flex-shrink: 0;
 }
-.admin-menu:hover,
-#admin-menubar a:hover {
-	background-color: red;
-	cursor: pointer;
-}
 .admin-submenu img {
 	display: inline !important;
 	margin: 0;
@@ -63,4 +60,22 @@
 }
 .left-align {
 	text-align: left;
+}
+.admin-icon-menu {
+	display: inline-flex;
+	flex-direction: column;
+}
+.admin-icon-menu:hover .admin-submenu,
+.admin-icon-menu .admin-submenu:hover {
+	display: inline-flex;
+	flex-direction: column;
+}
+.admin-icon-menu .admin-submenu div {
+	padding: 0.25em 0.35em;
+}
+.admin-menu:hover,
+#admin-menubar a:hover,
+.admin-icon-menu .admin-submenu div:hover {
+	background-color: #be1522;
+	cursor: pointer;
 }

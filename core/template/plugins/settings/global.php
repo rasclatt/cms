@@ -216,7 +216,7 @@ $defaults			=	[
 
 		<div class="col-count-4 lrg-2 med-1">
 			<div class="col-1">
-				<?php echo $Form->submit(['value' => 'Save', 'class' => 'medi-btn dark']) ?>
+				<?php echo $Form->submit(['value' => 'Save', 'class' => 'medi-btn dark settings']) ?>
 			</div>
 		</div>
 
@@ -261,7 +261,7 @@ $defaults			=	[
 			]) ?>
 			</div>
 			<div class="col-1">
-				<?php echo $Form->submit(['value' => 'Save', 'class' => 'medi-btn dark']) ?>
+				<?php echo $Form->submit(['value' => 'Save', 'class' => 'medi-btn dark settings']) ?>
 			</div>
 		</div>
 
@@ -302,7 +302,7 @@ $defaults			=	[
 			</div>
 		</div>
 		<div class="col-count-3 lrg-1">
-			<?php if(!empty($header_company_logo['option_attribute'])): ?>
+			<?php if(!empty($header_company_logo['option_attribute']) && is_file(NBR_ROOT_DIR.DS.ltrim(str_replace('/',DS,$header_company_logo['option_attribute']), DS))): ?>
 			<div class="col-1" style="background-image: url('/core/template/default/media/images/ui/transparent-grid.gif'); background-repeat: repeat; background-size: 8px; padding: 2em; margin-top: 1em;">
 				<img src="<?php echo $header_company_logo['option_attribute'] ?>" />
 			</div>
@@ -321,7 +321,7 @@ $defaults			=	[
 		</div>
 		<div class="col-count-4 lrg-2 med-1">
 			<div class="col-1">
-				<?php echo $Form->submit(['value' => 'Save', 'class' => 'medi-btn dark']) ?>
+				<?php echo $Form->submit(['value' => 'Save', 'class' => 'medi-btn dark settings']) ?>
 			</div>
 		</div>
 

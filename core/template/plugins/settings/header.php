@@ -81,7 +81,7 @@ echo $Form->fullhide(['name' => 'option_group_name', 'value' => 'system']);
 	
 	<div class="col-count-4 lrg-2 med-1">
 		<div class="col-1">
-			<?php echo $Form->submit(['value' => 'Save', 'class' => 'medi-btn dark']) ?>
+			<?php echo $Form->submit(['value' => 'Save', 'class' => 'medi-btn dark settings']) ?>
 		</div>
 	</div>
 

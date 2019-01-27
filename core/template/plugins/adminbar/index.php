@@ -17,10 +17,17 @@ $iconlib	=	[
 ?>
 <nav id="admin-menubar">
 	<div>
-		<div id="window-width"></div>
+		<div id="window-width" class="align-middle"></div>
 		<a href="<?php echo $this->localeUrl($adminPage) ?>"><img src="<?php echo $this->localeUrl($imgpath."/core/{$title}.png") ?>" style="max-height: 25px; width: auto; margin: 0;" /></a>
-		<?php if($this->getPage('is_admin') != 1):?>
-		<a href="<?php echo $this->localeUrl($this->getPage('full_path')."?action=set_edit_mode&active=".$editActive) ?>"><img src="<?php echo $this->localeUrl($imgpath."/core/icn_{$icn}.png") ?>" style="max-height: 25px; width: auto;" /></a>
+		<?php if($this->getPage('is_admin') != 1): ?>
+		<div class="admin-icon-menu">
+			<a href="<?php echo $this->localeUrl($this->getPage('full_path')."?action=set_edit_mode&active=".$editActive) ?>"><img src="<?php echo $this->localeUrl($imgpath."/core/icn_{$icn}.png") ?>" style="max-height: 25px; width: auto;" /></a>
+			<div class="admin-submenu">
+				<div class="nTrigger" data-instructions='{"action":"load_settings_page","data":{"deliver":{"subaction":"global","sendto":"#loadspot-modal","modal":"true"}}}'>Site Settings</div>
+				<div class="nTrigger" data-instructions='{"action":"load_settings_page","data":{"deliver":{"subaction":"header","sendto":"#loadspot-modal","modal":"true"}}}'>Header Settings</div>
+				<div class="nTrigger" data-instructions='{"action":"load_settings_page","data":{"deliver":{"subaction":"footer","sendto":"#loadspot-modal","modal":"true"}}}'>Footer Settings</div>
+			</div>
+		</div>		
 		<?php endif ?>
 		<div class="admin-menu">
 			<img src="<?php echo $docicon ?>" style="max-height: 25px; width: auto;" />
