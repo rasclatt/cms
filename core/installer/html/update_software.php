@@ -69,6 +69,9 @@ if(!function_exists('fetch_and_install')) {
 				$copy_dest	=	str_replace(DS.DS, DS, $copy_to.DS.$path['basename']);
 				# Copy from the extraction to the destination
 				if(copy($copy_from, $copy_dest)) {
+					if(basename($copy_from) == 'composer.json')
+						continue;
+					
 					echo 'Copied file: '.$copy_dest.(!is_file($copy_dest)? ' <span style="color: green">(NEW)</span>' : '').'<br />';
 				}
 				else
