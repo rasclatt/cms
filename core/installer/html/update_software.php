@@ -83,7 +83,7 @@ if(!function_exists('fetch_and_install')) {
 			echo '
 			
 			<div class="col-count-3 pad-top-small pad-bottom-small">
-				<div class="col-2">
+				<div class="col-2 align-center">
 					<a href="'.$thisObj->getHelper('nRouter')->getPage(1, 'is_admin')['full_path'].'?action=clear_cache" class="medi-btn green">Back to Admin</a>
 				</div>
 			</div>
