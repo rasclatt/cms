@@ -69,17 +69,25 @@ if(!function_exists('fetch_and_install')) {
 				$copy_dest	=	str_replace(DS.DS, DS, $copy_to.DS.$path['basename']);
 				# Copy from the extraction to the destination
 				if(copy($copy_from, $copy_dest)) {
+					# If the file is a composer file, ignore copying it
 					if(basename($copy_from) == 'composer.json')
 						continue;
-					
+					# Write the receipt
 					echo 'Copied file: '.$copy_dest.(!is_file($copy_dest)? ' <span style="color: green">(NEW)</span>' : '').'<br />';
 				}
 				else
 					echo '<span style="color: red">Skipped file: '.$copy_dest.'</span><br />';
 
 			}
-
-			echo '<a href="'.$thisObj->getHelper('nRouter')->getPage(1, 'is_admin')['full_path'].'?action=clear_cache" class="medi-btn green">Back to Admin</a>';
+			
+			echo '
+			
+			<div class="col-count-3 pad-top-small pad-bottom-small">
+				<div class="col-2">
+					<a href="'.$thisObj->getHelper('nRouter')->getPage(1, 'is_admin')['full_path'].'?action=clear_cache" class="medi-btn green">Back to Admin</a>
+				</div>
+			</div>
+			';
 
 			if(is_file($flag = NBR_CORE.DS.'installer'.DS.'firstrun.flag'))
 				unlink($flag);
