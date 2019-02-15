@@ -8,6 +8,13 @@
 		</class>
 	</object>
 	
+	<object event="deactivate_widget,activate_widget" after="nbr_set_headers" is_admin="true" request="request">
+		<class>
+			<name>\Nubersoft\System\Admin\Observer</name>
+			<method>widgetManager</method>
+		</class>
+	</object>
+	
 	<object event="save_settings_sitelogo" after="nbr_set_headers" is_admin="true" request="post">
 		<class>
 			<name>\Nubersoft\System\Admin\Observer</name>

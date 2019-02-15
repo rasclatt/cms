@@ -195,3 +195,33 @@ textarea.editable  {
 	min-height: 300px;
 	background-color: #DFE5DA;
 }
+.no-margin.children input,
+.no-margin.children div,
+.no-margin.children h1,
+.no-margin.children h2,
+.no-margin.children h3,
+.no-margin.children h4,
+.no-margin.children h5,
+.no-margin.children h6,
+.no-margin.children h7,
+.no-margin.children p {
+	margin: 0;
+}
+tr.table-tbl-row th {
+	padding: 0.5em !important;
+	font-weight: normal;
+	background-color: #BDB1B1;
+	color: #FFF;
+}
+tr.table-tbl-row th,
+tr.table-tbl-row td {
+	font-family: Arial;
+	border-bottom: 1px solid #CCC;
+	padding: 0.25em;
+}
+tr.table-tbl-row th p {
+	font-size: 0.85em;
+}
+tr.table-tbl-row td h4 {
+	font-size: 1.2em;
+}

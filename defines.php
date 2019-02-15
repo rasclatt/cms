@@ -12,6 +12,7 @@ define("NBR_BLOCKFLOWS", NBR_SETTINGS.DS.'blockflows');
 define("NBR_CLASS_CORE", NBR_ROOT_DIR.DS.'vendor');
 define("NBR_PLUGINS", NBR_CORE.DS.'plugins');
 define("NBR_CLIENT_DIR", NBR_ROOT_DIR.DS.'client');
+define("NBR_CLIENT_PLUGINS", NBR_CLIENT_DIR.DS.'plugins');
 define("NBR_CLIENT_SETTINGS", NBR_CLIENT_DIR.DS.'settings');
 define("NBR_CLIENT_CACHE", NBR_CLIENT_SETTINGS.DS.'cache');
 define("NBR_CLIENT_WORKFLOWS", NBR_CLIENT_SETTINGS.DS.'workflows');
