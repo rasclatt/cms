@@ -474,6 +474,9 @@
 	.med-12 {
 		grid-template-columns: repeat(12, 8.333333%) !important;
 	}
+	.med-1.gapped {
+		grid-template-columns: repeat(1, 100%) !important;
+	}
 	.med-2.gapped {
 		grid-template-columns: repeat(2, calc(50% - 0.5em)) !important;
 	}
