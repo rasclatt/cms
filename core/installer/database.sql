@@ -455,7 +455,7 @@ CREATE TABLE `system_settings` (
   `option_group_name` varchar(50) DEFAULT NULL,
   `option_attribute` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `usergroup` int(4) DEFAULT '1',
-  `action` varchar(100) DEFAULT NULL,
+  `action_slug` varchar(100) DEFAULT NULL,
   `page_live` varchar(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -463,7 +463,7 @@ CREATE TABLE `system_settings` (
 -- Dumping data for table `system_settings`
 --
 
-INSERT INTO `system_settings` (`category_id`, `option_group_name`, `option_attribute`, `usergroup`, `action`, `page_live`) VALUES
+INSERT INTO `system_settings` (`category_id`, `option_group_name`, `option_attribute`, `usergroup`, `action_slug`, `page_live`) VALUES
 ('header_company_logo', 'system', '/client/media/images/default/company_logo.png', 1, NULL, 'on'),
 ('header_html_toggle', 'system', 'off', 1, NULL, 'on'),
 ('header_html', 'system', '&lt;div class=&quot;span-3 col-count-3 offset&quot;&gt;\r\n	&lt;div class=&quot;col-2&quot;&gt;\r\n		TEST IS BEST\r\n	&lt;/div&gt;\r\n&lt;/div&gt;', 1, NULL, 'on'),
