@@ -13,10 +13,12 @@ if(is_file($vendor = NBR_ROOT_DIR.DS.'vendor'.DS.'autoload.php')) {
 }
 # Create localized autoloader
 spl_autoload_register(function($class){
-	# Find in vendor
-	$class	=	str_replace(DS.DS, DS, NBR_ROOT_DIR.DS.'vendor'.DS.str_replace('\\', DS, $class).'.php');
-	# Include if found
-	if(is_file($class)) {
+	# Include if found in general
+	if(is_file($class = str_replace(DS.DS, DS, NBR_ROOT_DIR.DS.'vendor'.DS.str_replace('\\', DS, $class).'.php'))) {
+		include_once($class);
+	}
+	# See if the class is a nubersoft
+	elseif(is_file($class = str_replace(DS.DS, DS, NBR_ROOT_DIR.DS.'vendor'.DS.'rasclatt'.DS.'nubersoft'.DS.'src'.DS.str_replace('\\', DS, $class).'.php'))) {
 		include_once($class);
 	}
 });
