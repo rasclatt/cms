@@ -1,6 +1,6 @@
 <?php
 $hasFile	=	(!empty($compData['file_path']));
-$hasIcon	=	(is_file($icon = NBR_CLIENT_DIR.DS.'media'.DS.'images'.DS.'components'.DS.'icons'.DS.$compData['component_type'].'.png'));
+$hasIcon	=	(is_file($icon = NBR_DOMAIN_CLIENT_DIR.DS.'media'.DS.'images'.DS.'components'.DS.'icons'.DS.$compData['component_type'].'.png'));
 $activated	=	($compData['page_live'] == 'on')? 'on' : 'off';
 $page_live	=	'/core/template/default/media/images/core/led_'.$activated.'.png';
 ?>
@@ -11,7 +11,7 @@ $page_live	=	'/core/template/default/media/images/core/led_'.$activated.'.png';
 				<div style="position: relative; top: 0; left: 0; right: 0; bottom: 0;">
 					<img src="<?php echo $page_live ?>" class="active-status" style="position: absolute; top: 0; left: 0;" />
 					<?php if($hasIcon): ?>
-					<img src="<?php echo str_replace(NBR_ROOT_DIR,'',$icon) ?>" style="z-index: -1; height: auto; margin: 1.5em auto 0 auto; width: auto; max-width: 60px;<?php echo (!empty($compData['file_path']))? " opacity: 0.6;" : "" ?>" />
+					<img src="<?php echo str_replace(NBR_DOMAIN_ROOT,'',$icon) ?>" style="z-index: -1; height: auto; margin: 1.5em auto 0 auto; width: auto; max-width: 60px;<?php echo (!empty($compData['file_path']))? " opacity: 0.6;" : "" ?>" />
 					<?php endif ?>
 				</div>
 			</div>
@@ -24,9 +24,9 @@ $page_live	=	'/core/template/default/media/images/core/led_'.$activated.'.png';
 			<?php endif ?>
 			<div class="editor-title">
 				<?php
-				$icon_kind	=	NBR_ROOT_DIR.'/core/template/default/media/images/core/icn_'.$compData['component_type'].'.png';
+				$icon_kind	=	NBR_DOMAIN_ROOT.'/core/template/default/media/images/core/icn_'.$compData['component_type'].'.png';
 				if(is_file($icon_kind))
-					echo '<img src="'.$this->localeUrl(str_replace(NBR_ROOT_DIR, '', $icon_kind)).'" style="margin-bottom: 5px; max-height: 30px; width: auto;" />';
+					echo '<img src="'.$this->localeUrl(str_replace(NBR_DOMAIN_ROOT, '', $icon_kind)).'" style="margin-bottom: 5px; max-height: 30px; width: auto;" />';
 				?>
 				<div style="position: relative; top: -15px; display: inline; color: #777;"><?php echo $this->colToTitle($title) ?></div>
 			</div>

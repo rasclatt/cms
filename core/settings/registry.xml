@@ -3,7 +3,7 @@
 	<protectflush>true</protectflush>
 	<protectdirectory>
 		<var>~NBR_CORE~</var>
-		<var>~NBR_CLIENT_DIR~/</var>
+		<var>~NBR_DOMAIN_CLIENT_DIR~/</var>
 	</protectdirectory>
 	<unprotectset>
 		<var>~NBR_CORE~/template/default/media/</var>

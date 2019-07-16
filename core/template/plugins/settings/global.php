@@ -137,7 +137,7 @@ $defaults			=	[
 		'label' => 'Server Rewriting',
 		'name' => 'setting[htaccess]',
 		'type' => 'textarea',
-		'value' => (!empty($htaccess['option_attribute']))? $htaccess['option_attribute'] : $this->enc(file_get_contents(NBR_ROOT_DIR.DS.'.htaccess')),
+		'value' => (!empty($htaccess['option_attribute']))? $htaccess['option_attribute'] : $this->enc(file_get_contents(NBR_DOMAIN_ROOT.DS.'.htaccess')),
 		'class' => 'nbr tabber code required',
 		'other' => ['required="required"'],
 		'style' => 'height: 300px;'
@@ -302,13 +302,13 @@ $defaults			=	[
 			</div>
 		</div>
 		<div class="col-count-3 lrg-1">
-			<?php if(!empty($header_company_logo['option_attribute']) && is_file(NBR_ROOT_DIR.DS.ltrim(str_replace('/',DS,$header_company_logo['option_attribute']), DS))): ?>
+			<?php if(!empty($header_company_logo['option_attribute']) && is_file(NBR_DOMAIN_ROOT.DS.ltrim(str_replace('/',DS,$header_company_logo['option_attribute']), DS))): ?>
 			<div class="col-1" style="background-image: url('/core/template/default/media/images/ui/transparent-grid.gif'); background-repeat: repeat; background-size: 8px; padding: 2em; margin-top: 1em;">
 				<img src="<?php echo $header_company_logo['option_attribute'] ?>" />
 			</div>
 			<div class="span-3 push-col-1 large">
 				<p>
-				File Size: <?php echo @$this->Conversion_Data()->getByteSize(filesize(NBR_ROOT_DIR.DS.$header_company_logo['option_attribute']),[
+				File Size: <?php echo @$this->Conversion_Data()->getByteSize(filesize(NBR_DOMAIN_ROOT.DS.$header_company_logo['option_attribute']),[
 					'from' => 'b',
 					'to' => 'kb',
 					'round' => 2
