@@ -30,6 +30,7 @@ define("NBR_ENGINE_CLIENT", NBR_CLIENT_SETTINGS.DS.'engine');
 
 define("NBR_DOMAIN_ROOT", NBR_ROOT_DIR.DS.'domain');
 define("NBR_DOMAIN_CLIENT_DIR", NBR_DOMAIN_ROOT.DS.'client');
+define("NBR_DOMAIN_DEFAULT_TEMPLATE", NBR_DOMAIN_ROOT.DS.'core'.DS.'template'.DS.'default');
 define("NBR_THUMB_DIR", NBR_DOMAIN_CLIENT_DIR.DS.'thumbs');
 define("NBR_MEDIA", NBR_DOMAIN_CLIENT_DIR.DS.'media');
 define("NBR_MEDIA_IMAGES", NBR_MEDIA.DS.'images');
