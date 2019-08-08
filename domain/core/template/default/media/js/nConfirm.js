@@ -16,10 +16,14 @@ $(function() {
 			// Check if there is a link in the array
 			if(in_array(getActs,'href')) {
 				// Extract link from current element
-				var getLink	=	$(this).attr('href');
+				var getLink		=	$(this).attr('href');
+				var getTarget	=	$(this).attr('target');
 				// If confirmed, go to link
 				if(isConfirmed) {
-					window.location	=	getLink;
+					if(getTarget)
+						window.open(getLink, getTarget);
+					else
+						window.location	=	getLink;
 				}
 			}
 		}
