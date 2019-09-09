@@ -1,6 +1,4 @@
 <?php
-ini_set('display_errors',1);
-error_reporting(E_ALL);
 # Includes application defaults
 require(__DIR__.DIRECTORY_SEPARATOR.'defines.php');
 # Include client defines

@@ -20,7 +20,8 @@ try {
 		nSession $Session,
 		nGlobal\Observer $nGlobal,
 		nAutomator\Controller $AutomatorController,
-		nRouter $Router
+		nRouter $Router,
+		Settings $Settings
 	){
 		if(is_file($flag = NBR_CORE.DS.'installer'.DS.'firstrun.flag')) {
 			$Router->redirect(str_replace(NBR_DOMAIN_ROOT, '', pathinfo($flag, PATHINFO_DIRNAME).DS.'index.php'));
@@ -31,6 +32,13 @@ try {
 		$Session->start();
 		# Convert all request forms to data node(s)
 		$nGlobal->listen();
+		# Fetch the server mode
+		$server_mode	=	$Settings->getComponentBy(['category_id' => 'devmode']);
+		# If not on, assume test
+		if(empty($server_mode)) {
+			ini_set('display_errors',1);
+			error_reporting(E_ALL);
+		}
 		# Start our program
 		$AutomatorController->createWorkflow('default');
 	});
