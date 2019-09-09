@@ -33,12 +33,18 @@ try {
 		# Convert all request forms to data node(s)
 		$nGlobal->listen();
 		# Fetch the server mode
-		$server_mode	=	$Settings->getComponentBy(['category_id' => 'devmode']);
+		$server_mode	=	$Settings->getOption('devmode', 'system');
+		# Get the server mode
+		if(!empty($server_mode['devmode']['option_attribute']))
+			$server_mode	=	$server_mode['devmode']['option_attribute'];
 		# If not on, assume test
-		if(empty($server_mode)) {
-			ini_set('display_errors',1);
+		if($server_mode != 'live') {
+			ini_set('display_errors', 1);
 			error_reporting(E_ALL);
 		}
+		else
+			# Hide errors
+			ini_set('display_errors', 0);
 		# Start our program
 		$AutomatorController->createWorkflow('default');
 	});
