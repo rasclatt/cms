@@ -16,6 +16,13 @@
 			<name>\Nubersoft\nSession\Controller</name>
 			<method>setLastActive</method>
 		</class>
+		<class>
+			<name>\Nubersoft\nCookie\Observer</name>
+			<method>setCurrentPage</method>
+			<inject into="setCurrentPage">
+				<string>31536000</string>
+			</inject>
+		</class>
 	</object>
 	
 	<object event="nbr_set_template_defaults">

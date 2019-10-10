@@ -23,8 +23,7 @@ define("NBR_TEMPLATE_DIR", NBR_CORE.DS.'template');
 define("NBR_DEFAULT_TEMPLATE", NBR_TEMPLATE_DIR.DS.'default');
 define("NBR_NAMESPACE_CORE", NBR_ROOT_DIR.DS.'vendor');
 define("NBR_VENDOR", NBR_NAMESPACE_CORE);
-define("NBR_FUNCTIONS", NBR_VENDOR.DS.'Nubersoft'.DS.
-'functions');
+define("NBR_FUNCTIONS", NBR_VENDOR.DS.'Nubersoft'.DS.'functions');
 define("NBR_ENGINE_CORE", NBR_CORE.DS.'engine');
 define("NBR_ENGINE_CLIENT", NBR_CLIENT_SETTINGS.DS.'engine');
 
