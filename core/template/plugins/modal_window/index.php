@@ -1,11 +1,12 @@
+<?php $data = $this->getPluginContent('modal') ?>
 <div class="modal-container">
 	<div class="modal-wrapper">
 		<div class="modal-bar">
-			<div><?php echo $this->getPluginContent('modal')['title'] ?></div>
+			<div><?php if(!empty($data['title'])) echo $data['title'] ?></div>
 			<div class="nTrigger last-col" data-instructions='{"DOM":{"event":["click"],"html":[" "],"sendto":["#loadspot-modal"]}}'></div>
 		</div>
 		<div class="modal-content">
-			<?php echo $this->getPluginContent('modal')['html'] ?>
+			<?php if(!empty($data['html'])) echo $data['html'] ?>
 		</div>
 	</div>
 </div>
