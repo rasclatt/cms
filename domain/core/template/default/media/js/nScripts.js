@@ -472,9 +472,11 @@ nScroll	=	function()
 		});
 	};
 	
-	thisObj.clickScroll	=	function(obj)
+	thisObj.clickScroll	=	function(obj, speed)
 	{
-		njQuery("html, body").animate({ scrollTop: $(obj).offset().top }, 'fast');
+		if(empty(speed))
+			speed	=	'fast';
+		njQuery("html, body").animate({ scrollTop: $(obj).offset().top }, speed);
 	};
 };
 
@@ -638,17 +640,34 @@ function sortActiveObj(Obj,nDispatch)
 		Sorted.id		=	(isset(Obj,'id'))? Obj.id : false;
 		Sorted.class	=	(isset(Obj,'class'))? Obj.class : false;
 		Sorted.packet	=	{
-								action:	((isset(Sorted.instr,'action'))? Sorted.instr.action : false),
-								sendto:	((isset(Sorted.instr,'data') && isset(Sorted.instr.data,'sendto'))? Sorted.instr.data.sendto : false),
-								html:	((isset(Sorted.instr,'data') && isset(Sorted.instr.data,'html'))? Sorted.instr.data.html : false),
-								donext:	((isset(Sorted.instr,'data') && isset(Sorted.instr.data,'donext'))? Sorted.instr.data.donext : false),
-								deliver:	((isset(Sorted.instr,'data') && isset(Sorted.instr.data,'deliver'))? Sorted.instr.data.deliver : false),
-								fx:	((isset(Sorted.instr,'data') && isset(Sorted.instr.data,'fx'))? Sorted.instr.data.fx : false),
-								acton:	((isset(Sorted.instr,'data') && isset(Sorted.instr.data,'acton'))? Sorted.instr.data.acton : false),
-								ajax_disp:	((isset(Sorted.instr,'data') && isset(Sorted.instr.data,'ajax_disp'))? Sorted.instr.data.ajax_disp : nDispatch),
-								ajax_func:	((isset(Sorted.instr,'data') && isset(Sorted.instr.data,'ajax_func'))? Sorted.instr.data.ajax_func : false)
-							}
-
+			action:	((isset(Sorted.instr,'action'))? Sorted.instr.action : false),
+			sendto:	((isset(Sorted.instr,'data') && isset(Sorted.instr.data,'sendto'))? Sorted.instr.data.sendto : false),
+			html:	((isset(Sorted.instr,'data') && isset(Sorted.instr.data,'html'))? Sorted.instr.data.html : false),
+			donext:	((isset(Sorted.instr,'data') && isset(Sorted.instr.data,'donext'))? Sorted.instr.data.donext : false),
+			deliver:	((isset(Sorted.instr,'data') && isset(Sorted.instr.data,'deliver'))? Sorted.instr.data.deliver : false),
+			fx:	((isset(Sorted.instr,'data') && isset(Sorted.instr.data,'fx'))? Sorted.instr.data.fx : false),
+			acton:	((isset(Sorted.instr,'data') && isset(Sorted.instr.data,'acton'))? Sorted.instr.data.acton : false),
+			ajax_disp:	((isset(Sorted.instr,'data') && isset(Sorted.instr.data,'ajax_disp'))? Sorted.instr.data.ajax_disp : nDispatch),
+			ajax_func:	((isset(Sorted.instr,'data') && isset(Sorted.instr.data,'ajax_func'))? Sorted.instr.data.ajax_func : false)
+		}
+		if(Sorted.instr && Object.keys(Sorted.instr).length > 0) {
+			jQuery.each(Sorted.instr, function(k, v){
+				if(k != 'data' && k != 'deliver') {
+					if(!isset(Sorted.packet, k)) {
+						switch(v) {
+							case('false'):
+								Sorted.packet[k]	=	false;
+								break;
+							case('true'):
+								Sorted.packet[k]	=	true;
+								break;
+							default:
+								Sorted.packet[k]	=	v;
+						}
+					}
+				}
+			});
+		}
 		return Sorted;
 	}
 
@@ -664,17 +683,42 @@ function setActiveObj(thisBtn,e,nDispatch)
 		Obj.id			=	(typeof useId !== "undefined")? useId : false;
 		Obj.class		=	(typeof useClass !== "undefined")? useClass : false;
 		Obj.packet		=	{
-								action:	((isset(Obj.instr,'action'))? Obj.instr.action : false),
-								sendto:	((isset(Obj.instr,'data') && isset(Obj.instr.data,'sendto'))? Obj.instr.data.sendto : false),
-								html:	((isset(Obj.instr,'data') && isset(Obj.instr.data,'html'))? Obj.instr.data.html : false),
-								donext:	((isset(Obj.instr,'data') && isset(Obj.instr.data,'donext'))? Obj.instr.data.donext : false),
-								deliver:	((isset(Obj.instr,'data') && isset(Obj.instr.data,'deliver'))? Obj.instr.data.deliver : false),
-								fx:	((isset(Obj.instr,'data') && isset(Obj.instr.data,'fx'))? Obj.instr.data.fx : false),
-								acton:	((isset(Obj.instr,'data') && isset(Obj.instr.data,'acton'))? Obj.instr.data.acton : false),
-								ajax_disp:	((isset(Obj.instr,'data') && isset(Obj.instr.data,'ajax_disp'))? Obj.instr.data.ajax_disp : nDispatch),
-								ajax_func:	((isset(Obj.instr,'data') && isset(Obj.instr.data,'ajax_func'))? Obj.instr.data.ajax_func : false)
+			action:	((isset(Obj.instr,'action'))? Obj.instr.action : false),
+			sendto:	((isset(Obj.instr,'data') && isset(Obj.instr.data,'sendto'))? Obj.instr.data.sendto : false),
+			html:	((isset(Obj.instr,'data') && isset(Obj.instr.data,'html'))? Obj.instr.data.html : false),
+			donext:	((isset(Obj.instr,'data') && isset(Obj.instr.data,'donext'))? Obj.instr.data.donext : false),
+			deliver:	((isset(Obj.instr,'data') && isset(Obj.instr.data,'deliver'))? Obj.instr.data.deliver : false),
+			fx:	((isset(Obj.instr,'data') && isset(Obj.instr.data,'fx'))? Obj.instr.data.fx : false),
+			acton:	((isset(Obj.instr,'data') && isset(Obj.instr.data,'acton'))? Obj.instr.data.acton : false),
+			ajax_disp:	((isset(Obj.instr,'data') && isset(Obj.instr.data,'ajax_disp'))? Obj.instr.data.ajax_disp : nDispatch),
+			ajax_func:	((isset(Obj.instr,'data') && isset(Obj.instr.data,'ajax_func'))? Obj.instr.data.ajax_func : false)
+		}
+		
+		try {
+			if(Obj.instr && Object.keys(Obj.instr).length > 0) {
+				jQuery.each(Obj.instr, function(k, v){
+					if(k != 'data' && k != 'deliver') {
+						if(!isset(Obj.packet, k)) {
+							switch(v) {
+								case('false'):
+									Obj.packet[k]	=	false;
+									break;
+								case('true'):
+									Obj.packet[k]	=	true;
+									break;
+								default:
+									Obj.packet[k]	=	v;
 							}
-
+						}
+					}
+				});
+			}
+		}
+		catch (Exception) {
+			if(error_reporting)
+				console.log([Exception.message, Obj]);
+		}
+		
 		return Obj;
 	}
 
