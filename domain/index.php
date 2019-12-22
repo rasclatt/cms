@@ -10,44 +10,50 @@ if(!empty($argv[1])) {
 require(realpath(__DIR__.DIRECTORY_SEPARATOR.'..').DIRECTORY_SEPARATOR.'config.php');
 # Create instance of the main class
 $Application	=	nApp::call();
-
+# Execute view
 try {
 	# Start buffering
 	ob_start();
-	# Create a container application
-	$Application->createContainer(function(
-		nApp $nApp,
-		nSession $Session,
-		nGlobal\Observer $nGlobal,
-		nAutomator\Controller $AutomatorController,
-		nRouter $Router,
-		Settings $Settings
-	){
-		if(is_file($flag = NBR_CORE.DS.'installer'.DS.'firstrun.flag')) {
-			$Router->redirect(str_replace(NBR_DOMAIN_ROOT, '', pathinfo($flag, PATHINFO_DIRNAME).DS.'index.php'));
-		}
-		# Load our hand print_r substitute
-		$nApp->autoload('printpre');
-		# Start the session
-		$Session->start();
-		# Convert all request forms to data node(s)
-		$nGlobal->listen();
-		# Fetch the server mode
-		$server_mode	=	$Settings->getOption('devmode', 'system');
-		# Get the server mode
-		if(!empty($server_mode['devmode']['option_attribute']))
-			$server_mode	=	$server_mode['devmode']['option_attribute'];
-		# If not on, assume test
-		if($server_mode != 'live') {
-			ini_set('display_errors', 1);
-			error_reporting(E_ALL);
-		}
-		else
-			# Hide errors
-			ini_set('display_errors', 0);
-		# Start our program
-		$AutomatorController->createWorkflow('default');
-	});
+	# Allow a custom index page instead of the default
+	if(is_file($index = NBR_CLIENT_DIR.DS.'index.php')) {
+		include($index);
+	}
+	else {
+		# Create a container application
+		$Application->createContainer(function(
+			nApp $nApp,
+			nSession $Session,
+			nGlobal\Observer $nGlobal,
+			nAutomator\Controller $AutomatorController,
+			nRouter $Router,
+			Settings $Settings
+		){
+			if(is_file($flag = NBR_CORE.DS.'installer'.DS.'firstrun.flag')) {
+				$Router->redirect(str_replace(NBR_DOMAIN_ROOT, '', pathinfo($flag, PATHINFO_DIRNAME).DS.'index.php'));
+			}
+			# Load our hand print_r substitute
+			$nApp->autoload('printpre');
+			# Start the session
+			$Session->start();
+			# Convert all request forms to data node(s)
+			$nGlobal->listen();
+			# Fetch the server mode
+			$server_mode	=	$Settings->getOption('devmode', 'system');
+			# Get the server mode
+			if(!empty($server_mode['devmode']['option_attribute']))
+				$server_mode	=	$server_mode['devmode']['option_attribute'];
+			# If not on, assume test
+			if($server_mode != 'live') {
+				ini_set('display_errors', 1);
+				error_reporting(E_ALL);
+			}
+			else
+				# Hide errors
+				ini_set('display_errors', 0);
+			# Start our program
+			$AutomatorController->createWorkflow('default');
+		});
+	}
 	# Get the normal buffer
 	$data	=	ob_get_contents();
 	# Stop the normal buffer
