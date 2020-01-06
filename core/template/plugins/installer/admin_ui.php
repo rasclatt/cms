@@ -1,1 +1,1 @@
-<a href="/core/installer/">Update Core Software</a>
+<a href="?load=coreinstaller">Update Core Software</a>

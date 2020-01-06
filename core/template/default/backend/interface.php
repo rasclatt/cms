@@ -5,7 +5,15 @@ $table	=	$this->getRequest('table');
 if(!empty($table)):
 	$use	=	($this->getGet('subaction') == 'interface')? "admintools" : "table_view";
 	echo $this->getPlugin($use, ($this->getGet('subaction') == 'interface')? DS.$table.DS.'index.php' : '');
-else: ?>
+
+elseif($this->getGet('load') == 'coreinstaller'): ?>
+
+<h2>Installer / Update</h2>
+<p>Use this installer to update the core system software or the Nubersoft core framework.</p>
+
+<?php include(NBR_DOMAIN_ROOT.DS.'core'.DS.'installer'.DS.'index.php') ?>
+
+<?php else: ?>
 
 <h2>Dashboard</h2>
 <p>Welcome to your dashboard.</p>
