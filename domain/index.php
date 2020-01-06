@@ -87,6 +87,10 @@ catch(HttpException $e) {
 		default:
 			$layout	=	'error';
 	}
+	if(is_file($index = NBR_CLIENT_DIR.DS.'errors.php')) {
+		include($index);
+		die();
+	}
 	# Start our program
 	$Automator
 		->setWorkflow($layout)
