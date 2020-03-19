@@ -403,18 +403,18 @@ INSERT INTO `system_settings` (`category_id`, `option_group_name`, `option_attri
 ('template', 'system', '/client/template/rasclatt/', 1, NULL, 'on'),
 ('timezone', 'system', 'America/Los_Angeles', 1, NULL, 'on'),
 ('htaccess', 'system', '# Deny access to file extensions
-<FilesMatch \".(htaccess|htpasswd|ini|flag|log|sh|pref|json|txt|html|xml|zip|sql)$\">
+<FilesMatch \"\\.(htaccess|htpasswd|ini|flag|log|sh|pref|json|txt|xml|zip|sql)$\">
 Order Allow,Deny
 Deny from all
 </FilesMatch>
-## 
+
 RewriteEngine On
 ## FORCE HTTPS -> Uncommment to force ssl
 RewriteCond %{HTTPS} !=on
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301] 
 ## Normal Rewrites
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*[^/])$ /$1/ [L,R]
+RewriteCond %{REQUEST_URI} !(/$|\.|^$)
+RewriteRule (.*) %{REQUEST_URI}/ [R=301,L] 
 RewriteCond $1 !^(index.php|images|robots.txt)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
