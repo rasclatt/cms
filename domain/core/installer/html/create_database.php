@@ -54,19 +54,45 @@ $data	=	[
 
 $err	=	$this->getDataNode('installer_error');
 if(!empty($err)): ?>
-<div class="nbr_error"><?php echo $err ?></div>
+<div style="background-color: red; padding: 0.5em 1em; color: #FFF; font-size: 1.2em; border-left: 5px solid #8A3232;"><?php echo $err ?></div>
 <?php endif ?>
-<h1>Create your database connection.</h1>
-<?php echo $Form->open() ?>
-	<?php echo $Form->fullhide(['name'=>'action', 'value' => 'save_dbcreds']) ?>
-<table border="0">
-	<?php foreach($data as $field): ?>
-	<tr>
-		<td><?php echo $Form->text($field) ?></td>
-	</tr>
-	<?php endforeach ?>
-	<tr>
-		<td class="align-right"><?php echo $Form->submit(['value' => 'Save', 'class' => 'medi-btn dark']) ?></td>
-	</td>
-</table>
-<?php echo $Form->close();
+
+<div style="max-width: 600px;">
+    <h1>Create your database connection.</h1>
+    <p>You must first create an empty database and then fill out the form below with the connection information.</p>
+    <?php echo $Form->open() ?>
+        <?php echo $Form->fullhide(['name'=>'action', 'value' => 'save_dbcreds']) ?>
+    <table border="0">
+        <?php foreach($data as $field): ?>
+        <tr>
+            <td><?php echo $Form->text($field) ?></td>
+        </tr>
+        <?php endforeach ?>
+        <tr>
+            <td class="align-right"><?php echo $Form->submit(['value' => 'Save', 'class' => 'medi-btn dark']) ?></td>
+        </td>
+    </table>
+    <?php echo $Form->close() ?>
+
+<script>
+    $(function(){
+        $('form').on('change submit', function(e){
+            if(e.target != 'change') {
+                e.preventDefault();
+            }
+            
+            var validate    =   [];
+            var data    =   $(this).serializeArray();
+            $.each(data, function(k,v){
+                if(v.value != '') {
+                    validate.push(1);
+                }
+            });
+            
+            if(validate.length == data.length) {
+                $(this).clone().submit();
+            }
+        });
+    });
+</script>
+</div>

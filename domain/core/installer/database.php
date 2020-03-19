@@ -402,7 +402,23 @@ INSERT INTO `system_settings` (`category_id`, `option_group_name`, `option_attri
 ('site_live', 'system', 'on', 1, NULL, 'on'),
 ('template', 'system', '/client/template/rasclatt/', 1, NULL, 'on'),
 ('timezone', 'system', 'America/Los_Angeles', 1, NULL, 'on'),
-('htaccess', 'system', '# Deny access to file extensions\r\n&lt;FilesMatch &quot;\\.(htaccess|htpasswd|ini|flag|log|sh|pref|json|txt|html|xml|zip|sql)$&quot;&gt;\r\nOrder Allow,Deny\r\nDeny from all\r\n&lt;/FilesMatch&gt;\r\n\r\nRewriteEngine On\r\n## FORCE HTTPS -&gt; Uncommment to force ssl\r\nRewriteCond %{HTTPS} !=on\r\nRewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301] \r\n## Normal Rewrites\r\nRewriteCond %{REQUEST_URI} !(/$|\\.|^$)\r\nRewriteRule (.*) %{REQUEST_URI}/ [R=301,L] \r\nRewriteCond $1 !^(index.php|images|robots.txt)\r\nRewriteCond %{REQUEST_FILENAME} !-f\r\nRewriteCond %{REQUEST_FILENAME} !-d\r\nRewriteRule ^(.*)$ /index.php?$1 [NC,QSA,L]', 1, NULL, 'on');";
+('htaccess', 'system', '# Deny access to file extensions
+<FilesMatch \".(htaccess|htpasswd|ini|flag|log|sh|pref|json|txt|html|xml|zip|sql)$\">
+Order Allow,Deny
+Deny from all
+</FilesMatch>
+## 
+RewriteEngine On
+## FORCE HTTPS -> Uncommment to force ssl
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301] 
+## Normal Rewrites
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*[^/])$ /$1/ [L,R]
+RewriteCond $1 !^(index.php|images|robots.txt)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.php?$1 [NC,QSA,L]', 1, NULL, 'on');";
 
 $create[]	=	"
 CREATE TABLE `users` (

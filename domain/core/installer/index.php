@@ -7,6 +7,7 @@ require(realpath(__DIR__.$DS.'..'.$DS.'..'.$DS.'..').$DS.'config.php');
 # Create instance of the main class
 $Application	=	nApp::call();
 try {
+
 	# Start buffering
 	ob_start();
 	# Create a container application

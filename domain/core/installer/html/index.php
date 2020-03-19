@@ -17,15 +17,15 @@ $Markup	=	$this->getHelper('nMarkUp');
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
-<script type="text/javascript" src="/core/template/default/media/js/nFunctions.js"></script>
-<script type="text/javascript" src="/core/template/default/media/js/nScripts.js"></script>
-<script type="text/javascript" src="/core/template/default/media/js/helpers.js"></script>
-<script type="text/javascript" src="/core/template/default/media/js/nConfirm.js"></script>
+<script type="text/javascript" src="../../core/template/default/media/js/nFunctions.js"></script>
+<script type="text/javascript" src="../../core/template/default/media/js/nScripts.js"></script>
+<script type="text/javascript" src="../../core/template/default/media/js/helpers.js"></script>
+<script type="text/javascript" src="../../core/template/default/media/js/nConfirm.js"></script>
 <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600" />
-<link type="text/css" rel="stylesheet" href="/core/template/default/media/css/form.css" />
-<link type="text/css" rel="stylesheet" href="/core/template/default/media/css/grid.css" />
-<link type="text/css" rel="stylesheet" href="/core/template/default/media/css/main.css" />
-<link type="text/css" rel="stylesheet" href="/core/template/default/media/css/styles.css" />
+<link type="text/css" rel="stylesheet" href="../../core/template/default/media/css/form.css" />
+<link type="text/css" rel="stylesheet" href="../../core/template/default/media/css/grid.css" />
+<link type="text/css" rel="stylesheet" href="../../core/template/default/media/css/main.css" />
+<link type="text/css" rel="stylesheet" href="../../core/template/default/media/css/styles.css" />
 <style>
 	*,h1,h2,h3,h4,h5,h6,h7,p {
 		font-family: 'Titillium Web', sans-serif;
@@ -69,11 +69,13 @@ $Markup	=	$this->getHelper('nMarkUp');
 </head>
 <body>
 	<div class="col-count-3 offset pad-bottom">
-		<div class="col-2 pad-top pad-bottom">
-			<a href="/" class="pointer">
-				<img src="/core/template/default/media/images/logo/nubersoft.png" style="max-width: 300px;" />
-			</a>
-			<?php include(__DIR__.DS.$action.'.php') ?>
+		<div class="col-2 pad-top pad-bottom align-middle">
+            <div>
+                <a href="/" class="pointer">
+                    <img src="../../core/template/default/media/images/logo/nubersoft.png" style="max-width: 300px;" />
+                </a>
+                <?php include(__DIR__.DS.$action.'.php') ?>
+            </div>
 		</div>
 	</div>	
 </body>

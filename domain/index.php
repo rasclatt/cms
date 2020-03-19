@@ -10,7 +10,7 @@ if(!empty($argv[1])) {
 require(realpath(__DIR__.DIRECTORY_SEPARATOR.'..').DIRECTORY_SEPARATOR.'config.php');
 # Create instance of the main class
 $Application	=	nApp::call();
-# Execute view
+
 try {
 	# Start buffering
 	ob_start();
@@ -53,7 +53,7 @@ try {
 			# Start our program
 			$AutomatorController->createWorkflow('default');
 		});
-	}
+    }
 	# Get the normal buffer
 	$data	=	ob_get_contents();
 	# Stop the normal buffer
@@ -64,6 +64,11 @@ try {
 catch(HttpException $e) {
 	# Stop the normal buffer (don't output)
 	ob_end_clean();
+    # Create custom error page
+    if(is_file($index = NBR_CLIENT_DIR.DS.'errors.php')) {
+		include($index);
+		die();
+	}
 	# Start our automator
 	$Automator	=	$Application->getHelper('nAutomator\Observer');
 	# Get our data obj
@@ -87,10 +92,7 @@ catch(HttpException $e) {
 		default:
 			$layout	=	'error';
 	}
-	if(is_file($index = NBR_CLIENT_DIR.DS.'errors.php')) {
-		include($index);
-		die();
-	}
+    
 	# Start our program
 	$Automator
 		->setWorkflow($layout)
