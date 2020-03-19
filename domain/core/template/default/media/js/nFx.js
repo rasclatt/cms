@@ -4,7 +4,7 @@ var	AnimatorFX	=	function()
 	var	self		=	this;
 	var	a			=	0;
 	self.sections	=	$('.revealer');
-	self.poppers	=	$('.reaveal-pop');
+	self.poppers	=	$('.reveal-pop');
 	self.nfx		=	$('.nFx');
 	self.queueObj	=	[];
 	
