@@ -1,0 +1,100 @@
+/* CSS Document */
+.reveal-pop {
+	filter: blur(20px);
+	transform: scale(0);
+	position: relative;
+	transition: All ease-in-out 0.35s;
+}
+.reveal-pop.popped {
+	transform: scale(1);
+	filter: blur(0);
+}
+.revealer {
+	filter: blur(10px);
+	transform: translateY(50px);
+	-webkit-opacity: 0;
+	-moz-opacity: 0;
+	opacity: 0;
+	position: relative;
+	transition: All 0.75s;
+}
+.show-revealer {
+	filter: blur(0);
+	transform: translateY(0);
+	-webkit-opacity: 1.0;
+	-moz-opacity: 1.0;
+	opacity: 1.0;
+}
+.rotate-reveal {
+	filter: blur(5px);
+	-webkit-filter: blur(5px);
+	opacity: 0;
+	transform: rotateY(180deg);
+	transition: All 1.5s ease-in-out;
+}
+.rotate-reveal.rback {
+	opacity: 1;
+	transform: rotateY(0deg);
+	filter: blur(0px);
+	-webkit-filter: blur(0px);
+}
+a.fx:link,
+a.fx:visited,
+.fx {
+	transition: All ease-in-out 0.35s;
+	position: relative;
+}
+a.std:link,
+a.std:visited {
+	text-decoration: none;
+}
+.fx.scale-up,
+.fx.scale-up-hover:hover,
+a.fx.scale-up-hover:hover {
+	transform: scale(1.2);
+}
+.fx.contact-shadow {
+	overflow: visible;
+	position: relative;
+	z-index: 1;
+}
+.fx.contact-shadow::after {
+	position: absolute;
+	content: '';
+	box-shadow: 0px 0px 10px rgba(0,0,0,1);
+	display: block;
+	border-radius: 50%;
+	width: 100%;
+	height: 3px;
+	background-color: #000;
+	transform: scale(1.1);
+	bottom: -4px;
+	-webkit-filter: blur(4px);
+	-o-filter:  blur(4px);
+	filter:  blur(4px);
+	z-index: -10;
+}
+@keyframes fxrotate {
+	from {
+		-ms-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+		
+	}
+	to {
+		-ms-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+.fx.rotate-infinite {
+	-webkit-animation: fxrotate 2s linear infinite;
+	-moz-animation: fxrotate 2s linear infinite;
+	-ms-animation: fxrotate 2s linear infinite;
+	-o-animation: fxrotate 2s linear infinite;
+	animation: fxrotate 2s linear infinite;
+}
