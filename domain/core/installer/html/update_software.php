@@ -104,7 +104,7 @@ if(!empty($err)): ?>
 <h1>Update system software</h1>
 <form action="?action=update_system_software" method="post">
 	<label style="font-size: 1.25em; margin-bottom: 0.5em;">
-		<input type="checkbox" name="update[cms]" checked="checked" value="cms" />&nbsp;CMS Updater v.<?php echo file_get_contents(realpath(__DIR__.DS.'..'.DS.'..').DS.'settings'.DS.'version.flag') ?> (<a href="https://github.com/rasclatt/cms/" target="_blank">rasclatt/cms</a>)
+		<input type="checkbox" name="update[cms]" checked="checked" value="cms" />&nbsp;CMS Updater v.<?php echo file_get_contents(realpath(__DIR__.DS.'..'.DS.'..'.DS.'..'.DS.'..'.DS.'core').DS.'settings'.DS.'version.flag') ?> (<a href="https://github.com/rasclatt/cms/" target="_blank">rasclatt/cms</a>)
 	</label>
 	<label style="font-size: 1.25em; margin-bottom: 0.5em;">
 		<input type="checkbox" name="update[nubersoft]" value="nubersoft" />&nbsp;Framework Updater (<a href="https://github.com/rasclatt/nubersoft/" target="_blank">rasclatt/nubersoft</a>)
