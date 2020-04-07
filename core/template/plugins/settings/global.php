@@ -31,7 +31,7 @@ $defaults			=	[
 		"name" => "setting[sign_up]",
 		"type" => "select",
 		"options" => array_map(function($v) use ($sign_up) {
-			if($v['value'] == $sign_up['option_attribute'])
+			if(isset($sign_up['option_attribute']) && $v['value'] == $sign_up['option_attribute'])
 				$v['selected']	=	true;
 			
 			return $v;
@@ -93,7 +93,7 @@ $defaults			=	[
 		'name' => 'setting[site_live]',
 		'type' => 'select',
 		"options" => array_map(function($v) use ($site_live) {
-			if($v['value'] == $site_live['option_attribute'])
+			if(isset($site_live['option_attribute']) && ($v['value'] == $site_live['option_attribute']))
 				$v['selected']	=	true;
 			
 			return $v;
@@ -128,7 +128,7 @@ $defaults			=	[
 			return [
 				'name' => str_replace(['/', '_'],[' – ', ' '],$v),
 				'value' => $v,
-				'selected' => ($timezone['option_attribute'] == $v)
+				'selected' => (isset($timezone['option_attribute']) && ($timezone['option_attribute'] == $v))
 			];
 		},\DateTimeZone::listIdentifiers()),
 		'class' => 'nbr'
