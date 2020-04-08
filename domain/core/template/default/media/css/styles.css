@@ -936,6 +936,34 @@ a.cancel:visited {
 .modal-content input.settings {
 	margin-top: 1em;
 }
+a.button,
+input[type="submit"].button,
+button.button,
+.button {
+    display: inline-block;
+    padding: 0.45em 0.75em;
+    font-size: 1.1em;
+    border-radius: 0.2em;
+    background-color: rgba(14,94,202,1.00);
+    color: #FFF;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+	font-family: "Helvetica Neue",Helvetica, Arial, "sans-serif";
+    transition: All ease-in-out 0.25s;
+}
+a.button:hover,
+input[type="submit"].button:hover,
+button.button:hover,
+.button:hover {
+    background-color: rgba(9,67,146,1.00);
+}
+.gray {
+    background-color: rgba(100,100,100,1.00) !important;
+}
+.gray:hover {
+    background-color: rgba(100,100,100,0.5) !important;
+}
 @media all and (max-width: 600px) {
 	.hide_mobile,
 	.nbr_hide.mobile {

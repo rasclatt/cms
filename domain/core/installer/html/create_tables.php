@@ -39,7 +39,7 @@ if(!empty($err)): ?>
 	</tr>
 	<?php endforeach ?>
 	<tr>
-		<td class="align-right"><?php echo $Form->submit(['value' => 'Save', 'class' => 'medi-btn dark']) ?></td>
+		<td class="align-right"><?php echo $Form->submit(['value' => 'Save', 'class' => 'button']) ?></td>
 	</td>
 </table>
 <?php echo $Form->close();

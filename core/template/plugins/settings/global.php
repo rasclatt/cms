@@ -282,7 +282,6 @@ $defaults			=	[
 			<div class="col-1">
 				<?php
 				$header_company_logo_toggle	=	(isset($header_company_logo_toggle))? $header_company_logo_toggle : false;
-
 				echo $Form->select([
 					'label' => 'Site Logo On?',
 					'name' => 'setting[header_company_logo_toggle]',

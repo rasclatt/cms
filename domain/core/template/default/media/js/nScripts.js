@@ -25,11 +25,13 @@ if(typeof realtime_reporting === "undefined")
 /*
 ** @description	This sets up some php-like constants
 */
-const	SORT_NATURAL	=	true;
+if(typeof SORT_NATURAL === "undefined")
+    const	SORT_NATURAL	=	true;
 /*
 ** @description	This sets up the dispatcher
 */
-var nDispatch	=	$_SERVER['SCRIPT_URI']+'/index.php';
+if(typeof nDispatch === "undefined")
+    var nDispatch	=	$_SERVER['SCRIPT_URI']+'/index.php';
 /*
 ** @param	Allow custome events to run
 ** 			Browser Automation JSON:

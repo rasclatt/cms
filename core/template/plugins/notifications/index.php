@@ -26,10 +26,17 @@ $msg		=	(!empty($this->getRequest('msg')))? $this->getRequest('msg') : false;
 <?php endif ?>
 <script>
 	$(function(){
+		let errormsgs =   $('.nbr_warning, .nbr_success, .nbr_error');
+        
 		<?php if($this->isAdmin()): ?>
-		$('.nbr_warning, .nbr_success, .nbr_error').delay(3000).slideUp('fast');
+        $.each(errormsgs, function(k, v){
+            if(!$(v).hasClass('stay')) {
+                $(v).delay(3000).slideUp('fast');
+            }
+        });
 		<?php endif ?>
-		$('.nbr_warning, .nbr_success, .nbr_error').on('click', function(){
+        
+		errormsgs.on('click', function(){
 			$(this).slideUp('fast');
 		});
 	});

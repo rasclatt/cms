@@ -13,6 +13,6 @@
         }
     ],
     "require": {
-        "rasclatt/nubersoft": "1.*"
+        "rasclatt/nubersoft": "*"
     }
 }

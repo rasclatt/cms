@@ -1,5 +1,4 @@
 <?php
-
 $thisObj	=	$this;
 # This will fetch the master from git
 if(!function_exists('fetch_and_install')) {
@@ -109,8 +108,8 @@ if(!empty($err)): ?>
 	<label style="font-size: 1.25em; margin-bottom: 0.5em;">
 		<input type="checkbox" name="update[nubersoft]" value="nubersoft" />&nbsp;Framework Updater (<a href="https://github.com/rasclatt/nubersoft/" target="_blank">rasclatt/nubersoft</a>)
 	</label>
-	<?php if(is_dir(NBR_ROOT_DIR.DS.'vendor'.DS.'rasclatt'.DS.'nubersoft')): ?><div class="nbr_error">The class library appears to be installed by Composer! You can use <code style="font-family: Courier; background-color: #888; padding: 0 5px;">composer update rasclatt/nubersoft</code> in the terminal. If you update this way, it will still work, but Composer is preferred.</div><?php endif ?>
-	<input type="submit" class="medi-btn green" value="Update Nubersoft" style="text-transform: uppercase;" />
+	<?php if(is_dir(NBR_ROOT_DIR.DS.'vendor'.DS.'rasclatt'.DS.'nubersoft')): ?><div class="nbr_error stay">The class library appears to be installed by Composer! You can use <code style="font-family: Courier; background-color: #888; padding: 0 5px;">composer update rasclatt/nubersoft</code> in the terminal. If you update this way, it will still work, but Composer is preferred.</div><?php endif ?>
+	<input type="submit" class="button" value="Update Nubersoft" style="text-transform: uppercase;" />
 </form>
 <div class="pad-top" id="update-log">
 <?php

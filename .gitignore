@@ -1,3 +1,5 @@
 **/_notes
 *.DS_Store
 dwsync.xml
+*.flag
+domain/core/installer/firstrun.flag

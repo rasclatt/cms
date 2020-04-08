@@ -211,7 +211,7 @@ CREATE TABLE `file_activity` (
   `unique_id` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `username` varchar(50) COLLATE utf8_unicode_ci DEFAULT '',
   `ip_address` varchar(50) COLLATE utf8_unicode_ci DEFAULT '',
-  `action` varchar(20) COLLATE utf8_unicode_ci DEFAULT '',
+  `action_slug` varchar(20) COLLATE utf8_unicode_ci DEFAULT '',
   `file_id` varchar(30) COLLATE utf8_unicode_ci DEFAULT '',
   `timestamp` varchar(20) COLLATE utf8_unicode_ci DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
@@ -349,17 +349,17 @@ $create[]	=	"
 CREATE TABLE `media` (
   `ID` bigint(50) UNSIGNED NOT NULL,
   `unique_id` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT '',
-  `usergroup` int(2) NOT NULL,
-  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
-  `file` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `usergroup` int(2) DEFAULT NULL,
+  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT '',
+  `file` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `file_path` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
   `file_size` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `content` longtext COLLATE utf8_unicode_ci,
+  `content` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
   `terms_id` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `login_view` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
-  `page_order` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
-  `page_live` varchar(3) COLLATE utf8_unicode_ci DEFAULT ''
+  `login_view` varchar(3) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `page_order` varchar(3) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
+  `page_live` varchar(3) COLLATE utf8_unicode_ci DEFAULT 'on'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
 
 $create[]	=	"
@@ -378,7 +378,7 @@ CREATE TABLE `system_settings` (
   `category_id` varchar(50) DEFAULT NULL,
   `option_group_name` varchar(50) DEFAULT NULL,
   `option_attribute` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `usergroup` int(4) DEFAULT '1',
+  `usergroup` int(4) DEFAULT 1,
   `action_slug` varchar(100) DEFAULT NULL,
   `page_live` varchar(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
@@ -506,10 +506,7 @@ ALTER TABLE `members_connected`
 
 $create[]	=	"
 ALTER TABLE `system_settings`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `page_element` (`category_id`,`usergroup`,`page_live`),
-  ADD KEY `action` (`action`),
-  ADD KEY `option_group_name` (`option_group_name`);";
+  ADD PRIMARY KEY (`ID`);";
 
 $create[]	=	"
 ALTER TABLE `users`
@@ -551,7 +548,8 @@ ALTER TABLE `main_menus`
   MODIFY `ID` int(20) NOT NULL AUTO_INCREMENT;";
 
 $create[]	=	"ALTER TABLE `media`
-  MODIFY `ID` bigint(50) UNSIGNED NOT NULL AUTO_INCREMENT;";
+  MODIFY `ID` bigint(50) UNSIGNED NOT NULL AUTO_INCREMENT;
+COMMIT;";
 
 $create[]	=	"ALTER TABLE `members_connected`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;";

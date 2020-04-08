@@ -3,11 +3,16 @@ namespace Nubersoft;
 # Quick
 $DS	=	DIRECTORY_SEPARATOR;
 # Add our application config
-require(realpath(__DIR__.$DS.'..'.$DS.'..'.$DS.'..').$DS.'config.php');
+require_once(realpath(__DIR__.$DS.'..'.$DS.'..'.$DS.'..').$DS.'config.php');
+# If installer is set but not yet initialized go back
+if(!class_exists('Nubersoft\nApp')) {
+    header('Location: ../../../index.php');
+    exit;
+}
 # Create instance of the main class
 $Application	=	nApp::call();
+# Start application
 try {
-
 	# Start buffering
 	ob_start();
 	# Create a container application
