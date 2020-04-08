@@ -102,23 +102,12 @@ $page_details	=	$Pagination->getAllButResults();
 </div>
 <?php //echo printpre($page_details); ?>
 
-<?php
+<?php                            
 if(!empty($this->getRequest('create'))):
 	echo $this->getPlugin('admintools', DS.'media'.DS.'add.php');
-
 elseif(is_numeric($this->getRequest('edit'))):
-	$user	=	$this->getHelper('nUser')->getUser($this->getRequest('edit'), 'ID');
-
-	if(empty($user)) {
-		$this->toError('User is invalid.'); ?>
-		<?php
-		echo $this->getPlugin('notifications');
-		return false;
-	}
-   
-   	$this->setNode('user_data', $user);
+   	$this->setNode('media_data', $this->query("SELECT * FROM media WHERE ID = ?", [$this->getRequest('edit')])->getResults(1));
 	echo $this->getPlugin('admintools', DS.'media'.DS.'form.php');
-	
 	?>
 	<script>
 	$(function(){
@@ -181,7 +170,7 @@ elseif(is_numeric($this->getRequest('edit'))):
 						<div>Size</div><div class="span-2"><?php echo \Nubersoft\Conversion\Data::getByteSize($row['file_size'], ['from'=>'B', 'to'=>'MB', 'round' =>2, 'ext' => 'MB']) ?></div>
 					</div>
 				</div>
-				<a href="?table=media&edit=<?php echo $row['ID'] ?>" class="nbr button" style="width: auto !important; border-radius: 0;">EDIT</a>
+				<a href="?table=media&edit=<?php echo $row['ID'] ?>&subaction=interface" class="nbr button" style="width: auto !important; border-radius: 0;">EDIT</a>
 				
 				<a href="<?php echo $row['filename'] ?>" class="nbr button" style="width: auto !important; border-radius: 0;" target="_blank">VIEW</a>
 			</div>
