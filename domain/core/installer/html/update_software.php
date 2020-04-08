@@ -113,7 +113,7 @@ if(!empty($err)): ?>
 </form>
 <div class="pad-top" id="update-log">
 <?php
-if($this->getGet('action') == 'update_system_software') {
+if($this->getGet('action') == 'update_system_software' && is_array($this->getPost('update'))) {
 	
 	foreach($this->getPost('update') as $package) {
 		

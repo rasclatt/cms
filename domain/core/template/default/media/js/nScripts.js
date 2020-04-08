@@ -26,7 +26,7 @@ if(typeof realtime_reporting === "undefined")
 ** @description	This sets up some php-like constants
 */
 if(typeof SORT_NATURAL === "undefined")
-    const	SORT_NATURAL	=	true;
+    var	SORT_NATURAL	=	true;
 /*
 ** @description	This sets up the dispatcher
 */
