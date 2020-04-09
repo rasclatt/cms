@@ -225,3 +225,15 @@ $ref_page	=	$compData['ref_page'];
 	</div>
 </div>
 <div class="component-shade">&nbsp;</div>
+
+<script>
+    $(function(){
+	   $('input[name="delete"]').on('click', function(e){
+           if($(this).is(':checked')) {
+               let conf =   confirm('Really delete?');
+               if(!conf)
+                   $(this).prop('checked', false);
+           }
+       });
+    });
+</script>

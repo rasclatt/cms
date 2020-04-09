@@ -31,7 +31,7 @@ $page_live	=	'/core/template/default/media/images/core/led_'.$activated.'.png';
 				<div style="position: relative; top: -15px; display: inline; color: #777;"><?php echo $this->colToTitle($title) ?></div>
 			</div>
 			<div class="col-count-3 offset edit-btn">
-				<a href="#" class="span-3 nbr button small nTrigger component-element no-radius" data-instructions='{"action":"nbr_load_component","data":{"deliver":{"ID":"<?php echo $ID ?>"}}}'>EDIT</a>
+				<a href="#" class="span-3 nbr button small nTrigger component-element no-radius canceller" data-instructions='{"action":"nbr_load_component","data":{"deliver":{"ID":"<?php echo $ID ?>"}}}'>EDIT</a>
 			</div>
 			<div id="editorid-<?php echo $ID ?>" class="component-editor dragonit"></div>
 		</div>

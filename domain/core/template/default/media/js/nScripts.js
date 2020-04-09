@@ -1815,7 +1815,7 @@ var	Automator	=	new nAutomation(njQuery);
 // Create global ajax object
 var	AjaxEngine	=	new nAjax(njQuery);
 // When the document is ready
-jQuery(document).ready(function($) {
+jQuery(function($) {
 	var	currClick;
 	var doc			=	$(this);
 	var	activeObj	=	{};
@@ -1830,6 +1830,9 @@ jQuery(document).ready(function($) {
 			doAutomation(activeBtn,sortActiveObj(setInstr,nDispatch),true);
 		});
 	}
+    doc.on('click', '.canceller', function(e){
+        e.preventDefault();
+    });
 	doc.on('click','.nScroll',function(){
 		var getInstr	=	$(this).data('instructions');
 		
