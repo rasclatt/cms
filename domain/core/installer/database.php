@@ -7,7 +7,7 @@ CREATE TABLE `components` (
   `ref_page` varchar(255) COLLATE utf8_bin DEFAULT '',
   `parent_id` varchar(100) COLLATE utf8_bin DEFAULT '',
   `ref_anchor` varchar(255) COLLATE utf8_bin DEFAULT '',
-  `title` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `category_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
   `component_type` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
   `content` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,

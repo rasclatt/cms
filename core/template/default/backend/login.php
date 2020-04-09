@@ -17,7 +17,7 @@
 	</div>
 </div>
 <div class="content col-count-3 offset" id="footer-container"> 
-	<div class="col-2">&copy; <?php echo $this->localeUrl() ?> <?php echo date('Y') ?>. All rights reserved.</div>
+	<div class="col-2 white align-center">&copy; <?php echo $this->localeUrl() ?> <?php echo date('Y') ?>. All rights reserved.</div>
 </div>
 </body>
 </html>

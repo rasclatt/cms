@@ -35,7 +35,7 @@ $ref_page	=	$compData['ref_page'];
 		echo $Form->fullhide(['name' => 'token[nProcessor]', 'value' => $this->getHelper('nToken')->setToken($token)->getToken($token, false)]);
 		?>
 
-			<div class="table-row nodrag">
+			<div class="nodrag">
 		<?php
 		foreach($compData as $field => $value):
 			if(in_array($field, ['ID','unique_id'])) {

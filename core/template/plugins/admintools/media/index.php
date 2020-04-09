@@ -100,7 +100,12 @@ $page_details	=	$Pagination->getAllButResults();
 		<?php echo $Form->close() ?>
 	</div>
 </div>
-<?php //echo printpre($page_details); ?>
+
+<script>
+$(function(){
+	fetchAllTokens($);
+});
+</script>
 
 <?php                            
 if(!empty($this->getRequest('create'))):

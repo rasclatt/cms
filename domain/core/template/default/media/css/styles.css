@@ -964,6 +964,9 @@ button.button:hover,
 .gray:hover {
     background-color: rgba(100,100,100,0.5) !important;
 }
+.white {
+    color: #FFF;
+}
 @media all and (max-width: 600px) {
 	.hide_mobile,
 	.nbr_hide.mobile {

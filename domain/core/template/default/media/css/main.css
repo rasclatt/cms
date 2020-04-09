@@ -110,6 +110,7 @@ body.edit-mode #admin-menubar {
 	padding: 0.5em;
 	background-color: #EBEBEB;
 }
+
 .item-container-editor-div {
 	grid-column: 1 / span 5;
 	background: linear-gradient(#EBEBEB, #888);

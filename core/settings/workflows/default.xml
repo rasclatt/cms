@@ -10,13 +10,17 @@
 		</class>
 		<class>
 			<name>\Nubersoft\nRouter\Observer</name>
-			<method>checkLastActive</method>
+			<method>listen</method>
 		</class>
 		<class>
 			<name>\Nubersoft\nSession\Controller</name>
 			<method>setLastActive</method>
 		</class>
 		<class>
+			<name>\Nubersoft\Localization\Observer</name>
+			<method>listen</method>
+		</class>
+        <class>
 			<name>\Nubersoft\nCookie\Observer</name>
 			<method>setCurrentPage</method>
 			<inject into="setCurrentPage">

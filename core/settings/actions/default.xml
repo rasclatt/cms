@@ -70,4 +70,19 @@
 			<method>setEditMode</method>
 		</class>
 	</object>
+
+	<object event="edit_translator" after="nbr_set_headers" request="get" is_admin="true">
+		<class>
+			<name>\Nubersoft\Localization\Observer</name>
+			<method>toggleEditMode</method>
+		</class>
+	</object>
+
+	<object event="wb_create_translator" after="nbr_set_headers" is_ajax="true" is_admin="true">
+		<class>
+			<name>\Nubersoft\Localization\Observer</name>
+			<method>actionListen</method>
+		</class>
+	</object>
+    
 </config>
