@@ -74,6 +74,9 @@ a.fx.scale-up-hover:hover {
 	filter:  blur(4px);
 	z-index: -10;
 }
+.fx.opacity-hover:hover {
+    opacity: 0.5;
+}
 @keyframes fxrotate {
 	from {
 		-ms-transform: rotate(0deg);
