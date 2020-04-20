@@ -3,3 +3,4 @@
 dwsync.xml
 *.flag
 domain/core/installer/firstrun.flag
+domain/client/*

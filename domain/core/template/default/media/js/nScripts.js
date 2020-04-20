@@ -1999,11 +1999,13 @@ jQuery(function($) {
 	 *	@description	Expand a div out to borders
 	 */
 	$(this).on('click', '.expander', function(){
-		var thisExpander	=	$(this).data('acton');
+		let thisExpander	=	$(this).data('acton');
+        let thisParent  =   $(this).parents('.item-container-editor-code'); 
+        let thisExpanderParent  =   thisParent.find(thisExpander);
 		$(this).hide();
-		$('.component-editor').addClass("expand-out");
-		$(thisExpander).addClass("expand-out").find('textarea').css({"min-height": "400px"});
-		$(thisExpander).find('.component-wrap').css({
+		thisParent.find('.component-editor').addClass("expand-out");
+		thisExpanderParent.addClass("expand-out").find('textarea').css({"min-height": "400px"});
+		thisExpanderParent.find('.component-wrap').css({
 			"max-height": "none",
 			"height":"auto",
 			"overflow": "auto"
@@ -2017,4 +2019,11 @@ jQuery(function($) {
 		$('.component-editor').removeClass("expand-out");
 		$('#admin-menubar').show();
 	});
+    
+    $(this).on('submit', '.component-editor-form', function(e){
+        e.preventDefault();
+        AjaxEngine.formData($('.component-editor-form')[0], function(response){
+            default_action($(this), response);
+        });
+    });
 });

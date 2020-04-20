@@ -129,9 +129,9 @@ elseif(is_numeric($this->getRequest('edit'))):
 			var	getVal	=	$(this).is(':checked');
 			var	uSher	=	(getVal)? confirm('Do you really want to delete this user?') : true;
 			if(uSher) {
-				$('#user-editor').find('input,select').prop('disabled',getVal);
+				$('.user-editor').find('input,select').prop('disabled',getVal);
 				$(this).prop('disabled', false);
-				$('#user-editor').find('input[type="submit"],input[name="action"],input[name="ID"],input[type=hidden]').prop('disabled',false);
+				$('.user-editor').find('input[type="submit"],input[name="action"],input[name="ID"],input[type=hidden]').prop('disabled',false);
 			}
 			else {
 				$(this).prop("checked", false);

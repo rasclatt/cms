@@ -84,5 +84,11 @@
 			<method>actionListen</method>
 		</class>
 	</object>
-    
+
+	<object event="comptopg" after="nbr_set_headers" is_ajax="true" request="post">
+		<class>
+			<name>\Nubersoft\System\Observer</name>
+			<method>componentToPage</method>
+		</class>
+	</object>
 </config>
