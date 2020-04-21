@@ -2002,7 +2002,8 @@ jQuery(function($) {
 		let thisExpander	=	$(this).data('acton');
         let thisParent  =   $(this).parents('.item-container-editor-code'); 
         let thisExpanderParent  =   thisParent.find(thisExpander);
-		$(this).hide();
+        $(this).parents('.component-container').find('.expander').replaceWith('');
+		$(this).replaceWith('');
 		thisParent.find('.component-editor').addClass("expand-out");
 		thisExpanderParent.addClass("expand-out").find('textarea').css({"min-height": "400px"});
 		thisExpanderParent.find('.component-wrap').css({
@@ -2020,9 +2021,9 @@ jQuery(function($) {
 		$('#admin-menubar').show();
 	});
     
-    $(this).on('submit', '.component-editor-form', function(e){
+    $(this).on('click', '.ajax-save', function(e){
         e.preventDefault();
-        AjaxEngine.formData($('.component-editor-form')[0], function(response){
+        AjaxEngine.formData($(this).parents('.component-editor-form')[0], function(response){
             default_action($(this), response);
         });
     });

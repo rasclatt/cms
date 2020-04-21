@@ -153,7 +153,19 @@ foreach($compData as $field => $value):
                     , 'class' => 'nbr']);
                     break;
                 case('textarea'):
-                    echo '<a class="expander mini-btn dark" href="#" data-acton=".component-container">EXPAND</a>';
+                    if($field == 'content') {
+                        echo '
+                        <div class="align-middle">
+                            <div class="col-count-2 gapped align-center">
+                                <div>
+                                    <a class="expander mini-btn dark" href="#" data-acton=".component-container">EXPAND</a>
+                                </div>
+                                <div>
+                                    <a href="#" class="canceller  mini-btn green ajax-save">Update</a> 
+                                </div>
+                            </div>
+                        </div>';
+                    }
                     echo $Form->textarea(['name'=> $field, 'value' => $value, 'class' => 'nbr code component tabber']);
                     break;
                 default:

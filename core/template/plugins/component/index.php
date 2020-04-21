@@ -27,6 +27,10 @@ $ref_page	=	$compData['ref_page'];
 				<?php echo strip_tags($Form->submit(['value' => 'DUPLICATE', 'class' => 'mini-btn dark no-margin']),'<input>') ?>
 			<?php echo $Form->close() ?>
 		</div>
+        
+        <div style="padding: 0;">
+            <a class="expander mini-btn dark margin-0" href="#" data-acton=".component-container" style="margin: 0 !important; position: relative; top: 5px;">EXPAND</a>
+        </div>
 	</div>
     
     <!-- start component form -->
