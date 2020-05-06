@@ -6,6 +6,8 @@ if(!empty($table)):
 	$use	=	($this->getGet('subaction') == 'interface')? "admintools" : "table_view";
 	echo $this->getPlugin($use, ($this->getGet('subaction') == 'interface')? DS.$table.DS.'index.php' : '');
 
+elseif($this->getGet('load') == 'installmsg'):
+    $this->getHelper('ErrorMessaging\Controller')->installDefaultCodes();
 elseif($this->getGet('load') == 'coreinstaller'): ?>
 
 <h2>Installer / Update</h2>

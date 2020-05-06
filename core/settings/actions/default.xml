@@ -91,4 +91,11 @@
 			<method>componentToPage</method>
 		</class>
 	</object>
+
+	<object event="install_def_codes" after="nbr_set_headers" is_admin="true">
+		<class>
+			<name>\Nubersoft\ErrorMessaging\Controller</name>
+			<method>installDefaultCodes</method>
+		</class>
+	</object>
 </config>
