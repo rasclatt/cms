@@ -2000,7 +2000,11 @@ jQuery(function($) {
 	 */
 	$(this).on('click', '.expander', function(){
 		let thisExpander	=	$(this).data('acton');
-        let thisParent  =   $(this).parents('.item-container-editor-code'); 
+        let thisParent  =   $(this).parents('.item-container-editor-code');
+        
+        if(thisParent.length == 0)
+            thisParent  =   $(this).parents('.item-container-editor-code_cached');
+        
         let thisExpanderParent  =   thisParent.find(thisExpander);
         $(this).parents('.component-container').find('.expander').replaceWith('');
 		$(this).replaceWith('');
@@ -2026,5 +2030,10 @@ jQuery(function($) {
         AjaxEngine.formData($(this).parents('.component-editor-form')[0], function(response){
             default_action($(this), response);
         });
+    });
+    
+    $(this).on('click', '.admin-menu > img', function(){
+        var thisAdminBtn    =   $(this).next();
+        thisAdminBtn.css({"display": ((thisAdminBtn.is(":visible"))? "none" : "flex") });
     });
 });

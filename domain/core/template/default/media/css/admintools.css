@@ -225,3 +225,45 @@ tr.table-tbl-row th p {
 tr.table-tbl-row td h4 {
 	font-size: 1.2em;
 }
+#admin-content .pagination-max a {
+    text-decoration: none;
+    padding: 0.25em;
+    border-radius: 3px;
+    background-color: #F4F4F4;
+    margin: 0.15em;
+    cursor: pointer;
+    color: #333;
+    transition: All ease-in-out 0.35s;
+}
+#admin-content .pagination-max a:hover {
+    opacity: 0.5;
+    color: #666;
+}
+#admin-content .pagination-max.active a {
+    background-color: transparent;
+}
+@media all and (max-width: 1038px) {
+    .max-range {
+        margin-bottom: 1em;
+    }
+    #search-bar > div:first-child::before {
+        content: 'per-page:';
+    }
+    .table-row-container-wrap {
+        border: 1px solid #CCC;
+        max-width: 555px;
+        overflow: auto;
+    }
+}
+@media all and (max-width: 850px) {
+    .table-row-container-wrap {
+        max-width: 475px;
+        overflow: auto;
+    }
+}
+@media all and (max-width: 588px) {
+    .table-row-container-wrap {
+        max-width: 275px;
+        overflow: auto;
+    }
+}

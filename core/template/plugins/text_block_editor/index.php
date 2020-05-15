@@ -19,7 +19,9 @@ $height =   ($h)?? '300px';
 <?php echo nl2br((!empty($text))? $this->getHelper('nMarkUp')->useMarkUp($text) : $default) ?>
 
 <?php if($is_admin):?>
-<a href="?action=edit_translator&subaction=on" class="pointer opacity-hover edit-button" title="Edit text"><i class="far fa-edit fa-2x pointer" role="button"></i><span class="button small gray">Edit</span></a>
+
+<a href="?action=edit_translator&subaction=on" class="pointer opacity-hover edit-button" title="Edit text">Edit</a>
+
 <?php endif ?>
 
 <?php else: ?>
@@ -45,7 +47,7 @@ $height =   ($h)?? '300px';
             <input type="submit" value="SAVE" class="button" />
             <?php if($is_admin):?>
             <div style="float: right;">
-                <a href="?action=edit_translator&subaction=off" class="pointer opacity-hover edit-button" title="Edit text"><i class="far fa-edit fa-2x pointer" role="button"></i><i class="far fa-edit fa-2x pointer" role="button"></i><span class="button small gray">DONE</span></a>
+                <a href="?action=edit_translator&subaction=off" class="pointer opacity-hover mini-btn green no-bx-shadow no-margin" title="Edit text">DONE</a>
             </div>
         </div>
     <?php endif ?>

@@ -1,4 +1,7 @@
 <?php
+if(empty($this))
+    throw new \Exception("Forbidden", 403);
+
 $fetch	=	$this->getDataNode('data');
 
 $data	=	[

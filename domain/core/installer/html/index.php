@@ -1,4 +1,7 @@
 <?php
+if(empty($this))
+    throw new \Exception("Forbidden", 403);
+
 $data	=	$this->getDataNode('data')['data'];
 $action	=	$this->getDataNode('data')['action'];
 $Form	=	$this->getHelper('nForm');

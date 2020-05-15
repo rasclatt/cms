@@ -14,7 +14,7 @@ foreach($compData as $field => $value):
 
     if($field == 'file_size'): ?>
 
-    <div style="margin-top: 1em; font-size: 0.85em; color: blue;"><?php echo round($this->getHelper('Conversion\Data')->getByteSize($value, ['from' => 'b', 'to' => 'mb']),2) ?>MB<br /></div>
+    <div style="margin-top: 1em; font-size: 0.85em; color: blue;"><?php echo ($value != 0)? round($this->getHelper('Conversion\Data')->getByteSize($value, ['from' => 'b', 'to' => 'mb']),2) : 0 ?>MB<br /></div>
 
         <?php continue ?>
     <?php endif ?>
@@ -158,7 +158,7 @@ foreach($compData as $field => $value):
                         <div class="align-middle">
                             <div class="col-count-2 gapped align-center">
                                 <div>
-                                    <a class="expander mini-btn dark" href="#" data-acton=".component-container">EXPAND</a>
+                                    <a class="expander mini-btn dark" href="#" data-acton=".component-container"><i class="fas fa-expand-arrows-alt"></i></a>
                                 </div>
                                 <div>
                                     <a href="#" class="canceller  mini-btn green ajax-save">Update</a> 

@@ -1,12 +1,12 @@
 // JavaScript Document
 var	AnimatorFX	=	function()
 {
-	var	self		=	this;
-	var	a			=	0;
-	self.sections	=	$('.revealer');
-	self.poppers	=	$('.reveal-pop');
-	self.nfx		=	$('.nFx');
-	self.queueObj	=	[];
+	var	self   =	this;
+    var listen  =   $('body');
+    var win =   $(window);
+    
+    self.inc =   1000;    
+    self.count  =   0;
 	
 	self.setAttr	=	function(attr, value)
 	{
@@ -16,10 +16,12 @@ var	AnimatorFX	=	function()
 	
 	self.isScrolledIntoView	=	function(elem)
 	{
-		var docViewTop = $(window).scrollTop();
-		var docViewBottom = docViewTop + $(window).height();
-
-		var elemTop = $(elem).offset().top;
+        if($(elem).length == 0)
+            return false;
+        
+		var docViewTop = win.scrollTop();
+		var docViewBottom = docViewTop + win.height();
+        var elemTop = $(elem).offset().top;
 		var elemBottom = elemTop + $(elem).height();
 
 		var	useHighest	=	(elemBottom <= elemTop+30)? elemBottom : elemTop+30;
@@ -38,69 +40,29 @@ var	AnimatorFX	=	function()
 
 	self.loopReveals	=	function(sections, use_class)
 	{
-		$.each(sections, function(k, v){
-			if(self.isScrolledIntoView(v)) {// && !self.isQueued(k)
-				//self.queued(k);
+        if(sections.length == 0)
+            return sections;
+        
+        $.each(sections, function(k, v){
+			if(self.isScrolledIntoView($(v))) {
 				if(!$(v).hasClass(use_class)) {
+					self.count	+=	self.inc;
 					setTimeout(function(){
 						$(v).addClass(use_class);
-					}, a);
-					a	+=	50;
-
+					}, self.count*2);
 				}
 			}
 		});
-		
-		//if(self.queueObj) {
-		//	self.runQueue();
-		//}
-		
-		return self;
 	};
 
-	self.queued	=	function(key)
+	self.applynFx	=	function(count)
 	{
-		self.queueObj.push(key);
-		
-		return self;
-	}
-	
-	self.isQueued	=	function(k)
-	{
-		return (in_array(self.queueObj, k));
-	}
-	
-	self.runQueue	=	function()
-	{
-		var	a	=	500;
-		$.each(self.queueObj, function(k, v){
-			setTimeout(function(){
-				var newObj	=	v[0];
-				var newVal	=	v[1];
-				newObj.addClass(newVal);
-				self.queueObj[k]	=	null;
-			}, a);
-			a++;
-		});
-		
-		return self;
-	}
-	
-	self.create	=	function()
-	{
-		self.loopReveals(self.sections, 'show-revealer');
-		self.loopReveals(self.poppers, 'popped');
-		setTimeout(function(){
-			self.loopReveals(self.nfx, self.nfx.data('nfx'));
-		}, 500);
-		
-		return self;
-	};
-
-	self.applynFx	=	function()
-	{
-		if(self.poppers.length != 0)
-			self.loopReveals(self.poppers, 'popped');
+        self.sections	=	$('.revealer:not(.show-revealer)');
+        self.poppers	=	$('.reveal-pop:not(.popped)');
+        self.nfx		=	$('.nFx');
+        
+        if(self.poppers.length != 0)
+            self.loopReveals(self.poppers, 'popped');
 
 		if(self.sections.length != 0)
 			self.loopReveals(self.sections, 'show-revealer');
@@ -108,30 +70,36 @@ var	AnimatorFX	=	function()
 		if(self.nfx.length != 0)
 			self.loopReveals(self.nfx, self.nfx.data('nfx'));
 		
-		return self;
+		return (self.poppers.length + self.sections.length + self.nfx.length) > 0;
 	};
-	
+    
 	self.sentinel	=	function()
 	{
-		$(document).on('scroll', function(){
-			a	=	500;
+        var resetTime;
+        
+        function resetCounter()
+        {
+            resetTime   =   setTimeout(function(){
+                self.count  =   0;
+            }, 250);
+        }
+        self.a  =   0;
+        resetCounter();
+        
+        win.off('resize.nFx');
+        listen.off('resize.nFx');
+        
+		self.applynFx();
+		
+		win.on('resize.nFx', function(){
+            self.applynFx()
 		});
-		
-		var	FxAnimator	=	self;
-		
-		FxAnimator.applynFx();
-		
-		$(window).on('resize', function(){
-			FxAnimator.applynFx();
-		});
-
-		$(window).scroll(function () {
-			FxAnimator.applynFx();
-		});
-		
-		return self;
-	}
+        listen.on('scroll.nFx', function(){
+            if(resetTime)
+                clearTimeout(resetTime);
+            
+            self.applynFx();
+            resetCounter();
+        });
+	};
 }
-$(function(){
-	(new AnimatorFX()).sentinel();
-});

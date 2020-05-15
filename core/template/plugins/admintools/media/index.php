@@ -6,9 +6,13 @@ $Form	=	@$this->nForm();
 
 <?php
 $Pagination	=	$this->getHelper('SearchEngine\View')->fetch([
+    'max_range' => [
+        10,20,50,100,500
+    ],
 	'columns' => [
 		'file_name'
 	],
+    'spread' => 2,
 	'sort' => 'DESC'
 	],
 	function($nQuery, $Pagination, $REQ){
@@ -65,41 +69,11 @@ $Pagination	=	$this->getHelper('SearchEngine\View')->fetch([
 	});
 
 $page_details	=	$Pagination->getAllButResults();
-
+# Searchbar
+echo $this->setPluginContent('page_details', $page_details)
+    ->getPlugin('adminbar', 'searchbar.php');
 ?>
-<div class="col-count-5" id="search-bar">
-	<div class="col-count-12 lrg-10 med-6 sml-5 search-bar max-range">
-		<?php foreach($page_details['max_range'] as $num): ?>
-		<div class="pagination-max"><a href="?<?php echo http_build_query(['max' => $num, "table" => 'media', 'current' => $page_details['current'], 'search' => $this->getGet('search')]) ?>&subaction=interface"><?php echo $num ?></a></div>
-		<?php endforeach ?>
-	</div>
-	<div class="col-count-8 search-bar navigator">
-		
-		<?php if($page_details['previous'] !== 1 && !empty($page_details['previous'])): ?>
-		<div class="pagination-max"><a href="?<?php echo http_build_query(['max' => $this->getGet('max'), "table" => 'media', 'current' => $page_details['previous'], 'search' => $this->getGet('search')]) ?>&subaction=interface">&lt;</a></div>
-		<?php endif ?>
-		<?php foreach($page_details['range'] as $num): ?>
-		<div class="pagination-max"><a href="?<?php echo http_build_query(['max' => $this->getGet('max'), "table" => 'media', 'current' => $num, 'search' => $this->getGet('search')]) ?>&subaction=interface"><?php echo $num ?></a></div>
-		<?php endforeach ?>
-		<?php if(!empty($page_details['next'])): ?>
-		<div class="pagination-max"><a href="?<?php echo http_build_query(['max' => $this->getGet('max'), "table" => 'media', 'current' => $page_details['next'], 'search' => $this->getGet('search')]) ?>&subaction=interface">&gt;</a></div>
-		<?php endif ?>
-	</div>
-	<div class="search-bar search span-3">
-		<?php echo $Form->open(["method"=>'get','action'=>'?'.http_build_query(['max' => $this->getGet('max'), "table" => 'media', 'search' => $this->getGet('search'), 'subaction'=>'interface']),'style' => 'width: 100%;']) ?>
-			<?php echo $Form->fullhide(['name' => 'max', 'value' => $this->getGet('max')]) ?>
-			<?php echo $Form->fullhide(['name' => 'table', 'value' => $this->getGet('table')]) ?>
-			<div class="col-count-4">
-				<div class="span-3">
-					<?php echo $Form->text(['name' => 'search', 'value' => $this->getGet('search'), 'class'=>'nbr']) ?>
-				</div>
-				<div>
-				<?php echo $Form->submit(['value' => 'Search', 'class'=>'button']) ?>
-				</div>
-			</div>
-		<?php echo $Form->close() ?>
-	</div>
-</div>
+
 
 <script>
 $(function(){

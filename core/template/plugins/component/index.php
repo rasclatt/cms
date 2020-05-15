@@ -24,12 +24,16 @@ $ref_page	=	$compData['ref_page'];
 				<?php echo strip_tags($Form->fullhide(['name' => 'token[nProcessor]', 'value' => $Token->setToken($token)->getToken($token, false)]),'<input>') ?>
 				<?php echo strip_tags($Form->fullhide(['name' => 'ref_page', 'value' => $this->getPage('unique_id')]),'<input>') ?>
 				<?php echo strip_tags($Form->fullhide(['name' => 'parent_dup', 'value' => $compData['ID']]),'<input>') ?>
-				<?php echo strip_tags($Form->submit(['value' => 'DUPLICATE', 'class' => 'mini-btn dark no-margin']),'<input>') ?>
+                <button style="background-color: #333; font-size: 1rem; color: #FFF; border: none; border-radius: 3px; min-width: 2rem; margin: 0; border: 1px solid #666; padding: 0.2rem" class=" fx opacity-hover pointer"><i class="far fa-clone pointer"></i></button>
 			<?php echo $Form->close() ?>
 		</div>
         
         <div style="padding: 0;">
-            <a class="expander mini-btn dark margin-0" href="#" data-acton=".component-container" style="margin: 0 !important; position: relative; top: 5px;">EXPAND</a>
+            <a class="expander mini-btn dark margin-0" href="#" data-acton=".component-container" style="margin: 0 !important; position: relative; top: 4px;"><i class="fas fa-expand-arrows-alt"></i></a>
+        </div>
+        
+        <div style="padding: 0.4em 0.5em 0 0.5em;">
+            <a href="?action=set_edit_mode&active=off" class="fx opacity-hover pointer"><img src="/core/template/default/media/images/core/icn_view.png" style="max-height: 25px; width: auto;" class=" pointer"></a>
         </div>
 	</div>
     

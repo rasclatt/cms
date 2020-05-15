@@ -1,11 +1,11 @@
 // JavaScript Document
 
 function nbrSideSlide(ObjElem,Width)
-	{
-		ObjElem.animate({width:'toggle'},Width);
-	}
+{
+    ObjElem.animate({width:'toggle'},Width);
+}
 
-$(document).ready(function() {
+$(function() {
 	// @description: Tool Toggler Revealer
 	// @required: This gives the page a chance to load before revealing the tool editor
 	var ToolToggler	=	$("#nbr_tooltoggle");

@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
+    
+	<object event="updatecomporder,updatecompactive,viewblocklayout" after="nbr_set_headers" request="post" is_admin="true" is_ajax="true">
+		<class>
+			<name>\Nubersoft\System\Observer</name>
+			<method>componentSentinel</method>
+		</class>
+	</object>
 	
 	<object event="save_settings" after="nbr_set_headers" is_admin="true" request="post">
 		<class>

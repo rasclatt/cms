@@ -1,4 +1,7 @@
 <?php
+if(empty($this))
+    throw new \Exception("Forbidden", 403);
+
 $thisObj	=	$this;
 # This will fetch the master from git
 if(!function_exists('fetch_and_install')) {

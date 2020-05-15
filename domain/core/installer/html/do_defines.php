@@ -1,4 +1,7 @@
-
+<?php 
+if(empty($this))
+    throw new \Exception("Forbidden", 403);
+?>
 <h1>Create your registry file.</h1>
 <p>This file is a hardcopy of settings to help your application run. If you don't know what it does, you may want to just leave it as is.</p>
 <?php echo $Form->open() ?>

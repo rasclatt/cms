@@ -3,8 +3,9 @@ $user	=	$this->getDataNode("user_data");
 $this->removeNode("user_data");
 $inputs	=	$this->getHelper('Settings\Controller')->getFormAttr($this->getRequest('table'));
 $Form	=	$this->getHelper('nForm');
-echo $Form->open(['id'=>'user-editor', 'class' => 'user-editor','enctype'=>'multipart/form-data']);
+echo $Form->open(['id'=>'user-editor', 'action' => '?subaction=interface', 'class' => 'user-editor','enctype'=>'multipart/form-data']);
 echo $Form->fullhide(['name' => 'action', 'value' => 'edit_user_details']);
+echo $Form->fullhide(['name' => 'table', 'value' => 'users']);
 echo $Form->fullhide(['name' => 'token[nProcessor]', 'value' => '']);
 ?>
 

@@ -16,7 +16,9 @@ $msg		=	(!empty($this->getRequest('msg')))? $this->getRequest('msg') : false;
 
 	<div class="col-2">
 		<div class="nbr_warning pointer<?php if($delay == 'off') echo ' stay' ?>"><?php
-            echo $this->getHelper('ErrorMessaging')->getMessageAuto($this->getHelper('nCrypt')->decOpenSSL(urldecode($msg)));
+            $decode    =   urldecode($msg);
+            $decrypt    =   $this->getHelper('nCrypt')->decOpenSSL($decode);
+            echo $this->getHelper('ErrorMessaging')->getMessageAuto($decrypt);
             ?><span class="close-x">&times;</span></div>
 	</div>
 

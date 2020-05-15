@@ -10,5 +10,6 @@
 		<?php echo $this->getPlugin('editor') ?>
 	</div>
 </div>
+<div id="loadspot-modal"></div>
 </body>
 </html>

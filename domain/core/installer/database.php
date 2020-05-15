@@ -402,23 +402,27 @@ INSERT INTO `system_settings` (`category_id`, `option_group_name`, `option_attri
 ('site_live', 'system', 'on', 1, NULL, 'on'),
 ('template', 'system', '/client/template/rasclatt/', 1, NULL, 'on'),
 ('timezone', 'system', 'America/Los_Angeles', 1, NULL, 'on'),
-('htaccess', 'system', '# Deny access to file extensions
-<FilesMatch \"\\.(htaccess|htpasswd|ini|flag|log|sh|pref|json|txt|xml|zip|sql)$\">
+('htaccess', 'system', '<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin \"*\"
+</IfModule>
+# Deny access to file extensions
+<FilesMatch \"\\.(htaccess|htpasswd|ini|flag|log|sh|pref|json|txt|html|xml|zip|sql)$\">
 Order Allow,Deny
 Deny from all
 </FilesMatch>
-
+# Allow Authorize: Bearer tokens
+#SetEnvIf Authorization \"(.*)\" HTTP_AUTHORIZATION=$1
 RewriteEngine On
 ## FORCE HTTPS -> Uncommment to force ssl
-RewriteCond %{HTTPS} !=on
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301] 
+##RewriteCond %{HTTPS} !=on
+##RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301] 
 ## Normal Rewrites
-RewriteCond %{REQUEST_URI} !(/$|\.|^$)
+RewriteCond %{REQUEST_URI} !(/$|\\.|^$)
 RewriteRule (.*) %{REQUEST_URI}/ [R=301,L] 
 RewriteCond $1 !^(index.php|images|robots.txt)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /index.php?$1 [NC,QSA,L]', 1, NULL, 'on');";
+RewriteRule ^(.*)$ /index.php?$1 [NC,QSA,L]";
 
 $create[]	=	"
 CREATE TABLE `users` (

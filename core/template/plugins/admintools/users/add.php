@@ -1,6 +1,8 @@
 
 <?php
-$fields	=	$this->getColumnsInTable("users")->getResults();
+$fields   =   array_map(function($v){
+    return $v['Field'];
+}, @$this->nQuery()->query("describe users")->getResults());
 
 $this->setNode('user_data', array_combine($fields, array_fill(0,count($fields),''))
 );
