@@ -89,7 +89,7 @@ body.edit-mode {
     background-color: #000 !important;
     position: relative;
 }
-body.edit-mode > div.col-count-3.offset {
+body.edit-mode:not(.login) > div.col-count-3.offset {
     background: linear-gradient(#000, #444) !important;
     padding-bottom: 2em;
     position: fixed;
