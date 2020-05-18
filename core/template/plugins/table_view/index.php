@@ -1,63 +1,18 @@
 <?php
+# Create pagination
+$Pagination	=	new \Nubersoft\Pagination($this->getGet('table'), $this->getGet('current'), $this->getGet('max'));
+# Extract table rows
+$fields =   $Pagination->getColumnsInTable();
+# If there is a search
+if($this->getGet('search'))
+    $Pagination->search("%".$this->getGet('search')."%", $fields, "LIKE");
+# Order if row exists
+if(isset($fields['ID']))
+    $Pagination->orderBy('ID', 'DESC');
+# Fetch results
+$page_details	=	$Pagination->get();
+# Start form builder
 $Form	=	@$this->nForm();
-$Pagination	=	$this->getHelper('SearchEngine\View')->fetch([
-    'max_range' => [
-        10,20,50,100,500
-    ],
-    'spread' => 2,
-    'columns' => $this->getDataNode("table_data"),
-    'sort' => 'DESC'
-    ],
-    function($nQuery, $Pagination, $REQ){
-
-        if(!empty($REQ['search'])) {
-            $bind		=	array_fill(0,count($Pagination->getColumnsAllowed()),'%'.$Pagination->dec(urldecode($REQ['search'])).'%');
-
-            foreach($Pagination->getColumnsAllowed('`') as $col) {
-                $where[]	=	$col." LIKE ?";
-            }
-
-            $where	=	implode(' ',array_merge([" WHERE "],[implode(" OR ", $where)]));
-        }
-        else
-            $where	=	'';
-
-        $sql	=	"SELECT
-                        COUNT(*) as count
-                    FROM
-                        ".$Pagination->getRequest('table')."
-                    {$where}";
-
-        return $Pagination->query($sql,(!empty($bind)? $bind : null))->getResults(1)['count'];
-    },
-    function($REQ, $Pagination, $page, $limit, $orderB, $orderH){
-        if(!empty($REQ['search'])) {
-            $bind		=	array_fill(0,count($Pagination->getColumnsAllowed()),'%'.$Pagination->dec(urldecode($REQ['search'])).'%');
-
-            foreach($Pagination->getColumnsAllowed('`') as $col) {
-                $where[]	=	$col." LIKE ?";
-            }
-
-            $where	=	implode(' ',array_merge([" WHERE "],[implode(" OR ", $where)]));
-        }
-        else
-            $where	=	'';
-
-        $sql	=	"SELECT
-                        *
-                    FROM
-                        ".$Pagination->getRequest('table')."
-                    {$where}
-                    ORDER BY
-                        ".$orderB." ".$orderH."
-                    LIMIT
-                        {$page}, {$limit}";
-
-        $result	=	$Pagination->query($sql,(!empty($bind)? $bind : null))->getResults();
-        return (!empty($result))? $result : [];
-    });
-
-$page_details	=	$Pagination->getAllButResults();
 ?>
 
 <?php echo $this->getPlugin('table_view', DS.'interface.php') ?>
@@ -119,7 +74,7 @@ $page_details	=	$Pagination->getAllButResults();
                 <tr>
                     <td><?php echo implode('</td>'.PHP_EOL.'<td>',array_merge($cols, ['&nbsp;'])) ?></td>
                 </tr>
-            <?php foreach($Pagination->getResults() as $row): ?>
+            <?php foreach($page_details['results'] as $row): ?>
                 <tr onClick="window.location='?table=<?php echo $this->getRequest('table') ?>&edit=<?php echo $row["ID"] ?>'" class="table-body-row">
             <?php foreach($row as $key => $value): ?>
                     <td>

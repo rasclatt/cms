@@ -10,7 +10,7 @@
 		<div id="admin-login">
 			
 			<div<?php if(!$this->siteLogoActive()): ?> class="col-count-3"<?php else: ?> style="padding: 0 2em 2em 2em;"<?php endif ?>>
-				<a href="<?php echo $this->localeUrl() ?>" id="admin-logo" class="col-2"><?php echo $this->getSiteLogo(URL_CORE_IMAGES.'/logo/u.png') ?></a>
+				<a href="<?php echo $this->localeUrl() ?>" id="admin-logo" class="col-2"><?php echo $this->getSiteLogo('/core/template/default/media/images/logo/u.png') ?></a>
 			</div>
 			<?php echo $this->getPlugin('login') ?>
 		</div>

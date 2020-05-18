@@ -1,6 +1,10 @@
 <?php
 $Form	=	$this->getHelper('nForm');
 $page_details   =   $this->getPluginContent('page_details');
+$spread =   (isset($page_details['range']))? $page_details['range'] : $page_details['spread'];
+$previous =   (isset($page_details['previous']))? $page_details['previous'] : $page_details['prev'];
+
+
 $interface  =   $this->getGet('subaction') == 'interface';
 ?>
 <div class="col-count-5 lrg-1" id="search-bar">
@@ -13,16 +17,16 @@ $interface  =   $this->getGet('subaction') == 'interface';
     </div>
 	<div class="push-col-1 large search-bar navigator align-middle">
 		<div class="col-count-8">
-            <?php if(!empty($page_details['range'])): ?>
+            <?php if(!empty($spread)): ?>
             <span class="small">pg </span>
             <?php endif ?>
-            <?php if($page_details['previous'] !== 1 && !empty($page_details['previous'])): ?>
+            <?php if($previous !== 1 && !empty($previous)): ?>
             
-            <div class="pagination-max<?php if($num == $this->getGet('current')) echo ' active' ?>"><a href="?<?php echo http_build_query(['max' => $this->getGet('max'), "table" => $this->getGet('table'), 'current' => $page_details['previous'], 'search' => $this->getGet('search')]); if($interface): ?>&subaction=interface<?php endif ?>">&lt;</a></div>
+            <div class="pagination-max<?php if($num == $this->getGet('current')) echo ' active' ?>"><a href="?<?php echo http_build_query(['max' => $this->getGet('max'), "table" => $this->getGet('table'), 'current' => $previous, 'search' => $this->getGet('search')]); if($interface): ?>&subaction=interface<?php endif ?>">&lt;</a></div>
             
             <?php endif ?>
             
-            <?php foreach($page_details['range'] as $num): ?>
+            <?php foreach($spread as $num): ?>
             
             <div class="pagination-max<?php if($num == $this->getGet('current')) echo ' active' ?>"><a href="?<?php echo http_build_query(['max' => $this->getGet('max'), "table" => $this->getGet('table'), 'current' => $num, 'search' => $this->getGet('search')]); if($interface): ?>&subaction=interface<?php endif ?>"><?php echo $num ?></a></div>
             <?php endforeach ?>
