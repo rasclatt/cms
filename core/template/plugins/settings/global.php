@@ -15,7 +15,35 @@ $defaultVars	=	extract([
 
 $system_settings	=	\Nubersoft\ArrayWorks::organizeByKey($this->getDataNode('settings')['system'],'category_id');
 $Settings			=	extract($system_settings);
+
+$Setting    =   $this->getHelper('Settings');
+$composer   =   $Setting->getSystemOption('composer');
+$cfile  =   file_get_contents(NBR_ROOT_DIR.DS.'composer.json');
+
+if(empty($composer)) {
+    if($cfile) {
+        $Setting->setOption('composer', $cfile, 'system');
+        $composer   =   $Setting->getSystemOption('composer');
+    }
+}
 $defaults			=	[
+    [
+		'label' => 'Composer (Live)',
+		"name" => "",
+		"type" => "textarea",
+		'value' => file_get_contents(NBR_ROOT_DIR.DS.'composer.json'),
+		'class' => 'nbr textarea',
+        'style' => 'height: 500px;',
+        'other' => ['readonly']
+	],
+    [
+		'label' => 'Composer (Stored)',
+		"name" => "setting[composer]",
+		"type" => "textarea",
+		'value' => json_encode($composer, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES),
+		'class' => 'nbr textarea',
+        'style' => 'height: 500px;'
+	],
 	[
 		'label' => 'Webmaster'.((defined('WEBMASTER'))? ' (Registry: '.WEBMASTER.')':''),
 		"name" => "setting[webmaster]",

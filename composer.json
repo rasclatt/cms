@@ -1,8 +1,13 @@
 {
     "name": "rasclatt/cms",
     "type": "project",
-    "description": "Mini CMS framework for PHP.",
-    "keywords": ["Nubersoft","PHP","framework","cms"],
+    "description": "Mini CMS framework for PHP. Requires Nubersoft Class Library to run.",
+    "keywords": [
+        "Nubersoft",
+        "PHP",
+        "framework",
+        "cms"
+    ],
     "homepage": "https://github.com/rasclatt/cms",
     "license": "MIT",
     "authors": [
