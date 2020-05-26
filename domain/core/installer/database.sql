@@ -38,7 +38,7 @@ CREATE TABLE `components` (
   `category_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
   `component_type` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
   `content` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `file` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
+  `file` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '',
   `file_size` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `file_path` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `file_name` text CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -52,6 +52,72 @@ CREATE TABLE `components` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
+
+INSERT INTO `components` (`ID`, `unique_id`, `ref_page`, `parent_id`, `ref_anchor`, `title`, `category_id`, `component_type`, `content`, `file`, `file_size`, `file_path`, `file_name`, `timestamp`, `admin_notes`, `usergroup`, `group_id`, `cached`, `page_order`, `page_live`) VALUES
+(1, '20200526040921183475', '', '', '', '200usen', 'translator', 'status_code', 'OK', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(2, '20200526040921178813', '', '', '', '404usen', 'translator', 'status_code', 'Page does not exist', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(3, '20200526040921584919', '', '', '', '403usen', 'translator', 'status_code', 'Permission denied', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(4, '20200526040921988137', '', '', '', '500usen', 'translator', 'status_code', 'An unknown error occurred', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(5, '20200526040921681809', '', '', '', '403_deleteusen', 'translator', 'status_code', 'Permission denied to delete', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(6, '20200526040921736955', '', '', '', 'access_adminusen', 'translator', 'status_code', 'This is only accessable by admin or on the admin page', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(7, '20200526040921689158', '', '', '', 'successusen', 'translator', 'status_code', 'Action was successful', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(8, '20200526040921384215', '', '', '', 'success_sqlusen', 'translator', 'status_code', 'SQL performed successfully', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(9, '20200526040921975311', '', '', '', 'success_loginusen', 'translator', 'status_code', 'You have successfully signed in', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(10, '20200526040921594621', '', '', '', 'success_logoutusen', 'translator', 'status_code', 'You have successfully signed out', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(11, '20200526040921698264', '', '', '', 'success_createusen', 'translator', 'status_code', 'Item created successfully', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(12, '20200526040921914702', '', '', '', 'success_deleteusen', 'translator', 'status_code', 'Item deleted successfully', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(13, '20200526040921866699', '', '', '', 'success_updateusen', 'translator', 'status_code', 'Item updated successfully', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(14, '20200526040921925446', '', '', '', 'success_savedusen', 'translator', 'status_code', 'Successfully saved', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(15, '20200526040921272687', '', '', '', 'success_emailusen', 'translator', 'status_code', 'Email sent successfully', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(16, '20200526040921998452', '', '', '', 'success_thumbremovedusen', 'translator', 'status_code', 'Thumbnail removed', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(17, '20200526040921729288', '', '', '', 'success_uploadusen', 'translator', 'status_code', 'File uploaded successfully', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(18, '20200526040921893312', '', '', '', 'success_cachedeletedusen', 'translator', 'status_code', 'Cache was successfully deleted', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(19, '20200526040921132981', '', '', '', 'success_plugininactiveusen', 'translator', 'status_code', 'Plugin is inactive', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(20, '20200526040921808465', '', '', '', 'success_pluginactiveusen', 'translator', 'status_code', 'Plugin is activated', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(21, '20200526040921571592', '', '', '', 'success_settingssavedusen', 'translator', 'status_code', 'Settings were saved', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(22, '20200526040921401624', '', '', '', 'success_usercreateusen', 'translator', 'status_code', 'User successfully created', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(23, '20200526040921180775', '', '', '', 'success_componentcreateusen', 'translator', 'status_code', 'Component created successfully', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(24, '20200526040921146934', '', '', '', 'fail_savedusen', 'translator', 'status_code', 'Saving was unsuccessful', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(25, '20200526040921164844', '', '', '', 'fail_thumbremovedusen', 'translator', 'status_code', 'Thumbnail failed to be removed.', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(26, '20200526040921183822', '', '', '', 'fail_emailusen', 'translator', 'status_code', 'Email failed to send', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(27, '20200526040921632236', '', '', '', 'failusen', 'translator', 'status_code', 'Action failed', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(28, '20200526040921888910', '', '', '', 'fail_sqlusen', 'translator', 'status_code', 'SQL failed on execution', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(29, '20200526040921546774', '', '', '', 'fail_loginusen', 'translator', 'status_code', 'Invalid Username or Password', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(30, '20200526040921798956', '', '', '', 'fail_logoutusen', 'translator', 'status_code', 'You have unsuccessfully signed out. Try again', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(31, '20200526040921792838', '', '', '', 'fail_createusen', 'translator', 'status_code', 'Item failed to created', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(32, '20200526040921660106', '', '', '', 'fail_deleteusen', 'translator', 'status_code', 'Item failed to delete', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(33, '20200526040921216549', '', '', '', 'fail_updateusen', 'translator', 'status_code', 'Item failed to update', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(34, '20200526040921914811', '', '', '', 'fail_userexistsusen', 'translator', 'status_code', 'User already exists', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(35, '20200526040921858527', '', '', '', 'fail_usercreateusen', 'translator', 'status_code', 'An error occurred trying to create user', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(36, '20200526040921158810', '', '', '', 'fail_uploadusen', 'translator', 'status_code', 'File failed to upload - check file/folder permissions or file size limit', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(37, '20200526040921318239', '', '', '', 'fail_existsusen', 'translator', 'status_code', 'Item does not exist', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(38, '20200526040921497668', '', '', '', 'fail_widgetusen', 'translator', 'status_code', 'Can not activate Widget. Missing widget name.', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(39, '20200526040921429806', '', '', '', 'fail_connectionusen', 'translator', 'status_code', 'Connection failed', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(40, '20200526040921928034', '', '', '', 'requiredusen', 'translator', 'status_code', 'Required fields can not be empty', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(41, '20200526040921538911', '', '', '', 'required_filetypeusen', 'translator', 'status_code', 'File must me valid type', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(42, '20200526040921301834', '', '', '', 'account_disabledusen', 'translator', 'status_code', 'Your account is disabled', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(43, '20200526040921922960', '', '', '', 'account_savedusen', 'translator', 'status_code', 'User account saved', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(44, '20200526040921263692', '', '', '', 'account_savedfailusen', 'translator', 'status_code', 'User account failed to save', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(45, '20200526040921180061', '', '', '', 'cart_addedusen', 'translator', 'status_code', 'Added to cart', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(46, '20200526040921844799', '', '', '', 'cart_failaddedusen', 'translator', 'status_code', 'Product failed to add to cart', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(47, '20200526040921845772', '', '', '', 'cart_nothingusen', 'translator', 'status_code', 'Nothing to add to cart', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(48, '20200526040921692846', '', '', '', 'invalid_tokenusen', 'translator', 'status_code', 'Security token is invalid', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(49, '20200526040921144529', '', '', '', 'invalid_tokenmatchusen', 'translator', 'status_code', 'Security token does not match', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(50, '20200526040921113613', '', '', '', 'invalid_requestusen', 'translator', 'status_code', 'Invalid request', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(51, '20200526040921858339', '', '', '', 'invalid_userusen', 'translator', 'status_code', 'Username or password is invalid', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(52, '20200526040921492410', '', '', '', 'invalid_usernameusen', 'translator', 'status_code', 'Username is invalid', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(53, '20200526040921936286', '', '', '', 'invalid_fileusen', 'translator', 'status_code', 'File is invalid', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(54, '20200526040921954566', '', '', '', 'invalid_downloadusen', 'translator', 'status_code', 'Download is not available', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(55, '20200526040921946343', '', '', '', 'invalid_codeusen', 'translator', 'status_code', 'Code is invalid', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(56, '20200526040921200836', '', '', '', 'invalid_pageusen', 'translator', 'status_code', 'Page does not exist', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(57, '20200526040921600529', '', '', '', 'invalid_slugusen', 'translator', 'status_code', 'The slug is invalid', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(58, '20200526040921383999', '', '', '', 'invalid_slugexistsusen', 'translator', 'status_code', 'The slug already exists', '', NULL, NULL, NULL, '2020-05-26 04:09:21', NULL, NULL, NULL, NULL, 1, 'on'),
+(59, '20200526040922175639', '', '', '', 'invalid_componentusen', 'translator', 'status_code', 'Component does not exist', '', NULL, NULL, NULL, '2020-05-26 04:09:22', NULL, NULL, NULL, NULL, 1, 'on'),
+(60, '20200526040922730144', '', '', '', 'no_actionusen', 'translator', 'status_code', 'No action was taken', '', NULL, NULL, NULL, '2020-05-26 04:09:22', NULL, NULL, NULL, NULL, 1, 'on'),
+(61, '20200526040922987622', '', '', '', 'ajax_invalidusen', 'translator', 'status_code', 'No actions to take, you may have been logged out', '', NULL, NULL, NULL, '2020-05-26 04:09:22', NULL, NULL, NULL, NULL, 1, 'on'),
+(62, '20200526040922334637', '', '', '', 'site_comingsoonusen', 'translator', 'status_code', 'Site coming soon', '', NULL, NULL, NULL, '2020-05-26 04:09:22', NULL, NULL, NULL, NULL, 1, 'on'),
+(63, '20200526040922369924', '', '', '', 'site_maintenanceusen', 'translator', 'status_code', 'Site is being worked on', '', NULL, NULL, NULL, '2020-05-26 04:09:22', NULL, NULL, NULL, NULL, 1, 'on'),
+(72, '20200526135725795096', '20171226130020542864427', '', '', 'Contact Form Example', 'nbr_layout', 'contact_form', '', '', NULL, '', '', '2020-05-26 13:57:32', '', '0', '', '', 1, 'on');
 
 --
 -- Table structure for table `component_locales`
@@ -394,7 +460,7 @@ CREATE TABLE `main_menus` (
   `use_page` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `auto_cache` varchar(3) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
   `in_menubar` varchar(3) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
-  `is_admin` int(1) DEFAULT 0,
+  `is_admin` varchar(1) COLLATE utf8_unicode_ci DEFAULT '0',
   `auto_fwd` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
   `auto_fwd_post` varchar(4) COLLATE utf8_unicode_ci DEFAULT 'off',
   `session_status` varchar(3) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
@@ -408,11 +474,11 @@ CREATE TABLE `main_menus` (
 --
 
 INSERT INTO `main_menus` (`ID`, `unique_id`, `parent_id`, `full_path`, `menu_name`, `group_id`, `page_options`, `link`, `template`, `use_page`, `auto_cache`, `in_menubar`, `is_admin`, `auto_fwd`, `auto_fwd_post`, `session_status`, `usergroup`, `page_live`, `page_order`) VALUES
-(1, '2016120214231458412266', '', '/AdminTools/', 'Nubersoft', NULL, '', 'admintools', '/core/template/default/', '', 'off', 'off', 1, '', 'off', 'on', 'NBR_ADMIN', 'on', 1),
-(2, '201612021444165841104219', '', '/', 'Home Page', NULL, '', 'home', '/core/template/default/', '', 'off', 'on', 2, '', 'off', 'off', '0', 'on', 1),
-(3, '20171226130020542864427', '', '/contact-us/', 'Contact', NULL, '', 'contact-us', '/core/template/default/', '', 'off', 'on', 0, '', 'off', 'off', 'NBR_WEB', 'on', 2),
-(4, '2018012313245356782531', '', '/login/', 'Login', NULL, '', 'login', '/core/template/default/', '', 'off', 'on', 3, '/', 'on', 'on', 'NBR_WEB', 'on', 1),
-(5, '20181106110902768054', '', '/my-account/', 'Account', NULL, NULL, 'my-account', '/core/template/default/', '', 'off', 'on', 0, '', 'off', 'on', 'NBR_WEB', 'on', 4);
+(1, '2016120214231458412266', '', '/AdminTools/', 'Nubersoft', NULL, '', 'admintools', '/core/template/default/', '', 'off', 'off', '1', '', 'off', 'on', 'NBR_ADMIN', 'on', 1),
+(2, '201612021444165841104219', '', '/', 'Home', NULL, '', 'home', '/core/template/nubersoft2020/', '', 'off', 'on', '2', '', 'off', 'off', '0', 'on', 1),
+(3, '20171226130020542864427', '', '/contact-us/', 'Contact', NULL, '', 'contact-us', '/core/template/nubersoft2020/', '', 'off', 'on', '', '', 'off', 'off', 'NBR_WEB', 'on', 2),
+(4, '2018012313245356782531', '', '/login/', 'Login', NULL, '', 'login', '/core/template/nubersoft2020/', '', 'off', 'on', '3', '/', 'on', 'on', 'NBR_WEB', 'on', 1),
+(5, '20181106110902768054', '', '/my-account/', 'Account', NULL, NULL, 'my-account', '/core/template/nubersoft2020/', '', 'off', 'on', '', '', 'off', 'on', 'NBR_WEB', 'on', 4);
 
 -- --------------------------------------------------------
 
@@ -464,7 +530,8 @@ CREATE TABLE `system_settings` (
   `option_attribute` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `usergroup` int(4) DEFAULT 1,
   `action_slug` varchar(100) DEFAULT NULL,
-  `page_live` varchar(3) DEFAULT NULL
+  `page_live` varchar(3) DEFAULT NULL,
+  `page_order` varchar(3) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -493,6 +560,8 @@ CREATE TABLE `users` (
   `file_path` varchar(200) COLLATE utf8_bin DEFAULT NULL,
   `file_name` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `reset_password` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `attempts` varchar(1) COLLATE utf8_bin DEFAULT '0',
+  `last_attempt` varchar(50) COLLATE utf8_bin DEFAULT '0',
   `timestamp` varchar(255) COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 

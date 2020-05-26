@@ -44,5 +44,4 @@ elseif($this->getGet('load') == 'coreinstaller'): ?>
 	?>
 </div>
 <?php
-	 
 endif;

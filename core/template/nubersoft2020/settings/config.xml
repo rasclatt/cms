@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<stylesheet>
+		<include is_local="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/css/grid.css</path>
+		</include>
+		<include is_local="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/nubersoft2020/styles.css</path>
+		</include>
+		<include is_local="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/css/form.css</path>
+		</include>
+		<include is_local="true" is_admin="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/css/adminbar.css</path>
+		</include>
+		<include is_local="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/css/main.css</path>
+		</include>
+		<include is_local="true" is_admin="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/css/admin-login.css</path>
+		</include>
+		<include is_admin="true" is_local="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/css/admintools.css</path>
+		</include>
+		<include is_local="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/css/fx.css</path>
+		</include>
+		<include is_frontend="true" is_backend="true">
+			<path>https://use.fontawesome.com/releases/v5.6.0/css/all.css</path>
+		</include>
+	</stylesheet>
+	<javascript>
+		<include is_local="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/js/helpers.js</path>
+		</include>
+		<include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/js/nFunctions.js</path>
+		</include>
+		<include is_local="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/js/nControl.js</path>
+		</include>
+		<include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/js/nScripts.js</path>
+		</include>	
+		<include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/js/nConfirm.js</path>
+		</include>	
+		<include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/js/nFx.js</path>
+		</include>
+		<include is_local="false" is_frontend="true" is_backend="true">
+			<path>//cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js</path>
+		</include>
+	</javascript>
+</config>

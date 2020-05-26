@@ -1,0 +1,106 @@
+/* CSS Document */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap');
+
+a, a:link, a:visited, *:not(i)	{
+	cursor: default;
+	font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+#main-menu {
+    color: #666;
+    background-color: #FFF;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#main-menu a {
+    color: #333;
+    text-decoration: none;
+    transition: All ease-in-out 0.35s;
+    font-size: 1.15em;
+    text-align: center;
+    padding: 1em 1em;
+    display: inline-block;
+    text-transform: uppercase;
+    cursor: pointer !important;
+    border: none !important;
+}
+#main-menu > a {
+    align-self: stretch;
+}
+#main-menu a:hover {
+    color: #FFF;
+    background-color: red;
+}
+#main-menu > a.active {
+    background: linear-gradient(#FFF, #EBEBEB);
+}
+#company-logo {
+    background-color: red;
+    padding: 0.5em 1.5em;
+}
+#company-logo img {
+    max-height: 3em;
+    width: auto;
+}
+.hero-blocks {
+    position: relative;
+}
+#hero-3,
+#hero-2 {
+    /* Photo by Sharon McCutcheon from Pexels */
+    background-image: url('/core/template/nubersoft2020/images/pexels-royalty-free-child-paint.jpg');
+    min-height: 40em;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+#hero-3{
+    /* Photo by Jairo David Arboleda from Pexels */
+    background-image: url('/core/template/nubersoft2020/images/pexels-royalty-free-woman-01.jpg');
+}
+.hero-blocks {
+    z-index: 1;
+}
+.hero-blocks::before {
+    position: absolute;
+    content: '';
+    padding: 2em;
+    background-color: rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+.hero-blocks::after {
+    font-family: inherit;
+    color: #FFF;
+    text-align: center;
+    font-size: 2em;
+    z-index: 5 !important;
+    display: block;
+    padding: 3em 1em;
+    max-width: 800px;
+    margin: auto;
+}
+#hero-2::after {
+    content: 'Each hero block is inside the template file. Ideally you would want to add them using components.';
+}
+#hero-3::after {
+    content: 'To create a contact form, add a "Contact Form" component.';
+}
+.nbr_error,
+.nbr_warning,
+.nbr_success {
+    font-size: 1.5em;
+    padding: 0.35em;
+    text-align: center;
+    background-color: #222;
+    color: #FFF;
+}

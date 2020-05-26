@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html id="admintools">
 <?php echo $this->getBackEnd('head.php') ?>
 <body>
 <div id="admin-interface">

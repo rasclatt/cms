@@ -9,14 +9,7 @@ $defMsg		=	'A undefined error occurred.';
 <div class="col-count-3 offset">
 	<div class="col-2">
 		<h1>Error<?php echo (!empty($this->getDataNode('_MESSAGES')['code']))? ": #".$this->getDataNode('_MESSAGES')['code'] : '' ?></h1>
-		<?php
-		if(!empty($this->getDataNode('_MESSAGES')['msg'])) {
-			if(stripos($this->getDataNode('_MESSAGES')['msg'], 'exist') !== false)
-				echo ($this->isAdmin())? $this->getDataNode('_MESSAGES')['msg'] : $defMsg;
-		}
-		else
-			echo $defMsg;
-		?>
+		<?php echo (!empty($this->getDataNode('_MESSAGES')['msg']))? $this->getDataNode('_MESSAGES')['msg'] : $defMsg ?>
 	</div>
 </div>
 <?php echo $nRender->getFooter() ?>

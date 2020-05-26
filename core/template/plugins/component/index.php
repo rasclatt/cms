@@ -16,7 +16,7 @@ $ref_page	=	$compData['ref_page'];
 		<div>
 			<?php echo $this->setPluginContent('add_component', array_merge($compData,['token' => $token]))->getPlugin('component', DS.'add.php') ?>
 		</div>
-        
+
 		<div>
 			<?php echo $Form->open() ?>
 				<?php echo strip_tags($Form->fullhide(['name' => 'action', 'value' => 'edit_component']),'<input>') ?>

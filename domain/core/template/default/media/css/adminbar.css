@@ -7,11 +7,10 @@ Ured - #be1522
 	display: block;
 	background-color: #000;
 	color: #FFF;
-	font-family: 'Cairo', sans-serif;
 	font-weight: 400;
 	font-size: 0.85em;
 	text-align: center;
-	height: 36px;
+	height: auto;
 }
 #admin-menubar > div {
 	display: inline-flex;
@@ -19,6 +18,10 @@ Ured - #be1522
 	justify-content: center;
 	align-content: center;
 	margin: 0 auto;
+}
+#window-height,
+#window-width {
+    align-self: center;
 }
 .admin-menu {
 	position: relative;

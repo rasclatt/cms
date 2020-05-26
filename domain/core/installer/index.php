@@ -1,6 +1,12 @@
 <?php
 namespace Nubersoft;
-# Quick
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+# Do minimum check
+if(!function_exists('simplexml_load_string')) {
+    die('The SimpleXml functions are required. Make sure to install php xml and add "extension=simplexml.so" to your php.ini file.');
+}
+# Separator
 $DS	=	DIRECTORY_SEPARATOR;
 # Add our application config
 require_once(realpath(__DIR__.$DS.'..'.$DS.'..'.$DS.'..').$DS.'config.php');

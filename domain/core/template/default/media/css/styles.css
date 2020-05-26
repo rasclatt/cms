@@ -1,7 +1,10 @@
 /** SOME GENERAL INTERFACE DEFAULTS **/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap');
 
-*	{
+*:not(i)	{
 	cursor: default;
+	font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
 }
 html, body {
 	display: flex;
@@ -15,9 +18,6 @@ html, body {
 	align-content: stretch;
 	flex-basis: auto;
 	bottom: 0;
-}
-h1,h2,h3,h4,h5,h6,h7,p,li,a,label,h1,h2,h3,h4,h5,h6,h7,p,li,a,label {
-	font-family: "Helvetica Neue",Helvetica, Arial, "sans-serif";
 }
 p {
 	font-size: 1em;
@@ -50,7 +50,7 @@ table.nbr_base tr td,
 .nbr_error,
 .nbr_errors,
 .side-by-side{
-	font-family: "Helvetica Neue", Helvetica, Arial, "sans-serif";
+    font-weight: 600;
 }
 .allblocks {
 	margin: 0 auto;

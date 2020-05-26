@@ -5,16 +5,16 @@ $msg		=	(!empty($this->getRequest('msg')))? $this->getRequest('msg') : false;
 ?>
 
 <?php if(!empty($errors)): ?>
-	<div class="col-2">
+	<div>
 		<div class="nbr_error pointer"><?php echo implode('</div><div class="nbr_error">', $errors) ?></div>
 	</div>
 <?php elseif(!empty($success)): ?>
-	<div class="col-2">
+	<div>
 		<div class="nbr_success pointer"><?php echo implode('</div><div class="nbr_success">', $success) ?></div>
 	</div>
 <?php elseif(!empty($msg)): ?>
 
-	<div class="col-2">
+	<div>
 		<div class="nbr_warning pointer<?php if(!empty($delay) && ($delay == 'off')) echo ' stay' ?>"><?php
             $decode    =   urldecode($msg);
             $decrypt    =   $this->getHelper('nCrypt')->decOpenSSL($decode);

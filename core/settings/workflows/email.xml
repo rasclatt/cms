@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <object event="default_system_emailer">
+        <class>
+            <name>\Nubersoft\Emailer\Observer</name>
+            <method>listen</method>
+        </class>
+    </object>
+</config>

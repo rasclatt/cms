@@ -3,8 +3,6 @@ $Form	=	$this->getHelper('nForm');
 $page_details   =   $this->getPluginContent('page_details');
 $spread =   (isset($page_details['range']))? $page_details['range'] : $page_details['spread'];
 $previous =   (isset($page_details['previous']))? $page_details['previous'] : $page_details['prev'];
-
-
 $interface  =   $this->getGet('subaction') == 'interface';
 ?>
 <div class="col-count-5 lrg-1" id="search-bar">
@@ -41,6 +39,9 @@ $interface  =   $this->getGet('subaction') == 'interface';
 		<?php echo $Form->open(["method"=>'get','action'=>'?'.http_build_query(['max' => $this->getGet('max'), "table" => $this->getGet('table'), 'search' => $this->getGet('search'), 'subaction'=> ($interface)? 'interface' : ''])]) ?>
 			<?php echo $Form->fullhide(['name' => 'max', 'value' => $this->getGet('max')]) ?>
 			<?php echo $Form->fullhide(['name' => 'table', 'value' => $this->getGet('table')]) ?>
+            <?php if($interface): ?>
+			<?php echo $Form->fullhide(['name' => 'subaction', 'value' => 'interface']) ?>
+            <?php endif ?>
 			<div class="col-count-4">
 				<div class="span-3">
 					<?php echo $Form->text(['name' => 'search', 'value' => $this->getGet('search'), 'class'=>'nbr']) ?>

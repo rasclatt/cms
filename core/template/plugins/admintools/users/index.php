@@ -1,76 +1,22 @@
+<?php
+# Create pagination
+$Pagination	=	new \Nubersoft\Pagination('users', $this->getGet('current'), $this->getGet('max'));
+# Extract table rows
+$fields =   $Pagination->getColumnsInTable();
+# If there is a search
+if($this->getGet('search'))
+    $Pagination->search("%".$this->getGet('search')."%", $fields, "LIKE");
+# Order if row exists
+if(isset($fields['ID']))
+    $Pagination->orderBy('ID', 'DESC');
+# Fetch results
+$page_details	=	$Pagination->get();
+?>
 
 <?php echo $this->getPlugin('admintools', DS.'users'.DS.'interface.php') ?>
 <h3>User Accounts</h3>
 
 <?php
-$Pagination	=	$this->getHelper('SearchEngine\View')->fetch([
-	'columns' => [
-		'first_name',
-		'last_name',
-		'email',
-		'username'
-	],
-    'max_range' => [
-        10,20,50,100,500
-    ],
-    'spread' => 2,
-	'sort' => 'DESC'
-	],
-	function($nQuery, $Pagination, $REQ){
-
-		if(!empty($REQ['search'])) {
-			$bind		=	array_fill(0,count($Pagination->columns),'%'.$Pagination->dec(urldecode($REQ['search'])).'%');
-			
-			foreach($Pagination->columns as $col) {
-				$where[]	=	$col." LIKE ?";
-			}
-			
-			$where	=	implode(' ',array_merge([" WHERE "],[implode(" OR ", $where)]));
-		}
-		else
-			$where	=	'';
-		
-		$sql	=	"SELECT
-						COUNT(*) as count
-					FROM
-						users
-					{$where}";
-		return $Pagination->query($sql,(!empty($bind)? $bind : null))->getResults(1)['count'];
-	},
-	function($REQ, $Pagination, $page, $limit, $orderB, $orderH){
-		if(!empty($REQ['search'])) {
-			$bind		=	array_fill(0,count($Pagination->columns),'%'.$Pagination->dec(urldecode($REQ['search'])).'%');
-			
-			foreach($Pagination->columns as $col) {
-				$where[]	=	$col." LIKE ?";
-			}
-			
-			$where	=	implode(' ',array_merge([" WHERE "],[implode(" OR ", $where)]));
-		}
-		else
-			$where	=	'';
-		
-		$sql	=	"SELECT
-						*
-					FROM
-						users
-					{$where}
-					ORDER BY
-						".$orderB." ".$orderH."
-					LIMIT
-						{$page}, {$limit}";
-		
-		$results	=	$Pagination->query($sql,(!empty($bind)? $bind : null))->getResults();
-		
-		return (!empty($results))? array_map(function($v){
-			$v['name']		=	$v['first_name'].' '.$v['last_name'];
-			$v['avatar']	=	(!empty($v['file_path'].' '.$v['file_name']))? '<img src="'.$v['file_path'].' '.$v['file_name'].'" class ="user-avatar" />' : '';
-			return $v;
-		},$results) : [];
-	});
-
-$page_details	=	$Pagination->getAllButResults();
-# Searchbar
 echo $this->setPluginContent('page_details', $page_details)
     ->getPlugin('adminbar', 'searchbar.php');
 
@@ -113,7 +59,7 @@ elseif(is_numeric($this->getRequest('edit'))):
 		<div class="col-count-7 table-row-container">
 			<div class="table-header"><?php echo implode('</div>'.PHP_EOL.'<div class="table-header">',['ID', 'Username', 'Email', 'Usergroup', 'Status','Name','&nbsp;' ]) ?></div>
 		</div>
-	<?php foreach($Pagination->getResults() as $row): ?>
+	<?php foreach($page_details['results'] as $row): ?>
 		<div class="col-count-7 table-row-container" onClick="window.location='?table=users&edit=<?php echo $row["ID"] ?>&subaction=interface'">
 	<?php foreach($row as $key => $value):
 				if(!in_array($key, ['ID', 'username', 'email', 'name','usergroup', 'user_status' ]))
@@ -122,7 +68,7 @@ elseif(is_numeric($this->getRequest('edit'))):
 			<div style="overflow: hidden;" class="table-row"><?php echo ($key == 'usergroup' && !is_numeric($value))? constant($value) : $value ?></div>
 	<?php endforeach ?>
 			
-			<div class="table-row"><a href="?table=users&edit=<?php echo $row["ID"] ?>subaction=interface" class="mini-btn dark">EDIT</a></div>
+			<div class="table-row"><a href="?table=users&edit=<?php echo $row["ID"] ?>&subaction=interface" class="mini-btn dark">EDIT</a></div>
 		</div>
 	<?php endforeach ?>
 	</div>

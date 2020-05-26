@@ -36,6 +36,25 @@
 			<chain></chain>
 		</class>
 	</object>
+    
+	<object event="nbr_check_auto_token">
+		<class>
+			<name>\Nubersoft\nToken\Observer</name>
+            <method>addSkipService</method>
+			<chain>listen</chain>
+			
+			<inject into="addSkipService">
+				<array>
+					<arg>load_settings_page</arg>
+                    <arg>login</arg>
+                    <arg>edit_component</arg>
+                    <arg>updatecompactive</arg>
+                    <arg>nbr_get_form_token</arg>
+				</array>
+			</inject>
+            
+		</class>
+	</object>
 	
 	<object event="nbr_default_blockflow">
 		<class>

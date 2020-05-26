@@ -44,7 +44,7 @@ $( function() {
     $(".component-library-container" ).disableSelection();
     
     $('.active-status').on('click', function(){
-        var compid = $(this).parents('.item-container-editor-code,.item-container-editor-code_cached,.item-container-editor-image,.item-container-editor-div').data('itemid');
+        var compid = $(this).parents('.component-parent').data('itemid');
         
         AjaxEngine.ajax({"action":"updatecompactive", data: {
             component: compid
