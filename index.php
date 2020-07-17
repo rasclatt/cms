@@ -1,5 +1,5 @@
 <?php
-include(__DIR__.DIRECTORY_SEPARATOR.'config.php');
+include_once(__DIR__.DIRECTORY_SEPARATOR.'config.php');
 # Default layout
 $deftxt =   NBR_ROOT_DIR.DS.'core'.DS.'settings'.DS.'startup'.DS.'index.txt';
 # Stop if support items not set

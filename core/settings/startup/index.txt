@@ -20,6 +20,7 @@
 <link type="text/css" rel="stylesheet" href="/domain/core/template/default/media/css/grid.css" />
 <link type="text/css" rel="stylesheet" href="/domain/core/template/default/media/css/main.css" />
 <link type="text/css" rel="stylesheet" href="/domain/core/template/default/media/css/styles.css" />
+<link type="text/css" rel="stylesheet" href="//use.fontawesome.com/releases/v5.6.0/css/all.css" />
 <style>
 	*,h1,h2,h3,h4,h5,h6,h7,p {
 		font-family: 'Titillium Web', sans-serif;

@@ -61,6 +61,17 @@ try {
 	# Write the normal buffer
 	echo $data;
 }
+# Use this track if a core file is missing and is past the point of auto-generating
+catch(HttpException\Core $e) {
+    # Stop the normal buffer (don't output)
+	ob_end_clean();
+    $msg[]  =   rtrim($e->getMessage(), '.').'.<br />';
+    $msg[]  =   (is_file(NBR_CLIENT_DIR.DS.'settings'.DS.'registry.xml'))? '<i class="fas fa-clipboard-check" style="color: green;"></i>&nbsp;Registry is created.' : '<i class="fas fa-skull-crossbones" style="color: red;"></i>&nbsp;Registry missing';
+    $msg[]  =   (is_file(NBR_CLIENT_DIR.DS.'settings'.DS.'dbcreds.php'))? '<i class="fas fa-clipboard-check" style="color: green;"></i>&nbsp;Database credentials are set.' : '<i class="fas fa-skull-crossbones" style="color: red;"></i>&nbsp;Database credentials are not set.';
+    $msg[]  =   '<br /><div style="padding: 1.5em; border: 1px solid #CCC; background-color: #F3F3F3;"><i class="fas fa-exclamation-triangle" style="color: orange;"></i>&nbsp;Core elements need to be installed by the system or manually created in order to resolve.</div>';
+    echo str_replace('/domain/core/','/core/',sprintf(file_get_contents(NBR_CORE.DS.'settings'.DS.'startup'.DS.'index.txt'), 'Error '.$e->getCode()." - Startup Items Missing", implode('<br />', $msg)));
+    exit;
+}
 catch(HttpException $e) {
 	# Stop the normal buffer (don't output)
 	ob_end_clean();
