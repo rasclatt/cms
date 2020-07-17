@@ -20,7 +20,8 @@
 </div>
 <div class="content">
 	<?php echo $this->getFooter() ?>
-	<?php echo $this->getFrontEnd('foot.php') ?>
 </div>
+
+<?php echo $this->getFrontEnd('foot.php') ?>
 </body>
 </html>

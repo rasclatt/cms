@@ -105,4 +105,12 @@
 			<method>installDefaultCodes</method>
 		</class>
 	</object>
+    
+	<object event="edit_component_modal" after="nbr_set_headers" is_ajax="true" request="post" is_admin="true">
+		<class>
+			<name>\Nubersoft\System\Observer</name>
+			<method>editComponent</method>
+		</class>
+	</object>
+    
 </config>

@@ -282,6 +282,26 @@ img.active-status {
 #admin-sidebar .img-logo img {
     margin-bottom: 1em;
 }
+.csm-tool-item {
+    position: relative;
+}
+.csm-tool-item:hover {
+    border: 1px dashed rgba(35,195,255,0.78);
+}
+.csm-tool-item:hover > .edit-btn-tools {
+    background-color: rgba(35,195,255,0.78);
+    color: #FFF;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    padding: 0.3em;
+    position: absolute;
+    display: block !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000000000;
+}
 @media all and (max-width: 655px) {
     #admin-sidebar .img-logo {
         display: none;
