@@ -26,15 +26,6 @@ Ured - #be1522
 .admin-menu {
 	position: relative;
 }
-.admin-submenu {
-	display: none;
-	position: absolute;
-	flex-direction: column;
-	cursor: pointer;
-	background-color: #222;
-	z-index: 1;
-	top: 35px;
-}
 .admin-menu,
 #admin-menubar a:link,
 #admin-menubar a:visited {
@@ -49,6 +40,21 @@ Ured - #be1522
 	justify-content: center;
 	flex-shrink: 0;
 }
+
+.admin-submenu {
+    display: none;
+    flex-direction: row;
+    left: 0;
+    right: 0;
+    position: absolute;
+    top: 2.5em;
+}
+.admin-submenu .page-menu {
+    background: #000;
+    border-radius: 1em;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    border: 1px solid #CCC;
+}
 .admin-submenu img {
 	display: inline !important;
 	margin: 0;
@@ -61,11 +67,6 @@ Ured - #be1522
 	text-align: left;
 }
 .admin-icon-menu {
-	display: inline-flex;
-	flex-direction: column;
-}
-.admin-icon-menu:hover .admin-submenu,
-.admin-icon-menu .admin-submenu:hover {
 	display: inline-flex;
 	flex-direction: column;
 }
@@ -127,7 +128,7 @@ body.edit-mode .mini-btn.green {
 }
 .item-container-editor-code,
 .item-container-editor-code_cached {
-    transition: All ease-in-out 0.5s;
+    transition: box-shadow ease-in-out 0.5s;
     padding: 0;
 }
 .item-container-editor-code_cached .editor-title > div {

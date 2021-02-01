@@ -509,9 +509,9 @@ function fetchAllTokens($)
 					"login": nLoginInput.val()
 				}
 			},
-			function(response) {
+			(response)=>{
 				try {
-					var tokenFormData	=	JSON.parse(response);
+					var tokenFormData	=	(typeof response === "string")? JSON.parse(response) : response;
 					// Populate the nProcessor token
 					if(isActive.nProcessor) {
 						// Fill the value
@@ -821,6 +821,7 @@ function default_action(activeBtn,response,skipParse)
 			console.log('***START DEFAULT ACTION***');
 		// If there is a possible parsable string or the element is already object, continue
 		try {
+            
 			var json	=	(skipParse)? response : JSON.parse(response);
 			
 			if(isset(json,'alert')) {

@@ -17,4 +17,7 @@
     <?php if($this->isLoggedIn()): ?>
 	<a href="?action=logout">Sign out?</a>
 	<?php endif ?>
+        
+    <?php echo $this->getPlugin('widget_storefront', 'counter.php') ?>
+    
 </div>

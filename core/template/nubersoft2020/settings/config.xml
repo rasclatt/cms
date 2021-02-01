@@ -31,6 +31,15 @@
 		<include is_frontend="true" is_backend="true">
 			<path>https://use.fontawesome.com/releases/v5.6.0/css/all.css</path>
 		</include>
+		<include is_local="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/nubersoft2020/css/nubersoft-modal.css</path>
+		</include>
+		<include is_local="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/nubersoft2020/css/nubersoft-tools.css</path>
+		</include>
+		<include is_local="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/nubersoft2020/css/styles.css</path>
+		</include>
 	</stylesheet>
 	<javascript>
 		<include is_local="true">
@@ -53,6 +62,50 @@
 		</include>
 		<include is_local="false" is_frontend="true" is_backend="true">
 			<path>//cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js</path>
+		</include>
+        
+		<include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/js/nTranslate.js</path>
+		</include>
+		<include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/nubersoft2020/js/Cart.js</path>
+		</include>
+		<include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/nubersoft2020/js/CartSentinel.js</path>
+		</include>
+		<include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/nubersoft2020/js/ContextMenus.js</path>
+		</include>
+        
+		<include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/js/CookieJar.js</path>
+		</include>
+        
+		<include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/js/DomHelper.js</path>
+		</include>
+        
+		<include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/js/StringWorks.js</path>
+		</include>
+        
+		<include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/nubersoft2020/js/nubersoft-cartinit.js</path>
+		</include>
+        
+		<include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/nubersoft2020/js/nubersoft-cart.js</path>
+		</include>
+        
+		<include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/nubersoft2020/js/nubersoft-contextualmenu.js</path>
+		</include>
+        <include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/nubersoft2020/js/nubersoft-fx.js</path>
+		</include>
+        
+		<include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/nubersoft2020/js/scripts.js</path>
 		</include>
 	</javascript>
 </config>

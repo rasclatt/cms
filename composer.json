@@ -18,6 +18,7 @@
         }
     ],
     "require": {
-        "rasclatt/nubersoft": "*"
+        "rasclatt/nubersoft": "*",
+        "firebase/php-jwt": "*"
     }
 }

@@ -1,7 +1,5 @@
 
-<div class="img-logo">
-    <a href="<?php echo $this->localeUrl($this->getPage('full_path')) ?>" class="pointer margin-bottom-lrg"><?php echo $this->getSiteLogo(URL_CORE_IMAGES.'/logo/nubersoft.png') ?></a>
-</div>
+<a href="<?php echo $this->localeUrl($this->getPage('full_path')) ?>" class="pointer margin-bottom-lrg"><?php echo $this->getSiteLogo(URL_CORE_IMAGES.'/logo/nubersoft.png') ?></a>
 
 <?php
 if($this->userGet('usergroup') > 1)
@@ -15,7 +13,7 @@ if($this->userGet('usergroup') > 1)
 <div class="icn-head">
     <a href="#" class="sidebar nTrigger<?php if($this->getGet('loadpage') == 'load_settings_page' && $this->getGet('subaction') == 'header') echo ' nListener' ?>" data-instructions='{"DOM":{"sendto":["#admin-content"],"html":["<img src=\"/core/template/default/media/images/ui/loader.gif\" class=\"loader\" />"],"event":["click"]},"action":"load_settings_page","data":{"deliver":{"subaction":"header"}}}'><span>Header Settings</span></a>
 </div>
-
+    
 <div class="icn-foot">
     <a href="#" class="sidebar nTrigger<?php if($this->getGet('loadpage') == 'load_settings_page' && $this->getGet('subaction') == 'footer') echo ' nListener' ?>" data-instructions='{"DOM":{"sendto":["#admin-content"],"html":["<img src=\"/core/template/default/media/images/ui/loader.gif\" class=\"loader\" />"],"event":["click"]},"action":"load_settings_page","data":{"deliver":{"subaction":"footer"}}}'><span>Footer Settings</span></a>
 </div>
@@ -28,20 +26,21 @@ if($this->userGet('usergroup') > 1)
     <a href="?table=users&subaction=interface" class="sidebar"><span>Users</span></a>
 </div>
 
-<div class="tables">
-    <?php
-    foreach($this->getDataNode('plugins')['paths'] as $path) {
-        if(!is_dir($path))
-            continue;
+<a href="/client/media/images/nubersoft_how_to.pdf" class="sidebar pointer" target="_blank"><span class="pointer">CMS How-to</span></a>
 
-        foreach(scandir($path) as $pdir) {
-            if(in_array($pdir, ['.','..']))
-                continue;
+<?php
+foreach($this->getDataNode('plugins')['paths'] as $path) {
+	if(!is_dir($path))
+		continue;
 
-            if(!is_file($ui = $path.DS.$pdir.DS.'admin_sidebar.php'))
-                continue;
+	foreach(scandir($path) as $pdir) {
+		if(in_array($pdir, ['.','..']))
+			continue;
 
-            include($ui);
-        }
-    }?>
-</div>
+		if(!is_file($ui = $path.DS.$pdir.DS.'admin_sidebar.php'))
+			continue;
+		
+		include($ui);
+	}
+}
+?>

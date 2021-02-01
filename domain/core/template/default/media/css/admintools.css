@@ -60,17 +60,6 @@
 .margin-bottom-lrg {
 	margin-bottom: 3em;
 }
-html,
-body,
-#admin-interface {
-	position: fixed !important;
-	overflow: auto !important;
-	bottom: 0;
-	height: 100%;
-	right: 0;
-	left: 0;
-	top: 0;
-}
 #admin-content-wrap > div:nth-child(2) {
 	background-color: #FFF;
 	padding: 0 1em;

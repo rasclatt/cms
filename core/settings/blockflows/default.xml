@@ -5,6 +5,7 @@
 		<class>
 			<name>\Nubersoft\nRouter\Controller</name>
 			<method>setHeader</method>
+            <chain>detectAdminXss</chain>
 			<inject into="setHeader">
 				<array>
 					<!-- Click-Jack protection -->
@@ -12,12 +13,18 @@
 					<arg>X-Sample-Test: foo</arg>
 					<arg>X-Powered-By: PHP/5.1.1</arg>
 					<arg>X-Content-Type-Options: nosniff</arg>
-					<arg>X-XSS-Protection: 1; mode=block</arg>
 				</array>
 			</inject>
 		</class>
 	</object>
 	
+    <object event="fetch_translations">
+        <class>
+            <name>\Nubersoft\Localization\Observer</name>
+            <method>apiListener</method>
+        </class>
+    </object>
+    
 	<object event="nbr_render">
 		<class>
 			<name>\Nubersoft\nRender</name>

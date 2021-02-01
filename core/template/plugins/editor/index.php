@@ -49,7 +49,7 @@ $( function() {
         AjaxEngine.ajax({"action":"updatecompactive", data: {
             component: compid
         }}, function(response){
-            var resp    =   JSON.parse(response);
+            var resp    =   (typeof response === "string")? JSON.parse(response) : response;
             $('#comp-' + compid + ' > div:first-child img.active-status').attr('src', "/core/template/default/media/images/core/led_" + resp.mode + ".png");
             
             var statborder  =   (resp.mode == 'on')? 'off' : 'on';

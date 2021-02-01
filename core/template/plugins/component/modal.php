@@ -1,10 +1,13 @@
 <?php
-$Form		=	$this->getHelper('nForm');
-$Token		=	$this->getHelper('nToken');
+$Form		=	new \Nubersoft\nForm();
+$Token		=	new \Nubersoft\nToken();
 $compData	=	$this->getPluginContent('component_content');
 $ID			=	(!empty($compData['ID']))? $compData['ID'] : 'add';
 $token		=	'component_'.$ID;
 $ref_page	=	$compData['ref_page'];
+
+
+
 ?>
 <div class="flexor">
     <div style="padding: 0.5em">
