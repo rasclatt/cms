@@ -59,14 +59,28 @@ elseif(is_numeric($this->getRequest('edit'))):
 		<div class="col-count-7 table-row-container">
 			<div class="table-header"><?php echo implode('</div>'.PHP_EOL.'<div class="table-header">',['ID', 'Username', 'Email', 'Usergroup', 'Status','Name','&nbsp;' ]) ?></div>
 		</div>
+        
 	<?php foreach($page_details['results'] as $row): ?>
+        
 		<div class="col-count-7 table-row-container" onClick="window.location='?table=users&edit=<?php echo $row["ID"] ?>&subaction=interface'">
-	<?php foreach($row as $key => $value):
-				if(!in_array($key, ['ID', 'username', 'email', 'name','usergroup', 'user_status' ]))
-					continue;
-			?>
-			<div style="overflow: hidden;" class="table-row"><?php echo ($key == 'usergroup' && !is_numeric($value))? constant($value) : $value ?></div>
-	<?php endforeach ?>
+            
+    	<?php foreach($row as $key => $value):
+             if(!in_array($key, ['ID', 'username', 'email', 'name','usergroup', 'user_status' ]))
+                 continue;
+        ?>
+            <?php if($key == 'ID'): ?>
+            <div style="overflow: hidden;" class="table-row pointer">
+                
+                <div class="pointer" style="height: 4vw; width: 4vw; border-radius: 50%; background-image: url('<?php echo (!empty($row['file_name']))? "{$row['file_path']}{$row['file_name']}" : '/core/template/default/media/images/ui/user.png' ?>'); background-repeat: no-repeat; background-size: cover;"></div>
+                
+            </div>
+            <?php else: ?>
+            
+			<div style="overflow: hidden;" class="table-row pointer"><?php echo ($key == 'usergroup' && !is_numeric($value))? constant($value) : $value ?></div>
+            
+            <?php endif ?>
+            
+	    <?php endforeach ?>
 			
 			<div class="table-row"><a href="?table=users&edit=<?php echo $row["ID"] ?>&subaction=interface" class="mini-btn dark">EDIT</a></div>
 		</div>

@@ -1,4 +1,4 @@
-<div id="main-menu" class="col-2">
+<div id="main-menu" class="start2">
 	<?php
 	foreach($this->getHelper("Settings\Model")->getMenu('on', 'in_menubar') as $menu):
 		if($menu['is_admin'] == 3) {

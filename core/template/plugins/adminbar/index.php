@@ -16,7 +16,7 @@ $iconlib	=	[
 	'3' => $docicon
 ];
 ?>
-    
+
 <nav id="admin-menubar">
 	<div>
 		<div id="window-width"></div>
@@ -31,19 +31,29 @@ $iconlib	=	[
 			<img src="<?php echo $docicon ?>" style="max-height: 25px; width: auto;" />
 			<div class="admin-submenu">
 				<div class="page-menu">
-					<?php echo $this->getHelper('\System\View\Menu')->create();?>
+                    
+                    <?php $hm = $this->getPageByType('home'); if($hm): ?>
+                    <ul class="mt-2">
+                        <li><a href="<?php echo $hm ?>"><i class="fas fa-home"></i>&nbsp;Home</a></li>
+                    </ul>
+                    
+                    <?php endif ?>
+                    
+					<?php echo $this->getHelper('\System\View\Menu')->create() ?>
+                    
+                    <?php if($this->userGet('usergroup') <= 1): ?>
+                    
+                    <div style="padding: 0.5em;">
+                        <?php
+                        $Form	=	@$this->nForm();
+                        echo $Form->open() ?>
+                        <?php echo $Form->fullhide(['name'=>'token[nProcessor]', 'value'=>'']) ?>
+                        <?php echo $Form->fullhide(['name'=>'action', 'value'=>'create_new_page']) ?>
+                        <?php echo $Form->submit(['value'=>'+PAGE','class'=>'medi-btn green']) ?>
+                        <?php echo $Form->close() ?>
+                    </div>
+                    <?php endif ?>
 				</div>
-                <?php if($this->userGet('usergroup') <= 1): ?>
-				<div style="padding: 0.5em;">
-					<?php
-					$Form	=	@$this->nForm();
-					echo $Form->open() ?>
-					<?php echo $Form->fullhide(['name'=>'token[nProcessor]', 'value'=>'']) ?>
-					<?php echo $Form->fullhide(['name'=>'action', 'value'=>'create_new_page']) ?>
-					<?php echo $Form->submit(['value'=>'+PAGE','class'=>'medi-btn green']) ?>
-					<?php echo $Form->close() ?>
-				</div>
-                <?php endif ?>
 			</div>
 		</div>
 		<?php if(is_dir(NBR_CLIENT_CACHE) && count(scandir(NBR_CLIENT_CACHE)) > 2): ?>
@@ -52,8 +62,18 @@ $iconlib	=	[
 		<?php endif ?>
 		<div class="divider vertical light"></div>
 		<a href="?action=logout"><i class="fas fa-sign-out-alt fa-2x pointer" title="Log Out"></i></a>
+        <div class="divider vertical light"></div>
+        
+        <p class="margin-top-0 margin-bottom-0 align-middle pad-left-1 pad-right-1"  onClick="window.location='<?php echo "{$this->getAdminPage()}?loadpage=load_settings_page&subaction=global&section=general" ?>'"  role="button"><i class="fas fa-power-off fa-lg <?php if($this->getSystemOption('site_live') == 'off'): ?>red fx fx-pulsar<?php else: ?>green<?php endif ?>"></i></p>
+        
+        <?php if($this->getSystemOption('maintenance_mode') == 'on'): ?>
+        <div class="divider vertical light"></div>
+        <p class="margin-top-0 margin-bottom-0 align-middle pad-left-1 pad-right-1" title="Site in maintenance mode" onClick="window.location='<?php echo "{$this->getAdminPage()}?loadpage=load_settings_page&subaction=global&section=general" ?>'" role="button"><i class="fas fa-cogs red fa-lg fx fx-pulsar"></i></p>
+        <?php endif ?>
+        
 	</div>
 </nav>
+
 <script>
 	$(function(){
 		var win_w	=	$('#window-width');

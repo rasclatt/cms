@@ -2,7 +2,7 @@
 <config>
 	<stylesheet>
 		<include is_local="true" is_frontend="true" is_backend="true">
-			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/css/grid.css</path>
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/nubersoft2020/css/grids.css</path>
 		</include>
 		<include is_local="true" is_frontend="true" is_backend="true">
 			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/css/styles.css</path>
@@ -28,8 +28,11 @@
 		<include is_local="true" is_frontend="true" is_backend="true">
 			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/css/fx.css</path>
 		</include>
+		<include is_local="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/nubersoft2020/css/nubersoft-fx.css</path>
+		</include>
 		<include is_frontend="true" is_backend="true">
-			<path>https://use.fontawesome.com/releases/v5.6.0/css/all.css</path>
+			<path>https://use.fontawesome.com/releases/v5.12.0/css/all.css</path>
 		</include>
 		<include is_local="true" is_frontend="true" is_backend="true">
 			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/nubersoft2020/css/nubersoft-modal.css</path>
@@ -40,6 +43,11 @@
 		<include is_local="true" is_frontend="true" is_backend="true">
 			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/nubersoft2020/css/styles.css</path>
 		</include>
+        
+		<include is_local="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/nubersoft2020/css/nubersoft-admintools.css</path>
+		</include>
+        
 	</stylesheet>
 	<javascript>
 		<include is_local="true">

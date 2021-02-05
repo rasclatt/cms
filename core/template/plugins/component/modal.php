@@ -14,7 +14,9 @@ $ref_page	=	$compData['ref_page'];
         <a href="?action=set_edit_mode&active=on" class="fx opacity-hover pointer"><i class="far fa-edit fa-2x"></i>&nbsp;More Options</a>
     </div>
 </div>
-<?php include(__DIR__.DS.'form.php') ?>
+<div class="margin-top-3">
+    <?php include(__DIR__.DS.'form.php') ?>
+</div>
 
 <style>
     .expander.mini-btn.dark {

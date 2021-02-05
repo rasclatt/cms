@@ -7,6 +7,7 @@
 			<chain>setTimezone</chain>
 			<chain>checkUserSettings</chain>
 			<chain>formatFileUploads</chain>
+			<chain>createJWT</chain>
 		</class>
 		<class>
 			<name>\Nubersoft\nRouter\Observer</name>
@@ -40,7 +41,9 @@
 	<object event="nbr_check_auto_token">
 		<class>
 			<name>\Nubersoft\nToken\Observer</name>
-            <method>addSkipService</method>
+            <method>validateJWT</method>
+            <!--
+            <chain>addSkipService</chain>
 			<chain>listen</chain>
 			
 			<inject into="addSkipService">
@@ -52,7 +55,7 @@
                     <arg>nbr_get_form_token</arg>
 				</array>
 			</inject>
-            
+            -->
 		</class>
 	</object>
 	

@@ -17,12 +17,9 @@ elseif($this->getGet('load') == 'coreinstaller'): ?>
 
 <?php else: ?>
 
-<h2>Dashboard</h2>
-<p>Welcome to your dashboard.</p>
-<div class="col-count-5 lrg-3 med-2 sml-1">
-<?php
+<div class="admintools-interface">
 	
-	foreach($this->getDataNode('plugins')['paths'] as $path) {
+	<?php foreach($this->getDataNode('plugins')['paths'] as $path) {
 		if(!is_dir($path))
 			continue;
 		
@@ -43,5 +40,11 @@ elseif($this->getGet('load') == 'coreinstaller'): ?>
 	}
 	?>
 </div>
+
+<?php if(empty($this->getRequest('load'))): ?>
+<h2>Dashboard</h2>
+<p>Welcome to your dashboard.</p>
+<?php endif ?>
+
 <?php
 endif;

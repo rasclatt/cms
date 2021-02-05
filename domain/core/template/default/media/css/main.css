@@ -5,7 +5,6 @@ html.content,
 body.edit-mode.login,
 body.edit-mode {
 	background: linear-gradient(#333, #111, #333) !important;
-	position: absolute;
 	overflow: auto !important;
 	bottom: 0 !important;
 }
@@ -329,17 +328,17 @@ body.edit-mode .container-on {
 	padding-top: 0.5em;
 }
 .page-editor-header h3 {
+    position: relative;
 	padding: 0.5em !important;
 	background-color: #222 !important;
 	color: #FFF !important;
-	border-left: 3px solid red;
 	border-radius: 5px;
 	transition: background-color 0.5s, box-shadow 0.5s, border-color 0.5s;
+    cursor: pointer;
 }
 .page-editor-header h3:hover,
 .page-editor-header h3:focus {
 	background-color: #555 !important;
-	box-shadow: 0 0 10px aqua;
 	border-color: aqua;
 }
 a.edit-button {

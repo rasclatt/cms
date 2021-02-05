@@ -68,6 +68,10 @@ try {
         # Get the server mode
         if(!empty($server_mode['devmode']['option_attribute']))
             $server_mode	=	$server_mode['devmode']['option_attribute'];
+        # Start saving warnings to the system
+        set_error_handler(function($code, $msg) {
+            \Nubersoft\nApp::call()->toError("Error {$code}: {$msg}");
+        }, E_WARNING);
         # If not on, assume test
         if($server_mode != 'live') {
             ini_set('display_errors', 1);
@@ -76,6 +80,28 @@ try {
         else {
             # Hide errors
             ini_set('display_errors', 0);
+        }
+        # Run jwt checks if there is a checker
+        if(class_exists('\Nubersoft\JWT\Controller')) {
+            # Fetch token secret
+            $jwt = JWT\Controller::getJwtTokenSecret();
+            # If there is a secret
+            if($jwt) {
+                if(!empty($nApp->getPost())) {
+                    try {
+                        # Validate the token
+                        JWTFactory::get()->get($nApp->dec($nApp->getPost('jwtToken')));
+                    }
+                    catch (\Exception $e) {
+                        //throw new Exception\Ajax($nApp->getPost('jwtToken'), 403);
+                        # Report back with ajax or same-page
+                        if($nApp->isAjaxRequest())
+                            throw new Exception\Ajax('Invalid security token', 403);
+                        # Throw normal exception
+                        throw new \Exception('Invalid security token', 403);
+                    }
+                }
+            }
         }
         # Start our program
         $AutomatorController->createWorkflow('default');

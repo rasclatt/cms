@@ -8,7 +8,7 @@
 	<?php echo $this->getMastHead() ?>
 	<?php echo $this->getFrontEnd('menu.php') ?>
 	<?php echo $this->getPlugin('notifications') ?>
-	<div class="col-2">
+	<div class="start2">
 		<?php echo $this->getPlugin(((!empty($this->getSession('editor')) && $this->isAdmin())? 'editor' : 'layout')) ?>
 	</div>
 </div>

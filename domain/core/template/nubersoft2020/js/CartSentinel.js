@@ -259,15 +259,15 @@ class CartSentinel
         else {
             $('body').addClass('side-bar-active');
             $('#loadspot-modal').addClass('fixed-auto right-0 top-0 bottom-0').html(
-                '<div class="sidebar-container">' +
-                    '<div class="cart-content-mini">' +
-                        '<div>' +
-                            '<a href="#" class="float-right white mr-4"><i class="fas fa-times cart-activator"></i></a>' +
-                            '<h3 class="uppercase white"><strong><span class="trans-cls" data-trans="itemsincart">Items in Cart</span> (<span class="cart-qty">0</span>)</strong></h3>' +
-                        '</div>' +
-                        '<div class="mt-4 mr-4 cart-summary"></div>' +
-                    '</div>' +
-                '</div>'
+                `<div class="sidebar-container">
+                    <div class="cart-content-mini">
+                        <div>
+                            <a href="#" class="float-right white mr-4"><i class="fas fa-times cart-activator pointer"></i></a>
+                            <h3 class="uppercase white"><span class="trans-cls" data-trans="itemsincart">Items in Cart</span> (<span class="cart-qty">0</span>)</h3>
+                        </div>
+                        <div class="mt-4 mr-4 cart-summary"></div>
+                    </div>
+                </div>`
             ).css({"z-index": "100000"});
             this.toCounter();
             this.createSummary();

@@ -30,6 +30,7 @@ $defaults	=	[
 	]
 ];
 ?>
+<?php echo $this->getPlugin('admintools', 'admin_ui.php') ?>
 <h2>Footer Settings</h2>
 <p>Change footer settings for your site.</p>
 <?php
@@ -47,8 +48,8 @@ echo $Form->fullhide(['name' => 'option_group_name', 'value' => 'system']);
 		unset($row['type']);
 	?>
 	
-	<div class="col-count-<?php echo (in_array($type,['textarea']))? '2' : '4' ?> lrg-1">
-		<div class="col-1">
+	<div class="col-count-<?php echo (in_array($type,['textarea']))? '2' : '4' ?> col-c1-lg">
+		<div class="start1">
 			<?php echo $Form->{$type}($row) ?>
 		</div>
 	</div>
@@ -56,7 +57,7 @@ echo $Form->fullhide(['name' => 'option_group_name', 'value' => 'system']);
 	<?php endforeach ?>
 	
 	<div class="col-count-4">
-		<div class="col-1">
+		<div class="start1">
 			<?php echo $Form->submit(['value' => 'Save', 'class' => 'medi-btn dark settings']) ?>
 		</div>
 	</div>

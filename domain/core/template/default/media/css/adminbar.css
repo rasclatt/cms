@@ -81,6 +81,7 @@ Ured - #be1522
 }
 #admin-menubar {
     z-index: 10 !important;
+    position: relative;
 }
 .container-gapped {
     grid-row-gap: 1em;
@@ -324,6 +325,9 @@ img.active-status {
     }
     #admin-sidebar > div a {
         transition: All ease-in-out 0.35s !important;
+    }
+    #admin-sidebar > div.icn-dashboard a::after {
+        content: "\f3fd";
     }
     #admin-sidebar > div.icn-globe a::after {
         content: "\f085";

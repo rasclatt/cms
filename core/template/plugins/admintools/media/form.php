@@ -55,7 +55,7 @@ foreach($media as $field => $value):
     endforeach ?>
         
         <?php //echo printpre($fields) ?>
-    <div class="col-count-2 gapped lrg-1">
+    <div class="col-count-2 gapped col-c1-lg">
         <div style="max-height: 500px; overflow: hidden; border: 1px solid #CCC; padding: 1em; background-image:  url('/core/template/default/media/images/ui/transparent-grid.gif'); background-size: 3%;">
             <a href="<?php echo $media['file_path'].$media['file_name'] ?>" target="_blank" class="pointer"><img src="<?php echo $media['file_path'].$media['file_name'] ?>" style="display: inline-block; width: 100%; height: auto;" /></a>
         </div>

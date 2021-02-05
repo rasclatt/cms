@@ -22,6 +22,11 @@ $(function () {
     // Listen for clicks on the component in render mode
     RightClick.addEvent('editComponent', (e, ContextMenusObj) => {
         
+        var editBtn =   $(e.target).parents('.csm-tool-item').find('.edit-btn-tools');
+        
+        if($('.component-add-new').length == 0 && editBtn.length == 0)
+            return false;
+        
         let counter =   [
             $(e.target).parents('.csm-tool-item').length,
             $(e.target).parents('#admintools').length,
@@ -32,8 +37,9 @@ $(function () {
             return total + i;
         }) == 0)
             return false;
-        var editBtn =   $(e.target).parents('.csm-tool-item').find('.edit-btn-tools');
+        
         var bts =   '';
+        
         if(editBtn.length > 0) {
             ContextMenusObj.addButton('editComponent', function() {
                 return editBtn[0].outerHTML.replace('edit-btn-tools hide', 'white fx opacity-hover').replace('EDIT', '<a href="#" class="canceller">EDIT COMPONENT</a>')
@@ -63,8 +69,10 @@ $(function () {
     window.oncontextmenu = function(e)
     {
         var exit    =   RightClick.sentinel(e);
+        $('#loadspot-modal').addClass('active-contextual');
         if(exit)
             return false;
+        
     }
     // Start fx
     setTimeout(function(){
@@ -72,6 +80,11 @@ $(function () {
         (new FxEngine($('.fx'))).sentinel();
     }, 2000);
     
+    if(typeof contextSettings === "undefined") {
+        var contextSettings =   {
+            translationAdmin: "/admintools/translator/"
+        };
+    }
     
     $('body').on('click', '.trans-cls', function(e){
         if($(this).parents('.csm-tool-item').length != 0) {
@@ -81,8 +94,8 @@ $(function () {
             let isEng    =   (lang == 'en' || lang == '');
             let pos =   ContextMenus.getMousePosition(e);
             let btns    =   [
-                `<a class="white nodrag" href="/wp-admin/translations/?subaction=&load=&max=10&table=&search=${$(this).data('trans')}" target="_blank">${$(this).data('trans')}</a>`,
-                !isEng? `<span class="nodrag white saver${$(this).data('trans')}us${lang}"></span><form class="nodrag quicktranslator"><input type="hidden" name="action" value="create_translation" /><input type="hidden" name="transkey" value="${$(this).data('trans')}" /><textarea name="description" class="nbr translator-replace">${$(this).html()}</textarea><button class="btn-mini">SAVE</button></form>` : '',
+                `<a class="white nodrag" href="${contextSettings.translationAdmin}?subaction=&load=&max=10&table=&search=${$(this).data('trans')}" target="_blank">${$(this).data('trans')}</a>`,
+                !isEng? `<span class="nodrag white saver${$(this).data('trans')}us${lang}"></span><form class="nodrag quicktranslator"><input type="hidden" name="action" value="create_translator" /><input type="hidden" name="transkey" value="${$(this).data('trans')}" /><textarea name="description" class="nbr translator-replace">${$(this).html()}</textarea><button class="btn-mini">SAVE</button></form>` : '',
                 
                 (typeof $(this).attr('href') !== "undefined")? `<a class="uppercase" href="${$(this).attr('href')}">Go To Link</a>` : ''
             ];
@@ -101,10 +114,16 @@ $(function () {
         $('*[data-trans="'+trans+'"]').html(thisVal);
     });
     
-    $('body').on('submit', '.quicktranslator', function(e){
+    $(document).on('submit', '.quicktranslator', function(e){
         e.preventDefault();
+        $(this).append(`<input type="hidden" name="jwtToken" value="${csrf}">`);
+        
         AjaxEngine.ajax($(this).serialize(), (r)=>{
             default_action($(this), r);
         });
+    });
+    
+    $('#loadspot-modal').on('click', '.close-contextual', function(){
+        $('#loadspot-modal').removeClass('active-contextual');
     });
 });

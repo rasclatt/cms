@@ -11,7 +11,7 @@
 .col-count-3 {
   grid-template-columns: repeat(3, 1fr); }
   .col-count-3.offset {
-    grid-template-columns: 1fr 1038px 1fr; }
+    grid-template-columns: 1fr 1200px 1fr; }
 
 .col-count-4 {
   grid-template-columns: repeat(4, 1fr); }
@@ -124,7 +124,10 @@
 .last-col {
   grid-column-end: -1; }
 
-@media all and (max-width: 1440px) {
+.c1em-c1fr-c1em {
+  grid-template-columns: 1em 1fr 1em; }
+
+@media all and (max-width: 1200px) {
   .col-count-3.offset {
     grid-template-columns: 1em 1fr 1em; }
 

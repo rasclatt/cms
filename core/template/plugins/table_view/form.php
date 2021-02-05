@@ -74,7 +74,7 @@ foreach($user as $field => $value):
 
 <?php endforeach ?>
 	<?php if(empty($this->getRequest('create'))): ?>
-	<div class="col-1"><?php echo $Form->checkbox(['label' => 'Delete?','name'=>'delete', 'value'=>'on', 'class' => 'nbr']) ?></div>
+	<div class="start1"><?php echo $Form->checkbox(['label' => 'Delete?','name'=>'delete', 'value'=>'on', 'class' => 'nbr']) ?></div>
 	<?php endif ?>
 	<div class="last-col"><?php echo $Form->submit(['name'=>'','value'=>'save', 'class' => 'nbr button green token_button', 'disabled'=>'disabled', 'other'=> ['data-token="nProcessor"']]) ?></div>
 	</div>

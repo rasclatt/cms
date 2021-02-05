@@ -1,7 +1,7 @@
 
     <div class="component-add-new pad-bottom-xsmall"><?php echo $this->getPlugin('component', DS.'add.php') ?></div>
     
-    <div class="col-count-5 gapped lrg-3 gapped med-2 gapped sml-1 component-library-container">
+    <div class="col-count-5 gapped col-c3-lg col-c2-md col-c1-sm component-library-container">
 	<?php
 	$layout	=	@$this->Settings_Page_View()->create($this->getPage('unique_id'), 'editor');
 	if(!empty($layout))

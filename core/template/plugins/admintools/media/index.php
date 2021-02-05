@@ -1,8 +1,11 @@
 <?php
 $Form	=	@$this->nForm();
-//echo $this->getPlugin('admintools', DS.'media'.DS.'interface.php') ?>
+?>
 
 <h3>Media</h3>
+<div class="pad-bottom-1 pad-top-1">
+    <?php echo $this->getPlugin('admintools', DS.'media'.DS.'interface.php') ?>
+</div>
 
 <?php
 $Pagination	=	$this->getHelper('SearchEngine\View')->fetch([
@@ -104,10 +107,11 @@ elseif(is_numeric($this->getRequest('edit'))):
 		});
 	});	
 	</script>
+
 <?php else: ?>
+
 	<script>
 		$(function(){
-			
 			$('#uploadnew').on('submit', function(e){
 				e.preventDefault();
 				AjaxEngine.formData($(this)[0], function(response){
@@ -118,7 +122,7 @@ elseif(is_numeric($this->getRequest('edit'))):
 		});
 	</script>
 
-	<div style="padding: 1em; background-color: #EBEBEB;">
+	<div class="margin-bottom-1 pad-1" style="background-color: #EBEBEB;">
 		<h3>Upload File</h3>
 		<form id="uploadnew" enctype="multipart/form-data">
 			<input type="hidden" name="token[nProcessor]" value="" />
@@ -133,20 +137,28 @@ elseif(is_numeric($this->getRequest('edit'))):
 		</form>
 	</div>
 
-	<div class="media-table col-count-4 gapped lrg-2 med-1">
+	<div class="media-table col-count-4 gapped col-c2-lg col-c1-md">
 		<?php foreach($Pagination->getResults() as $row): ?>
 		<div class="col-count-1" style="border: 1px solid #CCC;">
-			<div style="background-image: url('/core/template/default/media/images/ui/transbkg.png'); height: 200px; background-size: auto; padding: 1em;">
-				<div style="height: inherit; background-image: url('<?php echo $row['filename'] ?>');background-size: contain; background-repeat: no-repeat; background-position: center; position: relative; width: 100%;">
+			<div style="background-image: url('/core/template/default/media/images/ui/transbkg.png'); height: auto; background-size: auto; padding: 0.25em;">
+				<div style="min-height: 200px; background-image: url('<?php echo $row['filename'] ?>');background-size: contain; background-repeat: no-repeat; background-position: center; position: relative; width: 100%;">
 				</div>
 			</div>
-			<div class="col-count-2 gapped">
-				<div class="span-2" style="padding: 1em 1em 0 1em;">
+			<div class="col-count-2 gapped margin-1">
+				<div class="span2" style="padding: 1em 1em 0 1em;">
 					<input type="text" value="<?php echo $row['file_path'].$row['file_name'] ?>" onClick="this.select()" class="nbr" />
-					<div class="col-count-3 gapped pad-top-xsmall" style="font-family: Arial;">
-						<div>ID</div><div class="span-2"><?php echo $row['ID'] ?></div>
-						<div>Name</div><div class="span-2"><?php echo $row['file_name'] ?></div>
-						<div>Size</div><div class="span-2"><?php echo \Nubersoft\Conversion\Data::getByteSize($row['file_size'], ['from'=>'B', 'to'=>'MB', 'round' =>2, 'ext' => 'MB']) ?></div>
+					<div class="pad-top-1" style="font-family: Arial;">
+                        <table cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                                <td class="pad-right-1">ID</td><td><?php echo $row['ID'] ?></td>
+                            </tr>
+                            <tr>
+                                <td class="pad-right-1">Name</td><td><?php echo $row['file_name'] ?></td>
+                            </tr>
+                            <tr>
+                                <td class="pad-right-1">Size</td><td><?php echo \Nubersoft\Conversion\Data::getByteSize($row['file_size'], ['from'=>'B', 'to'=>'MB', 'round' =>2, 'ext' => 'MB']) ?></td>
+                            </tr>
+                        </table>
 					</div>
 				</div>
 				<a href="?table=media&edit=<?php echo $row['ID'] ?>&subaction=interface" class="nbr button" style="width: auto !important; border-radius: 0;">EDIT</a>

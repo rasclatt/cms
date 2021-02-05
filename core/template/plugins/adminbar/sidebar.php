@@ -5,6 +5,9 @@
 if($this->userGet('usergroup') > 1)
     return false;
 ?>
+<div class="icn-dashboard">
+    <a href="<?php echo $this->getAdminPage() ?>" class="sidebar"><span>Dashboard</span></a>
+</div>
 
 <div class="icn-globe">
     <a href="#" class="sidebar nTrigger<?php if($this->getGet('loadpage') == 'load_settings_page' && $this->getGet('subaction') == 'global') echo ' nListener' ?>" data-instructions='{"DOM":{"sendto":["#admin-content"],"html":["<img src=\"/core/template/default/media/images/ui/loader.gif\" class=\"loader\" />"],"event":["click"]},"action":"load_settings_page","data":{"deliver":{"subaction":"global"}}}'><span>Global Settings</span></a>
@@ -25,8 +28,6 @@ if($this->userGet('usergroup') > 1)
 <div class="icn-user">
     <a href="?table=users&subaction=interface" class="sidebar"><span>Users</span></a>
 </div>
-
-<a href="/client/media/images/nubersoft_how_to.pdf" class="sidebar pointer" target="_blank"><span class="pointer">CMS How-to</span></a>
 
 <?php
 foreach($this->getDataNode('plugins')['paths'] as $path) {

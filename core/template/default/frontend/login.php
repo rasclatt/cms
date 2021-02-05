@@ -7,9 +7,9 @@
 	<?php echo $this->getPlugin('editor', DS.'page_editor.php') ?>
 	<?php echo $this->getFrontEnd('menu.php') ?>
 	<?php echo $this->getPlugin('notifications') ?>
-	<div class="col-2">
+	<div class="start2">
 		<div<?php if(!$this->siteLogoActive()): ?> class="col-count-3"<?php else: ?> style="padding: 0 2em 2em 2em;"<?php endif ?>>
-			<a href="<?php echo $this->localeUrl() ?>" id="admin-logo" class="col-2"><?php echo $this->getSiteLogo(false, true) ?></a>
+			<a href="<?php echo $this->localeUrl() ?>" id="admin-logo" class="start2"><?php echo $this->getSiteLogo(false, true) ?></a>
 		</div>
 		<?php echo $this->getPlugin('login') ?>
 	</div>

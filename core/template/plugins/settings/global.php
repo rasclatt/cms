@@ -1,4 +1,8 @@
 <?php
+use \Nubersoft\ {
+    nForm as Form
+};
+
 $defaultVars	=	extract([
 	'sign_up' => [],
 	'maintenance_mode' => [],
@@ -10,7 +14,8 @@ $defaultVars	=	extract([
 	'two_factor_auth' => [],
 	'webmaster' => [],
 	'fileid' => [],
-	'devmode' => []
+	'devmode' => [],
+	'jwt_token' => []
 ]);
 
 $system_settings	=	\Nubersoft\ArrayWorks::organizeByKey($this->getDataNode('settings')['system'],'category_id');
@@ -28,6 +33,8 @@ if(empty($composer)) {
 }
 $defaults			=	[
     [
+        'description' => '<h3>Composer Settings</h3>
+        <p>These are your Composer live and database-stored settings.</p>',
 		'label' => 'Composer (Live)',
 		"name" => "",
 		"type" => "textarea",
@@ -44,7 +51,9 @@ $defaults			=	[
 		'class' => 'nbr textarea',
         'style' => 'height: 500px;'
 	],
-	[
+	[ 
+        'description' => '<h3>Website Settings</h3>
+        <p>These are general settings for the site</p>',
 		'label' => 'Webmaster'.((defined('WEBMASTER'))? ' (Registry: '.WEBMASTER.')':''),
 		"name" => "setting[webmaster]",
 		"type" => "text",
@@ -102,6 +111,8 @@ $defaults			=	[
 		'class' => 'nbr'
 	],
 	[
+        'description' => '<h3>Website Activation Modes</h3>
+        <p>These effect how your website is displayed to the public.</p>',
 		'label' => 'Maintenance Mode',
 		'name' => 'setting[maintenance_mode]',
 		'type' => 'select',
@@ -149,6 +160,8 @@ $defaults			=	[
 		'class' => 'nbr'
 	],
 	[
+        'description' => '<h3>Server Settings</h3>
+        <p>Set some server preferences.</p>',
 		'label' => 'Site Timezone ('.date('Y-m-d H:i:s').')',
 		'name' => 'setting[timezone]',
 		'type' => 'select',
@@ -171,6 +184,8 @@ $defaults			=	[
 		'style' => 'height: 300px;'
 	],
 	[
+        'description' => '<h3>Development / Production Settings</h3>
+        <p>Help develop the site using server-side warnings in dev mode. Toggle to production when you want to silence server-side errors.</p>',
 		'label' => 'Show File Inclusions',
 		'name' => 'setting[fileid]',
 		'type' => 'select',
@@ -216,9 +231,12 @@ $defaults			=	[
 	]
 ];
 ?>
-<div class="section-head nTrigger" data-instructions='{"FX":{"fx":["slideUp","accordian"],"event":["click","click"],"acton":[".section","next::slideToggle"],"fxspeed":["fast","fast"]}}'>General Settings</div>
-<div class="section hide">
-	<p>Change the settings of your entire site.</p>
+<?php echo $this->getPlugin('admintools', 'admin_ui.php') ?>
+<h2>Global Settings</h2>
+<p>These settings adjust various website settings that effect the site's behaviour.</p>
+<div class="section-head nTrigger margin-top-0 arrow-down white" data-instructions='{"FX":{"fx":["slideUp","accordian"],"event":["click","click"],"acton":[".section","next::slideToggle"],"fxspeed":["fast","fast"]}}'>General Settings</div>
+<div class="section hide section-general">
+    
 	<?php
 	$Form	=	@$this->nForm();
 	echo $Form->open(["action" => "?loadpage=load_settings_page&subaction=global"]);
@@ -232,10 +250,15 @@ $defaults			=	[
 		foreach($defaults as $row):
 			$type	=	$row['type'];
 			unset($row['type']);
+    
+            if(isset($row['description'])) {
+                echo $row['description'];
+                unset($row['description']);
+            }
 		?>
 
-		<div class="col-count-<?php echo (in_array($type,['textarea']))? '2' : '4' ?> lrg-1">
-			<div class="col-1">
+		<div class="col-count-<?php echo (in_array($type,['textarea']))? '2' : '4' ?> col-c1-lg">
+			<div class="start1">
 				<?php echo $Form->{$type}($row) ?>
 			</div>
 		</div>
@@ -243,7 +266,7 @@ $defaults			=	[
 		<?php endforeach ?>
 
 		<div class="col-count-4 lrg-2 med-1">
-			<div class="col-1">
+			<div class="start1">
 				<?php echo $Form->submit(['value' => 'Save', 'class' => 'medi-btn dark settings']) ?>
 			</div>
 		</div>
@@ -251,7 +274,7 @@ $defaults			=	[
 	<?php echo $Form->close() ?>
 </div>
 
-<div class="section-head nTrigger" data-instructions='{"FX":{"fx":["slideUp","accordian"],"event":["click","click"],"acton":[".section","next::slideToggle"],"fxspeed":["fast","fast"]}}'>Admin Setup</div>
+<div class="section-head nTrigger arrow-down white" data-instructions='{"FX":{"fx":["slideUp","accordian"],"event":["click","click"],"acton":[".section","next::slideToggle"],"fxspeed":["fast","fast"]}}'>Admin Setup</div>
 <div class="section hide">
 	<h3>Backend Name</h3>
 	<p>Change your back office path name to help keep it masked from unwanted probing.</p>
@@ -267,10 +290,10 @@ $defaults			=	[
 			<div class="">
 				<?php echo $Form->text(['label' => 'Admin Title', 'name' => 'menu_name', 'value' => $menu_name, 'class' => 'nbr', 'other' => ['required="required"']]) ?>
 			</div>
-			<div class="col-1">
+			<div class="start1">
 				<?php echo $Form->text(['label' => 'Slug / Url', 'name' => 'full_path', 'value' => $full_path, 'class' => 'nbr', 'other' => ['required="required"']]) ?>
 			</div>
-			<div class="col-1">
+			<div class="start1">
 				<?php echo $Form->select([
 				'label' => 'Template',
 				'name' => 'template',
@@ -288,7 +311,7 @@ $defaults			=	[
 				'class' => 'nbr'
 			]) ?>
 			</div>
-			<div class="col-1">
+			<div class="start1">
 				<?php echo $Form->submit(['value' => 'Save', 'class' => 'medi-btn dark settings']) ?>
 			</div>
 		</div>
@@ -296,9 +319,10 @@ $defaults			=	[
 	<?php echo $Form->close() ?>
 </div>
 
-<div class="section-head nTrigger" data-instructions='{"FX":{"fx":["slideUp","accordian"],"event":["click","click"],"acton":[".section","next::slideToggle"],"fxspeed":["fast","fast"]}}'>Site Logo</div>
+<div class="section-head nTrigger arrow-down white" data-instructions='{"FX":{"fx":["slideUp","accordian"],"event":["click","click"],"acton":[".section","next::slideToggle"],"fxspeed":["fast","fast"]}}'>Site Logo</div>
 <div class="section hide show">
-	<p>Update your web site logo (jpeg, jpg, gif, png). This logo will be available in the front end as well as the back end.</p>
+    <h3>Corporate Logo</h3>
+	<p>Update your web site logo (jpeg, jpg, gif, png). This logo will be available in the front end as well as the back end, depending on your template.</p>
 	<?php
 	echo $Form->open(['enctype' => 'multipart/form-data', "action" => "?loadpage=load_settings_page&subaction=global"]);
 	echo $Form->fullhide(['name' => 'token[nProcessor]', 'value' => '']);
@@ -306,8 +330,8 @@ $defaults			=	[
 	echo $Form->fullhide(['name' => 'category_id', 'value' => 'site']);
 	echo $Form->fullhide(['name' => 'option_group_name', 'value' => 'system']);
 	?>
-		<div class="col-count-3 lrg-1">
-			<div class="col-1">
+		<div class="col-count-3 col-c1-lg">
+			<div class="start1">
 				<?php
 				$header_company_logo_toggle	=	(isset($header_company_logo_toggle))? $header_company_logo_toggle : false;
 				echo $Form->select([
@@ -328,9 +352,9 @@ $defaults			=	[
 				]) ?>
 			</div>
 		</div>
-		<div class="col-count-3 lrg-1">
+		<div class="col-count-3 col-c1-lg">
 			<?php if(!empty($header_company_logo['option_attribute']) && is_file(NBR_DOMAIN_ROOT.DS.ltrim(str_replace('/',DS,$header_company_logo['option_attribute']), DS))): ?>
-			<div class="col-1" style="background-image: url('/core/template/default/media/images/ui/transparent-grid.gif'); background-repeat: repeat; background-size: 8px; padding: 2em; margin-top: 1em;">
+			<div class="start1" style="background-image: url('/core/template/default/media/images/ui/transparent-grid.gif'); background-repeat: repeat; background-size: 8px; padding: 2em; margin-top: 1em;">
 				<img src="<?php echo $header_company_logo['option_attribute'] ?>" />
 			</div>
 			<div class="span-3 push-col-1 large">
@@ -342,12 +366,12 @@ $defaults			=	[
 	]) ?>KB</p>
 			</div>
 			<?php endif ?>
-			<div class="col-1">
+			<div class="start1">
 				<?php echo $Form->file(['name' => 'file', 'class' => 'nbr']) ?>
 			</div>
 		</div>
 		<div class="col-count-4 lrg-2 med-1">
-			<div class="col-1">
+			<div class="start1">
 				<?php echo $Form->submit(['value' => 'Save', 'class' => 'medi-btn dark settings']) ?>
 			</div>
 		</div>
@@ -355,8 +379,40 @@ $defaults			=	[
 	<?php echo $Form->close() ?>
 </div>
 
-<script>
-	// Calls the form token
-	fetchAllTokens($);
-</script>
+<div class="section-head nTrigger arrow-down white" data-instructions='{"FX":{"fx":["slideUp","accordian"],"event":["click","click"],"acton":[".section","next::slideToggle"],"fxspeed":["fast","fast"]}}'>Security</div>
+<div class="section hide show">
+    <h3>JWT Settings</h3>
+    
+    <p class="margin-top-1">JWT Tokens are generated on each load of the page but because they do not persist, they can not be matched from page load to page submit. Create a static token for matching page-to-page tokens.</p>
+    
+    <?php $jwt  =   \Nubersoft\JWT\Controller::getJwtTokenSecret() ?>
+    <?php echo Form::getOpen(['class' => 'ajax']) ?>
+        <?php echo Form::getFullhide(['name' => 'action', 'value' => 'create_jwtoken']) ?>
+        <div class="col-count-3 gapped col-c2-md col-c1-sm">
+            <?php echo Form::getPassword(['label' => 'JWT Secret', 'name' => 'token_name', 'value' => $jwt, 'class' => 'nbr']) ?>
+        </div>
+            
+        <div style="align-self: end;"><?php echo Form::getSubmit(['value' => 'SAVE', 'class' => 'medi-btn dark settings margin-bottom-0']) ?></div>
+        
+    <?php echo Form::getClose() ?>
+    <script>
+        $(function(){
+            $('input[name="token_name"]').on('focus focusout', function(e){
+                $(this).attr('type', (e.type == 'focus')? 'text' : 'password');
+            });
+
+           $('.ajax').on('submit', function(e) {
+               e.preventDefault();
+               AjaxEngine.ajax($(this).serialize(), (r) => {
+                   default_action($(this), r);
+               });
+           });
+        });
+        // Calls the form token
+        fetchAllTokens($);
+    </script>
+</div>
+
+<?php echo $this->getPlugin('settings', 'global'.DS.'locale.php') ?>
+
 <?php // echo printpre($this->query("select * from system_settings")->getResults()) ?>

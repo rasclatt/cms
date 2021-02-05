@@ -89,7 +89,7 @@ function translatePage()
                 }, function(r){
                 });
             }
-            if(typeof trans !== "object") {
+            if(typeof trans === "object") {
                 var Trans  =   new Translator(lang);
                 // Set the fetched translations
                 Trans.setTransFile(trans);
@@ -102,10 +102,47 @@ function translatePage()
     }
 }
 $(function () {
+	/**
+	 *	@description	Starts the fancy fx sentinel and translates page
+	 */
     setTimeout(() => {
         // Run visual fx
         (new FxEngine($('.fx'))).sentinel();
         // Translate the page
         translatePage();
     }, 1000);
+	/**
+	 *	@description	Displays the error blocks and allows for dismissal
+	 */
+    let errormsgs =   $('.dismiss-parent');
+    $.each(errormsgs, function(k, v){
+        if(!$(v).hasClass('stay')) {
+            setTimeout(()=>{
+                $(v).parents('.alert-dismissible').slideUp('fast');
+            }, 10000);
+        }
+    });
+    errormsgs.on('click', function(){
+        $(this).parents('.alert-dismissible').slideUp('fast');
+    });
+	/**
+	 *	@description	Changing of the language an country settings
+	 */
+    $('.locale-option').on('change', function(){
+        let thisLocalOption =   $(this).attr('name');
+        // Set the language
+        CookieJar.set(thisLocalOption, $(this).val());
+        let addr    =   new URL(document.location);
+        let q   =   addr.searchParams;
+        q   =   (q != '')? `?${q}` : '?';
+        
+        if(q.match(new RegExp(thisLocalOption + '=', 'gi'))) {
+            q.replace(new RegExp(thisLocalOption + '=[^&]', 'gi'), `${thisLocalOption}=${$(this).val()}`);
+        }
+        else {
+            q   +=  `&${thisLocalOption}=${$(this).val()}`;
+        }
+        
+        window.location =   addr.pathname+q;
+   });
 });

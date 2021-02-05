@@ -1,6 +1,8 @@
 
-<div class="col-count-6 gapped lrg-5 med-3 sml-1">
+<div class="col-count-5 gapped col-c3-lg col-c2-md col-c1-sm">
 	<?php if(!empty($this->getRequest('create')) || !empty($this->getRequest('edit'))): ?>
-	<div><a class="nbr button green small" href="?table=media&subaction=interface">Media</a></div>
+	<div>
+        <a class="nbr button green small" href="?table=media&subaction=interface">Back to Media</a>
+    </div>
 	<?php endif ?>
 </div>

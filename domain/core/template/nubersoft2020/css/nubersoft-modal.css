@@ -1,8 +1,7 @@
 #loadspot-modal {
   z-index: 1000000000000000 !important;
   position: relative;
-  overflow: visible;
-  display: none; }
+  overflow: visible; }
   #loadspot-modal.visible {
     height: 100%;
     top: 0;

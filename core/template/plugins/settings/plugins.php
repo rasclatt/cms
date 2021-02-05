@@ -9,6 +9,7 @@ $plugins	=	array_values(array_diff(scandir(NBR_CLIENT_PLUGINS), ['.','..']));
 //$this->deleteOption('widget_tester_bester');
 
 ?>
+<?php echo $this->getPlugin('admintools', 'admin_ui.php') ?>
 <h2>Widgets</h2>
 <p>Acivate and deactivate web applications.</p>
 <div class="col-count-2">

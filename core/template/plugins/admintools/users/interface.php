@@ -1,5 +1,5 @@
 
-<div class="col-count-6 gapped lrg-5 med-3 sml-1 pad-top-1">
+<div class="col-count-5 gapped col-c3-lg col-c1-sm pad-bottom-1 margin-bottom-1">
 	<?php if(!empty($this->getRequest('create')) || !empty($this->getRequest('edit'))): ?>
 	<div><a class="nbr button green small" href="?table=users&subaction=interface">Users</a></div>
 	<?php endif ?>

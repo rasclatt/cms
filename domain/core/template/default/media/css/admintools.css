@@ -17,7 +17,6 @@
 	padding: 20px;
 	display: flex;
 	flex-direction: column;
-	position: relative;
 }
 #admin-sidebar div.sidebar {
 	color: #CCC;
@@ -30,7 +29,7 @@
 	position: absolute;
 	background-color: #333;
 	padding: 0.5em;
-	width: calc(100% - 3.5em);
+	width: auto;
 }
 #admin-sidebar div.sidebar:hover div.sidebar.submenu,
 #admin-sidebar div.sidebar.submenu:hover {
@@ -72,6 +71,9 @@
 	font-family: Arial;
 	margin-top: 1em;
 	transition: background-color 0.5s, color 0.5s;
+}
+.section-head:first-child {
+	margin-top: 0;
 }
 .section-head:hover {
 	cursor: pointer;

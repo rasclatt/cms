@@ -407,3 +407,9 @@ textarea.medium {
 textarea.large {
 	min-height: 600px;
 }
+*.nbr.auto-width {
+    width: env();
+    display: inline-block !important;
+    min-width: 0 !important;
+    max-width: none !important;
+}

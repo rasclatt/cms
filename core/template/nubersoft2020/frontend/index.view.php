@@ -1,20 +1,20 @@
 <!doctype html>
-<html>
+<html <?php if($this->isAdmin()) echo 'id="admin-view-mode"' ?>>
 <?php echo $this->getFrontEnd('head.php') ?>
 <body>
 <?php echo $this->getPlugin('adminbar') ?>
 <?php echo $this->getPlugin('editor', DS.'page_editor.php') ?>
 <?php echo $this->getMastHead() ?>
-<div class="content">
+<div>
     <?php echo $this->getFrontEnd('menu.php') ?>
 </div>
-<?php echo $this->getPlugin('notifications') ?>
-    
 <div class="col-count-3 offset content">
-    <div class="span-3 hero-blocks" id="hero-<?php echo $this->getPage('ID') ?>">
-        
+    <div class="span3 hero-blocks rel" id="hero-<?php echo $this->getPage('ID') ?>">
+        <div class="abs-auto top-0 left-0 right-0 margin-top-1">
+            <?php echo $this->getPlugin('notifications') ?>
+        </div>
     </div>
-	<div class="col-2">
+	<div class="start2 rel">
 		<?php echo $this->getPlugin(((!empty($this->getSession('editor')) && $this->isAdmin())? 'editor' : 'layout')) ?>
 	</div>
 </div>

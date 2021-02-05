@@ -260,7 +260,7 @@ nAjax	=	function($)
 	**	@param	data	[object]	This is the data that will be sent to the dispatch
 	**	@param	func	[func]	This is the anonymous function that will run on the return
 	*/
-	this.ajax	=	function(data,func,isFormData)
+	this.ajax	=	function(data, func, isFormData)
 	{
 		// Create a data object
 		var ajaxDataObj		=	{};
@@ -270,6 +270,9 @@ nAjax	=	function($)
 		ajaxDataObj.type	=	type;
 		// Assign data
 		ajaxDataObj.data	=	data;
+        // Fetch a token
+        if(typeof ajaxDataObj.data.jwtToken === "undefined")
+            ajaxDataObj.data.jwtToken   =   getCsrfToken();
 		// Add a doBefore if set
 		if(!empty(doBefore))
 			ajaxDataObj.beforeSend	=	doBefore();
@@ -495,7 +498,6 @@ function fetchAllTokens($)
 		// Get the current form
 		var	getFormObj	=	nLoginInput.parent('form').children('.token-activate');
 		if(!empty(getFormObj)) {
-			console.log(getFormObj);
 			// Disable the submit button
 			getFormObj.prop('disabled',true);
 		}
@@ -503,8 +505,9 @@ function fetchAllTokens($)
 		// Create Ajax object
 		sAjax	=	new nAjax($);
 		sAjax.ajax({
-				"action":"nbr_get_form_token",
-				"data":{
+				action: "nbr_get_form_token",
+                jwtToken: (typeof csrf !== "undefined")? csrf : false,
+				"data": {
 					"nProcessor": nProcIdInput.val(),
 					"login": nLoginInput.val()
 				}
@@ -807,98 +810,101 @@ function runAjaxObj(activeBtn,obj)
 	}
 
 function default_action(activeBtn,response,skipParse)
-	{
-		//console.log(response);
-		// If the response is already an object, skip parsing
-		skipParse	=	is_object(response);
-		// If the not skipping, check if an json string is present
-		if(!skipParse){
-			if(empty(preg_match("^\{|\}$",response)))
-				return false;
-		}
-		
-		if(path_reporting)
-			console.log('***START DEFAULT ACTION***');
-		// If there is a possible parsable string or the element is already object, continue
-		try {
-            
-			var json	=	(skipParse)? response : JSON.parse(response);
-			
-			if(isset(json,'alert')) {
-				alert(json['alert']);
-				// Remove alert
-				json['alert']	=	null;
-			}
-			
-			// Run page FX
-			// Accepts the parent FX or children fx/acton
-			if((isset(json,'fx') && isset(json,'acton')) || isset(json,'FX')) {
-				// Report
-				if(path_reporting)
-					console.log('START DEFAULT DO FX');
-				// Assign the FX array
-				var	getParentFx	=	(isset(json,'FX'))? json.FX : json;
-				// Check if there are any speed settings
-				var hasSpeed	=	(isset(getParentFx,'fxspeed'))? getParentFx.fxspeed : false;
-				// Run the fx engine
-				doFx(getParentFx.acton,getParentFx.fx,activeBtn,hasSpeed);
-			}
-			
-			if(isset(json,'html')) {
-				if(path_reporting)
-					console.log('START DEFAULT WRITE');
-				
-				if(doHtmlAppend(json.html,activeBtn)){
-					if(path_reporting)
-						console.log('START DEFAULT WROTE TO PAGE');
-					
-					writeToPage(json);
-				}
-			}
-			
-			// Write blocks
-			if(isset(json,'htmlBlock')) {
-				console.log(json.htmlBlock);
-				$.each(json.htmlBlock,function(k,v){
-					$(v.sendto).html(v.html);
-				});
-			}
-			
-			if(isset(json,'input')) {
-				writeToInput(json);
-			}
-			// Allows for multi sets of actions to take place
-			if(isset(json,'workflow')) {
-				if(path_reporting)
-					console.log('START WORKFLOW AUTOMATION');
-				// Loop through array of workflows
-				$.each(json.workflow,function(k,v){
-					// Do automation on each workflow
-					doAutomation(activeBtn,sortActiveObj(v.instructions,nDispatch));
-				});
-			}
-			// If there is a single workflow, just run here
-			if(isset(json,'instructions')) {
-				var doNowPost	=	sortActiveObj(json.instructions,nDispatch);
+{
+    //console.log(response);
+    // If the response is already an object, skip parsing
+    skipParse	=	is_object(response);
+    // If the not skipping, check if an json string is present
+    if(!skipParse){
+        if(empty(preg_match("^\{|\}$",response)))
+            return false;
+    }
 
-				if(path_reporting) {
-					console.log('PARSE INSTRUCTIONS');
-					console.log('START DEFAULT AUTOMATION');
-				}
+    if(path_reporting)
+        console.log('***START DEFAULT ACTION***');
+    // If there is a possible parsable string or the element is already object, continue
+    try {
 
-				doAutomation(activeBtn,doNowPost,true);
-			}
-		}
-		catch (Exception) {
-			if(error_reporting) {
-				console.log(response);
-				console.log(Exception.message);
-			}
-		}
-		
-		if(path_reporting)
-			console.log('***WRAP UP DEFAULT ACTION***');
-	}
+        var json	=	(skipParse)? response : JSON.parse(response);
+
+        if(isset(json,'alert')) {
+            alert(json['alert']);
+            // Remove alert
+            json['alert']	=	null;
+        }
+
+        // Run page FX
+        // Accepts the parent FX or children fx/acton
+        if((isset(json,'fx') && isset(json,'acton')) || isset(json,'FX')) {
+            // Report
+            if(path_reporting)
+                console.log('START DEFAULT DO FX');
+            // Assign the FX array
+            var	getParentFx	=	(isset(json,'FX'))? json.FX : json;
+            // Check if there are any speed settings
+            var hasSpeed	=	(isset(getParentFx,'fxspeed'))? getParentFx.fxspeed : false;
+            // Run the fx engine
+            doFx(getParentFx.acton,getParentFx.fx,activeBtn,hasSpeed);
+        }
+
+        if(isset(json,'html')) {
+            if(path_reporting)
+                console.log('START DEFAULT WRITE');
+
+            if(doHtmlAppend(json.html,activeBtn)){
+                if(path_reporting)
+                    console.log('START DEFAULT WROTE TO PAGE');
+
+                writeToPage(json);
+            }
+        }
+
+        // Write blocks
+        if(isset(json,'htmlBlock')) {
+            console.log(json.htmlBlock);
+            $.each(json.htmlBlock,function(k,v){
+                $(v.sendto).html(v.html);
+            });
+        }
+
+        if(isset(json,'input')) {
+            writeToInput(json);
+        }
+        // Allows for multi sets of actions to take place
+        if(isset(json,'workflow')) {
+            if(path_reporting)
+                console.log('START WORKFLOW AUTOMATION');
+            // Loop through array of workflows
+            $.each(json.workflow,function(k,v){
+                // Do automation on each workflow
+                doAutomation(activeBtn,sortActiveObj(v.instructions,nDispatch));
+            });
+        }
+        // If there is a single workflow, just run here
+        if(isset(json,'instructions')) {
+            var doNowPost	=	sortActiveObj(json.instructions,nDispatch);
+
+            if(path_reporting) {
+                console.log('PARSE INSTRUCTIONS');
+                console.log('START DEFAULT AUTOMATION');
+            }
+
+            doAutomation(activeBtn,doNowPost,true);
+        }
+        
+        if(typeof cfrsToken === "function")
+            cfrsToken();
+    }
+    catch (Exception) {
+        if(error_reporting) {
+            console.log(response);
+            console.log(Exception.message);
+        }
+    }
+
+    if(path_reporting)
+        console.log('***WRAP UP DEFAULT ACTION***');
+}
 
 function subFxtor(subfX,thisObj,thisSpeed)
 	{
@@ -1475,117 +1481,117 @@ function doAutomation(activeBtn,activeObj,burn)
 	}
 
 function doEventAction(activeBtn,nDispatch)
-	{
-		if(path_reporting) {
-			console.log('START EVENT');
-		}
-		// Searches for the parent wrapper that contains instructions
-		var	thisParent	=	activeBtn.parents('.nKeyUpActOn');
-		
-		if(empty(thisParent)) {
-			thisParent	=	activeBtn.parents('.nForm');
-		}
-		// Get the instructions
-		var	thisData	=	thisParent.data('instructions');
-		// Process the instructions
-		var thisPacket	=	sortActiveObj(thisData,nDispatch);
-		
-		if(package_reporting) {
-			console.log(thisParent);
-			console.log(thisData);
-			console.log(thisPacket);
-		}
-		
-		runLoader(thisData,jQuery);
-		
-		if(get_dom_type(thisParent) == 'FORM') {
-			var	serializedData	=	thisParent.serialize();
-			// !****** DUPLICATE OF SUBMIT **********! //
-			// Combine data
-			// Create a delivery package of the typing values
-			thisPacket.packet.deliver	=	{ 
-				form: serializedData
-			};
-			// Set the target as the current acting object
-			thisPacket.target	=	activeBtn;
-			
-			console.log(thisPacket);
-			
-			// Run the automation
-			doAutomation(activeBtn,thisPacket,false);
-		}
-		else {
-			// Create a delivery package of the typing values
-			thisPacket.packet.deliver	=	{ 
-				keyvalue : activeBtn.val(),
-				keyfield : activeBtn.attr('name')
-			};
-			// Set the target as the current acting object
-			thisPacket.target	=	activeBtn;
-			// Run the automation
-			doAutomation(activeBtn,thisPacket,false);
-		}
-	}
+{
+    if(path_reporting) {
+        console.log('START EVENT');
+    }
+    // Searches for the parent wrapper that contains instructions
+    var	thisParent	=	activeBtn.parents('.nKeyUpActOn');
+
+    if(empty(thisParent)) {
+        thisParent	=	activeBtn.parents('.nForm');
+    }
+    // Get the instructions
+    var	thisData	=	thisParent.data('instructions');
+    // Process the instructions
+    var thisPacket	=	sortActiveObj(thisData, nDispatch);
+
+    if(package_reporting) {
+        console.log(thisParent);
+        console.log(thisData);
+        console.log(thisPacket);
+    }
+
+    runLoader(thisData,jQuery);
+
+    if(get_dom_type(thisParent) == 'FORM') {
+        var	serializedData	=	thisParent.serialize();
+        // !****** DUPLICATE OF SUBMIT **********! //
+        // Combine data
+        // Create a delivery package of the typing values
+        thisPacket.packet.deliver	=	{ 
+            form: serializedData
+        };
+        // Set the target as the current acting object
+        thisPacket.target	=	activeBtn;
+
+        console.log(thisPacket);
+
+        // Run the automation
+        doAutomation(activeBtn,thisPacket,false);
+    }
+    else {
+        // Create a delivery package of the typing values
+        thisPacket.packet.deliver	=	{ 
+            keyvalue : activeBtn.val(),
+            keyfield : activeBtn.attr('name')
+        };
+        // Set the target as the current acting object
+        thisPacket.target	=	activeBtn;
+        // Run the automation
+        doAutomation(activeBtn,thisPacket,false);
+    }
+}
 
 function runWorkflow_FX(activeBtn,targetType,setInstr,doc,$)
-	{
-		if(isset(setInstr,'FX')) {
-			// Checks if the item has an event
-			if(isset(setInstr,'events')) {
-				if(!hasEventList(setInstr,targetType))
-					return false;
-			}
-			else if((targetType == 'mouseout' || targetType == 'mouseover') && !activeBtn.hasClass('nRollOver'))
-				return false;
-			
-			// Show point locator
-			if(path_reporting)
-				console.log('START NOW FX','runWorkflow_FX');
-			// Run event here
-			setEventPoint('onload_fx_before',targetType,setInstr,doc,$);
-			// Run the fx if there is an acton array
-			if(isset(setInstr.FX,'acton') && isset(setInstr.FX,'fx')) { 
-				var thisFxData	=	setInstr.FX;
-				var thisFxSpeed	=	(isset(thisFxData,'fxspeed'))? thisFxData.fxspeed : false;
-				doFx(thisFxData.acton,thisFxData.fx,activeBtn,thisFxSpeed);
-				// Run success fx event
-				setEventPoint('onload_fx_success',targetType,setInstr,doc,$);
-			}
-			// Run after fx event
-			setEventPoint('onload_fx_after',targetType,setInstr,doc,$);
-		}
-	}
+{
+    if(isset(setInstr,'FX')) {
+        // Checks if the item has an event
+        if(isset(setInstr,'events')) {
+            if(!hasEventList(setInstr,targetType))
+                return false;
+        }
+        else if((targetType == 'mouseout' || targetType == 'mouseover') && !activeBtn.hasClass('nRollOver'))
+            return false;
+
+        // Show point locator
+        if(path_reporting)
+            console.log('START NOW FX','runWorkflow_FX');
+        // Run event here
+        setEventPoint('onload_fx_before',targetType,setInstr,doc,$);
+        // Run the fx if there is an acton array
+        if(isset(setInstr.FX,'acton') && isset(setInstr.FX,'fx')) { 
+            var thisFxData	=	setInstr.FX;
+            var thisFxSpeed	=	(isset(thisFxData,'fxspeed'))? thisFxData.fxspeed : false;
+            doFx(thisFxData.acton,thisFxData.fx,activeBtn,thisFxSpeed);
+            // Run success fx event
+            setEventPoint('onload_fx_success',targetType,setInstr,doc,$);
+        }
+        // Run after fx event
+        setEventPoint('onload_fx_after',targetType,setInstr,doc,$);
+    }
+}
 
 function runWorkflow_DOM(targetType,setInstr,doc,$)
-	{
-		if(isset(setInstr,'DOM')) {
-			if(path_reporting)
-				console.log('START NOW DOM','runWorkflow_DOM');
-			// Run a before event
-			setEventPoint('onload_dom_before',targetType,setInstr,doc,$);
-			doDOM(setInstr,targetType);
-			// Run an after event
-			setEventPoint('onload_dom_after',targetType,setInstr,doc,$);
-		}
-	}
+{
+    if(isset(setInstr,'DOM')) {
+        if(path_reporting)
+            console.log('START NOW DOM','runWorkflow_DOM');
+        // Run a before event
+        setEventPoint('onload_dom_before',targetType,setInstr,doc,$);
+        doDOM(setInstr,targetType);
+        // Run an after event
+        setEventPoint('onload_dom_after',targetType,setInstr,doc,$);
+    }
+}
 
 function runWorkflow_HTML(activeBtn,targetType,setInstr,skip)
-	{
-		//skip	=	(empty(skip))? false : true;
-		if(isset(setInstr,'html')) {
-			if(!hasEventList(setInstr,targetType))
-				return false;
-			if(package_reporting)
-				console.log('######### WORKFLOW::HTML ########');
-			default_action(activeBtn,setInstr);
-		}
-	}
+{
+    //skip	=	(empty(skip))? false : true;
+    if(isset(setInstr,'html')) {
+        if(!hasEventList(setInstr,targetType))
+            return false;
+        if(package_reporting)
+            console.log('######### WORKFLOW::HTML ########');
+        default_action(activeBtn,setInstr);
+    }
+}
 
 function runWorkflow_DEFAULT(activeBtn,setInstr,skip)
-	{
-		skip	=	(empty(skip))? false : true;
-		default_action(activeBtn,setInstr,skip);
-	}
+{
+    skip	=	(empty(skip))? false : true;
+    default_action(activeBtn,setInstr,skip);
+}
 
 var	QuickFx	=	function(jQuery)
 	{
@@ -1653,6 +1659,11 @@ var	QuickFx	=	function(jQuery)
 				});
 			};
 	};
+
+function getCsrfToken()
+{
+    return (typeof csrf !== "undefined")? csrf : false;
+}
 
 var	nAutomation	=	function($)
 {
@@ -1734,6 +1745,7 @@ var	nAutomation	=	function($)
 		}
 		// Parse instructions from the target
 		self.setInstr	=	self.activeBtn.data('instructions');
+        self.setInstr.jwtToken   =   getCsrfToken();
 		// Create Ajax element
 		self.AjaxObj	=	new nAjax();
 		// Save the current instance to data for Ajax
@@ -1823,10 +1835,12 @@ jQuery(function($) {
 	var	activeBtn	=	false;
 	var setInstr	=	false;
 	var	hasListener	=	$('.nListener');
+    var getCfrsToken    =   getCsrfToken();
 	// Runs any on-load events
 	if(!empty(hasListener)) {
 		$.each(hasListener, function(k,v) {
 			setInstr	=	$(v).data('instructions');
+            setInstr.jwtToken   =   getCfrsToken;
 			AjaxEngine.useDataObj(setInstr);
 			doAutomation(activeBtn,sortActiveObj(setInstr,nDispatch),true);
 		});
@@ -1836,8 +1850,9 @@ jQuery(function($) {
     });
 	doc.on('click','.nScroll',function(){
 		var getInstr	=	$(this).data('instructions');
+        getInstr.jwtToken   =   getCfrsToken;
 		
-		if(!isset(getInstr,'scrollto'))
+		if(!isset(getInstr, 'scrollto'))
 			return false;
 		
 		var nScroller	=	new nScroll();

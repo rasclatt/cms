@@ -18,7 +18,8 @@ $Form	=	@$this->nForm();
 <?php echo $this->getPlugin('table_view', DS.'interface.php') ?>
 
 <h3>Table View</h3>
-<div class="align-middle search-bar-wrap-block">
+<p>Currently viewing <code><?php echo $this->getRequest('table') ?></code></p>
+<div class="align-center search-bar-wrap-block">
     <?php
     # Searchbar
     echo $this->setPluginContent('page_details', $page_details)
@@ -64,7 +65,7 @@ $Form	=	@$this->nForm();
     <?php else: ?>
     <?php
     $cols	=	array_map(function($v){
-        return \Nubersoft\nApp::call()->getHelper('nRender')->colToTitle($v['Field']);
+        return \Nubersoft\nReflect::instantiate('\Nubersoft\nRender')->colToTitle($v['Field']);
     }, @$this->nQuery()->describe($this->getRequest('table')));
 
     ?>

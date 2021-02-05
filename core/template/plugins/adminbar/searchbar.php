@@ -62,7 +62,7 @@ $page_details['total_pages']    =   ($page_details['total_pages'])?? false;
     }
 </style>
 <?php //echo printpre($page_details) ?>
-<div class="col-count-3 gapped lrg-1">
+<div class="col-count-3 gapped col-c1-lg">
     
     <div class="align-middle pad-bottom-1">
         <div id="pagination-max" class="pagination-wrap">

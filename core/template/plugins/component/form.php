@@ -157,11 +157,12 @@ foreach($compData as $field => $value):
                         echo '
                         <div class="align-middle">
                             <div class="col-count-2 gapped align-center">
-                                <div>
-                                    <a class="expander mini-btn dark" href="#" data-acton=".component-container"><i class="fas fa-expand-arrows-alt"></i></a>
+                                
+                                <div class="mb-1">
+                                    <a class="expander mini-btn dark margin-0" href="#" data-acton=".component-container">EXPAND</a>
                                 </div>
-                                <div>
-                                    <a href="#" class="canceller  mini-btn green ajax-save">Update</a> 
+                                <div class="mb-1">
+                                    <a href="#" class="canceller mini-btn dark  ajax-save margin-0">Update</a> 
                                 </div>
                             </div>
                         </div>';
@@ -204,7 +205,7 @@ foreach($compData as $field => $value):
 
     <?php endif ?>
 
-    <div>
+    <div class="align-middle">
         <?php echo $Form->submit(['name'=>'','value'=>'save', 'class' => 'nbr button green']) ?>
     </div>
 

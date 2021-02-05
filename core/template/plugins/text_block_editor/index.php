@@ -29,8 +29,8 @@ $height =   ($h)?? '300px';
 <div class="text-editor-translator">
     <p style="color: #333; background-color: rgba(200,200,200, 0.3); margin: 0; padding: 0.35em; border-radius: 4px;"><?php if(!empty($id)) echo 'Block ID: <strong>'. $id; ?></strong> / Localization: <code><?php echo $this->getSession('locale') ?> / <?php echo $this->getSession('locale_lang') ?></code><?php if(!empty($label)) echo ' '.$label ?></p>
 
-    <form class="<?php echo $class = (!empty($class))? $class : 'nbr_ajax_form' ?>"<?php if(!empty($id)): ?> data-instructions='{"action":"wb_create_translator"}'<?php endif ?>>
-        <input type="hidden" name="action" value="wb_create_translator" />
+    <form class="<?php echo $class = (!empty($class))? $class : 'nbr_ajax_form' ?>"<?php if(!empty($id)): ?> data-instructions='{"action":"create_translator"}'<?php endif ?>>
+        <input type="hidden" name="action" value="create_translator" />
         <input type="hidden" name="title" value="<?php echo $id ?>" />
         <?php if(!empty($ref_page)): ?>
         <input type="hidden" name="ref_page" value="<?php echo $ref_page ?>" />

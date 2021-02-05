@@ -2,11 +2,33 @@ class ContextMenus
 {
     constructor()
     {
+        this.modalCont  =   '#loadspot-modal';
         this.buttons    =   {};
         this.events =   {};
         this.divider    =   '<div class="hr"></div>';
     }
-    
+	/**
+	 *	@description	
+	 */
+	setModalContainer(name)
+	{
+        this.modalCont  =   name;
+        return this;
+	}
+	/**
+	 *	@description	
+	 */
+	getModalContainer()
+	{
+        return this.modalCont;
+	}
+	/**
+	 *	@description	
+	 */
+	getDivider()
+	{
+        return this.divider;
+	}
     addElem(name, value, elem)
     {
         switch(elem) {
@@ -93,6 +115,7 @@ class ContextMenus
         var self    =   this;
         $.each(this.events, function(k, v) {
             stop    =   v(e, self);
+            cfrsToken();
             if(stop)
                 exit    =   true;
         });
@@ -102,16 +125,17 @@ class ContextMenus
     
     static toMenu(btns, style)
     {
+        var self    =   new ContextMenus();
         if(!btns)
             btns    =   '';
         if(!style)
             style    =   '';
         
         if(typeof btns !== "string") {
-            btns    =   btns.filter(val => val != '').join(this.divider);
+            btns    =   btns.filter(val => val != '').join(self.getDivider());
         }
         return `<div style="${style}" class="contextual-menu align-center draggable">
-            <div class="nTrigger last-col white pointer load-spinner close-x nodrag" data-instructions='{"DOM":{"event":["click"],"html":[" "],"sendto":["#loadspot-modal"]}}'><i class="fas fa-times-circle float-right pointer"></i></div>
+            <div class="nTrigger last-col white pointer load-spinner close-x nodrag" data-instructions='{"DOM":{"event":["click"],"html":[" "],"sendto":["${self.getModalContainer()}"]}}'><i class="fas fa-times-circle float-right pointer close-contextual"></i></div>
             <div class="nodrag">
                 ${btns}
             </div>

@@ -1,42 +1,52 @@
 <?php
-$success	=	array_unique($this->getSystemMessages('success'));
-$errors		=	array_unique($this->getSystemMessages('errors'));
-$msg		=	(!empty($this->getRequest('msg')))? $this->getRequest('msg') : false;
+use \Nubersoft\ {
+    JWTFactory as JWT
+};
+$JWT = JWT::get();
+$success = array_unique($this->getSystemMessages('success'));
+$errors = array_unique($this->getSystemMessages('errors'));
+$msg = (!empty($this->getRequest('msg')))? $this->getRequest('msg') : false;
+
+try {
+    $data   =   $JWT->get($msg);
+    $expire    =   ($data['expire'])?? false;
+    if($expire) {
+        $expired    =   ($expire < time());
+        $msg    =   ($data['msg'])?? false;
+    }
+}
+catch (\Exception $e) {
+    
+}
+
+$hasAlert   =   (!empty($errors) || !empty($success));
 ?>
 
-<?php if(!empty($errors)): ?>
-	<div class="col-2">
-		<div class="nbr_error pointer"><?php echo implode('</div><div class="nbr_error">', $errors) ?></div>
-	</div>
-<?php elseif(!empty($success)): ?>
-	<div class="col-2">
-		<div class="nbr_success pointer"><?php echo implode('</div><div class="nbr_success">', $success) ?></div>
-	</div>
-<?php elseif(!empty($msg)): ?>
-
-	<div class="col-2">
-		<div class="nbr_warning pointer<?php if(!empty($delay) && ($delay == 'off')) echo ' stay' ?>"><?php
-            $decode    =   urldecode($msg);
-            $decrypt    =   $this->getHelper('nCrypt')->decOpenSSL($decode);
-            echo $this->getHelper('ErrorMessaging')->getMessageAuto($decrypt);
-            ?><span class="close-x">&times;</span></div>
-	</div>
-
+<?php if($hasAlert): ?>
+<div class="start2 align-middle alert-wrapper">
+    <span class="alert-dismissible">
 <?php endif ?>
-<script>
-	$(function(){
-		let errormsgs =   $('.nbr_warning, .nbr_success, .nbr_error');
-        
-		<?php if($this->isAdmin()): ?>
-        $.each(errormsgs, function(k, v){
-            if(!$(v).hasClass('stay')) {
-                $(v).delay(3000).slideUp('fast');
-            }
-        });
-		<?php endif ?>
-        
-		errormsgs.on('click', function(){
-			$(this).slideUp('fast');
-		});
-	});
-</script>
+
+    <?php if(!empty($errors)): ?>
+    <div class="alert alert-danger pointer dismiss-parent" role="alert"><?php echo implode('</div><div class="alert alert-danger pointer" role="alert">', $errors) ?></div>
+    <?php elseif(!empty($success)): ?>
+    <div class="alert alert-success pointer dismiss-parent" role="alert"><?php echo implode('</div><div class="alert alert-success pointer" role="alert">', $success) ?></div>
+    <?php endif ?>
+
+<?php if($hasAlert): ?>
+    </span>
+</div>
+<?php endif ?>
+
+<?php if(isset($expired)): ?>
+    <?php if(!$expired): ?>
+
+	<div class="start2 align-middle alert-wrapper">
+		<div class="alert alert-warning alert-dismissible fade show pointer<?php if(!empty($delay) && ($delay == 'off')) echo ' stay' ?>" role="alert"><?php
+            echo $this->getHelper('ErrorMessaging')->getMessageAuto($msg);
+            ?><button class="close-x close" data-dismiss="alert" aria-label="Close">&times;</button>
+        </div>
+	</div>
+
+    <?php endif ?>    
+<?php endif ?>
