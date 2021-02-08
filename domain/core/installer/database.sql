@@ -498,7 +498,6 @@ CREATE TABLE `system_settings` (
 
 INSERT INTO `system_settings` (`ID`, `category_id`, `option_group_name`, `option_attribute`, `usergroup`, `action_slug`, `page_live`, `page_order`) VALUES
 (64, 'transhost', 'system', 'nubersoft.com', 1, NULL, 'on', '1'),
-(65, 'transhost', 'system', 'well-beyond.com', 1, NULL, 'on', '1'),
 (785, 'composer', 'system', '{\r\n    &quot;name&quot;: &quot;rasclatt/cms&quot;,\r\n    &quot;type&quot;: &quot;project&quot;,\r\n    &quot;description&quot;: &quot;Mini CMS framework for PHP. Requires Nubersoft Class Library to run.&quot;,\r\n    &quot;keywords&quot;: [\r\n        &quot;Nubersoft&quot;,\r\n        &quot;PHP&quot;,\r\n        &quot;framework&quot;,\r\n        &quot;cms&quot;\r\n    ],\r\n    &quot;homepage&quot;: &quot;https://github.com/rasclatt/cms&quot;,\r\n    &quot;license&quot;: &quot;MIT&quot;,\r\n    &quot;authors&quot;: [\r\n        {\r\n            &quot;name&quot;: &quot;Ryan Rayner&quot;,\r\n            &quot;email&quot;: &quot;rasclatt@me.com&quot;,\r\n            &quot;role&quot;: &quot;Developer&quot;\r\n        }\r\n    ],\r\n    &quot;require&quot;: {\r\n        &quot;rasclatt/nubersoft&quot;: &quot;*&quot;,\r\n        &quot;firebase/php-jwt&quot;: &quot;*&quot;\r\n    }\r\n}', 1, NULL, 'on', '1'),
 (786, 'webmaster', 'system', 'no-reply@nubersoft.local', 1, NULL, 'on', '1'),
 (787, 'sign_up', 'system', 'on', 1, NULL, 'on', '1'),

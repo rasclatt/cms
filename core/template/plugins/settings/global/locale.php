@@ -3,6 +3,7 @@ use \Nubersoft\ {
     nForm as Form,
     nReflect
 };
+
 ?>
 <div class="section-head nTrigger arrow-down white" data-instructions='{"FX":{"fx":["slideUp","accordian"],"event":["click","click"],"acton":[".section","next::slideToggle"],"fxspeed":["fast","fast"]}}'>Country/Language</div>
 <div class="section hide show">
@@ -121,5 +122,29 @@ use \Nubersoft\ {
             $(this).parents('.locale-item').replaceWith('');
         });
     });
+    </script>
+
+    <h3>Translation Whitelist</h3>
+    <p>Add domain names to allow access to your translation engine.</p>
+    <form action="#" id="transhosts-list" method="post">
+        <input type="hidden" name="action" value="create_transhost" />
+        
+        <input type="text" name="option_attribute[]" placeholder="example.com" class="nbr" />
+        <?php foreach($this->query("SELECT * FROM system_settings WHERE category_id = 'transhost'")->getResults() as $row): ?>
+
+        <input type="text" name="option_attribute[]" value="<?php echo $row['option_attribute'] ?>" class="nbr" />
+        <?php endforeach ?>
+
+        <div id="translation-hosts"></div>
+        
+        <div style="align-self: end;"><?php echo Form::getSubmit(['value' => 'SAVE', 'class' => 'medi-btn dark settings margin-bottom-0']) ?></div>
+    </form>
+
+    <script>
+        $(function(){
+	       $('#transhosts-list').on('submit', function(){
+               
+           };
+        });
     </script>
 </div>
