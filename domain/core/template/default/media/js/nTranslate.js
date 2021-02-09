@@ -156,15 +156,18 @@ class Translator
         }
         //txt =   decodeEntities(txt);
 
+        if(txt == '')
+            return this;
+	    
         switch (type) {
-        case ("val"):
-            $(v).val(txt);
-            break;
-        case ("html"):
-            $(v).html(txt);
-            break;
-        default:
-            (type != "txt") ? $(v).prop(type, txt) : $(v).text(txt);
+            case ("val"):
+                $(v).val(txt);
+                break;
+            case ("html"):
+                $(v).html(txt);
+                break;
+            default:
+                (type != "txt") ? $(v).prop(type, txt) : $(v).text(txt);
         }
         return this;
     }
