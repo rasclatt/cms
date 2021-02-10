@@ -105,8 +105,9 @@ class CartSentinel
         e.preventDefault();
         var self    =   this;
         var data    =   {};
-        if(obj.hasClass('cart-add'))
+        if(obj.hasClass('cart-add')) {
             data    =   this.Cart.parseForm(obj, true);
+        }
         else {
             data.sku    =   obj.data('itemcode');
             data.quantity    =   obj.data('quantity');
@@ -125,7 +126,6 @@ class CartSentinel
             this.createSummary();
         
         this.toCounter();
-        //console.log(this.Cart.get());
         
         return this;
     }
@@ -203,7 +203,14 @@ class CartSentinel
         
         $(name).html(rows.join(''));
     }
-    
+	/**
+	 *	@description	
+	 */
+	setPriceKey(name)
+	{
+        this.addPrice   =   name;
+        return this;
+	}
 	/**
 	 *	@description	
 	 */
