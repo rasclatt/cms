@@ -1975,14 +1975,14 @@ jQuery(function($) {
 	nScroller.clickScroller('.scroll-top');
 	
 	/*
-	**	Get's tokens for the login form
-	*/
-	
+	 **	Get's tokens for the login form
+	 */
 	fetchAllTokens($);
-	
+	/*
+	 **	Allows the component to be draggable
+	 */
 	$('.dragonit').draggable({
-		"cancel":".nodrag",
-		'containment': 'body'
+		"cancel":".nodrag"
 	});
 	var	getDisabled	=	$('.disabled-submit');
 	if(!empty(getDisabled)) {
