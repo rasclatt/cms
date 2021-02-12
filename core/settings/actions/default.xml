@@ -15,6 +15,13 @@
 		</class>
 	</object>
 	
+	<object event="decode_block" after="nbr_set_headers" is_admin="true" request="post" is_ajax="true">
+		<class>
+			<name>\Nubersoft\System\Admin\Observer</name>
+			<method>decodeBlock</method>
+		</class>
+	</object>
+	
 	<object event="create_jwtoken" after="nbr_set_headers" is_admin="true" request="post" is_ajax="true">
 		<class>
 			<name>\Nubersoft\System\Admin\Observer</name>

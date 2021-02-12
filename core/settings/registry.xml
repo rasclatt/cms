@@ -28,7 +28,7 @@
 		<nbr_admin>2</nbr_admin>
 		<nbr_web>3</nbr_web>
 		<open_admin>false</open_admin>
-		<error_mode>E_ALL</error_mode>
+		<error_mode>0</error_mode>
 		<server_mode>live</server_mode>
 		<force_mode>true</force_mode>
 	</ondefine>

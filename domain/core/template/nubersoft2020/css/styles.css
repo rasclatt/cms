@@ -182,22 +182,26 @@ span.alert-dismissible {
   width: 0;
   right: 0;
   overflow: hidden;
-  position: absolute; }
-  @media all and (max-width: 655px) {
-    .sidebar-container {
-      width: 100% !important; } }
+  position: fixed;
+  max-width: none !important;
+  transition: All ease-in-out 0.5s !important; }
   .sidebar-container > div {
-    padding: 1em;
-    width: calc(375px - 2em);
+    width: inherit !important;
+    max-width: inherit !important;
     position: fixed;
     bottom: 0;
     top: 0;
+    right: 0;
     background: linear-gradient(#000, #333); }
-    @media all and (max-width: 655px) {
-      .sidebar-container > div {
-        width: 100%; } }
-  .sidebar-container h3 {
-    font-size: 1.25em !important; }
+    .sidebar-container > div h3 {
+      white-space: nowrap; }
+    .sidebar-container > div.cart-content-mini {
+      padding: 0 !important; }
+  .sidebar-container.sidebar-active {
+    width: 100% !important;
+    max-width: 425px !important; }
+    .sidebar-container.sidebar-active > div {
+      padding: 1em !important; }
 
 .fixed-auto,
 .abs-auto {

@@ -59,7 +59,6 @@ $table  =   'components';
         elseif($v['Field'] == 'category_id')
             return 'Type';
         
-        return \Nubersoft\nReflect::instantiate('\Nubersoft\nRender')->colToTitle($v['Field']);
     }, @$this->nQuery()->describe($table)));
 
     ?>
@@ -74,7 +73,7 @@ $table  =   'components';
             <?php foreach($row as $key => $value):
                     if(in_array($key, $validCols)): ?>
                     
-                    <td <?php if($row['category_id'] != 'translator' && $key == 'category_id'): ?> class="pointer" onClick="window.location='?transkey=<?php echo $table ?>&edit=<?php echo $row["ID"] ?>'"<?php endif ?>>
+                    <td class="translator-field-<?php echo $key."-".$row['ID'] ?> <?php if($row['category_id'] != 'translator' && $key == 'category_id') echo 'pointer' ?>"  <?php if($row['category_id'] != 'translator' && $key == 'category_id'): ?>onClick="window.location='?transkey=<?php echo $table ?>&edit=<?php echo $row["ID"] ?>'"<?php endif ?>>
                         <?php 
                         switch($key) {
                             case('title'):
@@ -83,7 +82,7 @@ $table  =   'components';
                                 break;
                             case('component_type'):
                                 if($row['category_id'] == 'translator')
-                                    echo "<img src=\"/core/template/nubersoft2020/images/flag-{$lang}.jpeg\" style=\"height: 1em; width: 1em; display: inline-block;\" />&nbsp;".strtoupper($lang);
+                                    echo "<img src=\"/client/media/images/flag-{$lang}.jpeg\" style=\"height: 1em; width: 1em; display: inline-block;\" />&nbsp;".strtoupper($lang);
                                 break;
                             case('category_id'):
                                 echo ($value == 'translator')? '<i class="fas fa-language"></i>' : '<i class="fas fa-key"></i>';
@@ -96,8 +95,15 @@ $table  =   'components';
                     <?php endif ?>
             <?php endforeach ?>
 
-                    <td><a href="?edit=<?php echo $row["ID"] ?>" class="mini-btn dark">EDIT</a></td>
+                    <td>
+                        <div class="col-count-2 gapped">
+                            <a href="#" class="mini-btn dark nTrigger canceller" data-instructions='{"action":"decode_block","data":{"deliver":{"table":"components","column":"content","ID":"<?php echo $row["ID"] ?>","sendto":".translator-field-content-<?php $row['ID'] ?>"}}}'>Decode</a>
+                            <a href="?edit=<?php echo $row["ID"] ?>" class="mini-btn dark">EDIT</a>
+                        </div>
+                    </td>
+                    
                 </tr>
+                
             <?php endforeach ?>
             </table>
         </div>

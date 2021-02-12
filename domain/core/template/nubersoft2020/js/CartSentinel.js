@@ -258,10 +258,9 @@ class CartSentinel
     {
         let visible =   this.sideBarVisible();
         if(visible) {
-            $('.sidebar-container').animate({"width": "0px"}, 250, function(){
-                $('#loadspot-modal').html('').removeClass('fixed-auto right-0 top-0 bottom-0');
-                $('body').removeClass('side-bar-active');
-            });
+            $('.sidebar-container').removeClass('sidebar-active');
+            $('#loadspot-modal').html('').removeClass('fixed-auto right-0 top-0 bottom-0');
+            $('body').removeClass('side-bar-active');
         }
         else {
             $('body').addClass('side-bar-active');
@@ -278,7 +277,11 @@ class CartSentinel
             ).css({"z-index": "100000"});
             this.toCounter();
             this.createSummary();
-            $('.sidebar-container').animate({"width": '375px'}, 250);
+            
+            setTimeout(()=>{
+                $('.sidebar-container').addClass('sidebar-active');
+            }, 100);
+            
         }
     }
 }
