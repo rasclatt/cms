@@ -123,6 +123,19 @@ nEventer	=	function()
 		return (!empty(dataObj[name]))? dataObj[name] : false;
 	}
 }
+function autoHeightTextArea()
+{
+    let ta = $('textarea'); console.log(ta);
+    if(ta.length == 0)
+        return false;
+    
+    $.each(ta, (k, v)=>{
+        let h = 25 * $(v).val().split('\n').length; console.log(h);
+        if(h < 300)
+            h   =   300;
+        $(v).height(h);
+    });
+}
 // Create instance of the self-event engine
 eEngine	=	new nEventer();
 // Create instance of jQuery
@@ -856,6 +869,8 @@ function default_action(activeBtn,response,skipParse)
                     console.log('START DEFAULT WROTE TO PAGE');
 
                 writeToPage(json);
+                // Run textarea resizer
+                autoHeightTextArea();
             }
         }
 
@@ -2052,4 +2067,7 @@ jQuery(function($) {
         var thisAdminBtn    =   $(this).next();
         thisAdminBtn.css({"display": ((thisAdminBtn.is(":visible"))? "none" : "flex") });
     });
+    
+    
+    autoHeightTextArea();
 });

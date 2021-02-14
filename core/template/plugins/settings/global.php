@@ -39,7 +39,7 @@ $defaults			=	[
 		"name" => "",
 		"type" => "textarea",
 		'value' => file_get_contents(NBR_ROOT_DIR.DS.'composer.json'),
-		'class' => 'nbr textarea',
+		'class' => 'nbr textarea tabber code',
         'style' => 'height: 500px;',
         'other' => ['readonly']
 	],
@@ -48,7 +48,7 @@ $defaults			=	[
 		"name" => "setting[composer]",
 		"type" => "textarea",
 		'value' => json_encode($composer, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES),
-		'class' => 'nbr textarea',
+		'class' => 'nbr textarea tabber code',
         'style' => 'height: 500px;'
 	],
 	[ 

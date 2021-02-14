@@ -98,6 +98,7 @@ foreach($user as $field => $value):
     
     <h2 style="font-weight: normal; margin-top: 0;">User Profile</h2>
     <section class="profile about-me col-count-3 gapped col-c1-lg">
+        
         <div style="background-color: #FFF; padding: 1em;">
             <div class="photo" style="width: 100%; overflow: hidden; background-image:url('/core/template/default/media/images/ui/transparent-grid.gif'); display: inline-block; border: 1px solid #CCC; background-size: 20px;">
                 <?php if($user['file']): ?>
@@ -112,7 +113,7 @@ foreach($user as $field => $value):
             </div>
         </div>
         
-        <div class="contact span-2 push-col-1 large">
+        <div class="contact span2 span1-lg">
             <div style="padding: 1em; background-color: #FFF;">
                 <h3 style="font-weight: normal; color: #CCC; margin-top: 0; text-transform: uppercase;">Personal Info</h3>
 

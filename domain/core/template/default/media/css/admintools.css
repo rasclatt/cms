@@ -386,6 +386,14 @@ select.nbr {
   .locale-item select {
     min-width: 6em !important; }
 
+.about-me select {
+  width: 100% !important; }
+
+textarea.tabber.code {
+  background-color: #000000;
+  color: #CCC;
+  font-size: 1.25em !important; }
+
 /*
 .table-row-container-wrap {
     @media all and (max-width: 1038px) {
