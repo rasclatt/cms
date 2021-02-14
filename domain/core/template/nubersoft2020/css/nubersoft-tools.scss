@@ -1,0 +1,380 @@
+.csm-tool-item {
+    position: relative;
+    
+    &:hover {
+        border: 1px dashed rgba(35,195,255,0.78);
+        
+        > .edit-btn-tools {
+            background-color: rgba(35,195,255,0.78);
+            color: #FFF;
+            font-weight: bold;
+            font-size: 1rem;
+            text-align: center;
+            padding: 0.3em;
+            position: absolute;
+            display: block !important;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000000000;
+        }
+    }
+}
+.component-editor-form {
+    label,
+    input[type="text"],
+    textarea {
+        width: 100% !important;
+    }
+    input[type="text"],
+    textarea {
+        border: 1px solid #CCC;
+    }
+    label {
+        margin-top: 1em;
+    }
+    textarea {
+        &.nbr.code {
+            background-color: #222;
+            color: #FFF;
+        }
+    }
+    > div:nth-child(6) {
+        > div:nth-child(17) {
+            background-color: #F0F0F0 !important;
+            text-align: center !important;
+        }
+    }
+}
+.nbr{
+    &:not(input[type="submit"],input[type="checkbox"],input[type="radio"]) {
+        border: 1px solid #CCC;
+        appearance: none;
+        -webkit-appearance: none;
+        font-size: 1em;
+        padding: 0.75em 1.2em;
+        border-left: 5px solid rgba(0,163,255,1.00);
+        font-family: 'Montserrat', sans-serif;
+    }
+}
+textarea {
+    &.code {
+        font-family: Courier !important;
+    }
+}
+form {
+    select {
+        &.nbr {
+            font-size: 1em;
+            padding: 0.75em 1.2em;
+            border-radius: 0px;
+            position: relative;
+            border-left: 5px solid red !important;
+            
+            &::after {
+                content: 'v';
+                color: #000;
+                position: absolute;
+                right: 0;
+            }
+        }
+    }
+}
+.medi-btn,
+.mini-btn,
+input[type="submit"].nbr {
+    margin: 1em auto;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85em;
+    padding: 0.75em 1.25em;
+    font-weight: 600;
+    background-color: #333;
+    color: #FFF;
+    border: 1px solid transparent;
+}
+input[type="submit"]{
+    &.nbr:hover {
+        background-color: #666;
+        cursor: pointer;
+    }
+}
+html {
+    counter-reset: fileids;
+}
+.file-id-backtrace {
+    counter-increment: fileids;
+    position: relative;
+    background-color: rgba(255,0,0,0.80);
+    color: #FFF;
+    padding: 0.25em 0.25em 0.25em 2em;
+    display: inline-block;
+    border-left: 5px solid rgba(102,12,12,0.80);
+    &::before {
+        background-color: rgba(102,12,12,0.80);
+        position: absolute;
+        left: -5px;
+        top: 0em;
+        bottom: 0;
+        content: counter(fileids);
+        padding: 0.25em 0.5em 0.25em 0.25em;
+    }
+}
+.medi-btn,
+.mini-btn {
+    margin: 1em !important;
+    color: rgba(0,163,255,1.00);
+    font-size: 0.65em;
+    padding: 0.5em 1em;
+    border: 1px solid rgba(0,163,255,1.00);
+    background-color: transparent;
+    display: inline-block;
+}
+.medi-btn {
+    font-size: 0.85em;
+    padding: 0.75em 1.25em;
+    
+}
+.page-menu {
+    li {
+        background: #000;
+        position: relative;
+        overflow: visible;
+        a {
+            &:link,
+            &:visited {
+                color: #FFF;
+                background-color: transparent;
+                text-align: center !important;
+                text-transform: uppercase;
+                font-size: 0.85em;
+                padding: 0.75em;
+                display: block;
+                white-space: nowrap;
+                overflow: visible;
+            }
+        }
+    }
+}
+.arrow-down {
+    position: relative;
+    &::after {
+        color: #888;
+        position: absolute;
+        right: 1em;
+        transition: 0.35s;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content: "\f077";
+        transform: rotate(180deg);
+    }
+    &.white {
+        color: #FFF;
+        &::after {
+            color: #FFF;
+        }
+    }
+}
+.page-menu {
+    padding: 0;
+    
+    li {
+        &:hover {
+            li {
+                position: relative;
+                left: 1em;
+                bottom: 0.5em;
+            }
+            ul {
+                z-index: 1;
+                display: block;
+                position: absolute;
+                height: 0;
+                overflow: visible;
+                li {
+                    border-left: 1px solid red;
+                    border-right: 1px solid red;
+
+                    &:last-child {
+                        border-bottom: 1px solid red;
+                    }
+                    
+                    &:first-child {
+                        border-top: 1px solid red;
+                    }
+                }
+            }
+        }
+        
+        &.menu-group {
+            position: relative;
+            
+            > ul {
+                position: relative;
+                right: -80%;
+                bottom: -0.5em;
+            }
+            
+            &:hover > a:after,
+            > a:hover::after {
+                transform: rotate(180deg);
+            }
+            > a {
+                &::after {
+                    color: red;
+                    position: absolute;
+                    right: 0;
+                    transition: 0.35s;
+                    font-family: "Font Awesome 5 Free";
+                    font-weight: 900;
+                    content: "\f077";
+                }
+            }
+        }
+
+        a {
+            &:hover {
+                background-color: red;
+            }
+        }
+    }
+    
+    ul,
+    ul li {
+        list-style: none;
+        margin-left: 0;
+        padding-left: 0;
+        text-indent: 0;
+    }
+    > ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    ul {
+        ul {
+            display: none;
+        }
+    }
+}
+.active-contextual {
+    display: block !important;
+}
+.contextual-menu {
+    position: relative;
+    width: 200px;
+    background-color: rgba(0,0,0,0.8);
+    font-size: 0.8em;
+    border-radius: 10px;
+    border: 1px solid #CCC;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+    padding: 0.5em 0;
+    
+    .close-x {
+        transform: translateZ(0);
+        position: relative;
+        top: -1.75em;
+        right: -1.5em;
+        &:hover {
+            i {
+                transform-origin: center;
+                transform: rotate(0deg);
+            }
+        }
+        i {
+            transform: rotate(45deg);
+            font-size: 1.5em;
+            position: absolute;
+            transition: All 0.35s;
+            right: 0;
+            top: 0;
+            color: #CCC;
+            mix-blend-mode: multiply;    
+            -webkit-mix-blend-mode: multiply;
+        }
+    }
+    button,
+    a {
+        font-size: 0.85em !important;
+        transition: 0.35s;
+        color: #FFF !important;
+        border: none !important;
+        background-color: transparent;
+        width: 100%;
+        display: inline-block;
+        margin: 0;
+        padding: 0.2em;
+        &:hover {
+            color: rgba(17,118,223,1.00) !important;
+            cursor: pointer;
+            text-decoration: none;
+            color: rgba(255,255,255,0.78) !important;
+        } 
+    }
+    .nbr {
+        padding: 5px !important;
+        margin: 5px !important;
+        width: calc(100% - 10px);
+    }
+}
+div {
+    &.hr {
+        height: 2px;
+        background-color: #888;
+        margin: 0.5em 0;
+    }
+}
+.csm-tool-item {
+    .trans-cls {
+        &:hover {
+            cursor: pointer;
+            
+            &::after {
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                content: "\f1ab";
+                font-size: 20px;
+                position: absolute;
+                mix-blend-mode: difference;
+            }
+        }
+    }
+}
+.draggable {
+    cursor: grab;
+    
+    &:active {
+        cursor: grabbing;
+    }
+    
+    .nodrag {
+        cursor: default;
+    }
+    
+    &::before {
+        position: absolute;
+        left: -1em;
+        top: -1em;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content: "\f0b2";
+        font-size: 20px;
+        color: #CCC;
+    }
+}
+a,
+button {
+    &.green {
+        border: none !important;
+        border-radius: 0px !important;
+        margin: auto !important;
+    }
+    &.nbr {
+        border-left: none !important;
+    }
+}
+tr.table-body-row {
+    td {
+        font-size: 0.85em;
+    }
+}

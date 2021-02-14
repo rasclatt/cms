@@ -71,21 +71,13 @@ echo $Form->fullhide(['name' => 'option_group_name', 'value' => 'system']);
 		$type	=	$row['type'];
 		unset($row['type']);
 	?>
-	
-	<div class="col-count-<?php echo (in_array($type,['textarea']))? '2' : '4' ?> col-c1-lg">
-		<div class="start1">
-			<?php echo $Form->{$type}($row) ?>
-		</div>
-	</div>
 
+    <?php echo $Form->{$type}($row) ?>
+            
 	<?php endforeach ?>
 	
-	<div class="col-count-4 lrg-2 med-1">
-		<div class="start1">
 			<?php echo $Form->submit(['value' => 'Save', 'class' => 'medi-btn dark settings']) ?>
-		</div>
-	</div>
-
+	
 <?php echo $Form->close() ?>
 <script>
 	// Calls the form token

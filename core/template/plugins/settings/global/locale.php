@@ -26,62 +26,59 @@ use \Nubersoft\ {
         </div>
         <h5>Countries</h5>
         <p>The default is US. If you are adding countries besides US then you need to add US if you intend to use it.</a>
-        <div id="edit-country-dropper" class="col-count-3 gapped-2">
+        <div id="edit-country-dropper" class="col-count-3 gapped-2 col-c1-lg">
             <?php foreach($Locale->getActiveCountries() as $langAttr): ?>
 
-            <div class="col-count- gapped-half locale-item" style="grid-template: 1fr / 100px 100px 1fr;">
-                <div>
-                    <label>
-                        <input type="text" name="country[name][]" value="<?php echo strtoupper($langAttr['option_attribute']) ?>" class="nbr" placeholder="Create a country" />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input type="text" name="country[page_order][]" value="<?php echo $langAttr['page_order'] ?>" placeholder="Order" class="nbr auto-width" />
-                    </label>
-                </div>
-                <div class="flexor">
-                    <label>
-                        <select name="country[page_live][]" class="nbr auto-width">
-                            <option value="off" <?php if($langAttr['page_live'] == 'off') echo 'selected="selected"' ?>>Off</option>
-                            <option value="on" <?php if($langAttr['page_live'] == 'on') echo 'selected="selected"' ?>>On</option>
-                            <option value="adm" <?php if($langAttr['page_live'] == 'adm') echo 'selected="selected"' ?>>Admin Only</option>
-                        </select>
-                    </label>
-                    <div class="align-middle"><a href="#" class="locale-delete-item canceller"><i class="fas fa-trash-alt"></i></a></div>
-                </div>
-            </div>
+            <table class="locale-item">
+                <tr>
+                    <td>
+                        <input type="text" name="country[name][]" value="<?php echo strtoupper($langAttr['option_attribute']) ?>" class="nbr width-all" placeholder="Create a country" />
+                    </td>
+                    <td>
+                        <input type="text" name="country[page_order][]" value="<?php echo $langAttr['page_order'] ?>" placeholder="Order" class="nbr width-all" />
+                    </td>
+                    <td class="flexor">
+                        <label>
+                            <select name="country[page_live][]" class="nbr auto-all">
+                                <option value="off" <?php if($langAttr['page_live'] == 'off') echo 'selected="selected"' ?>>Off</option>
+                                <option value="on" <?php if($langAttr['page_live'] == 'on') echo 'selected="selected"' ?>>On</option>
+                                <option value="adm" <?php if($langAttr['page_live'] == 'adm') echo 'selected="selected"' ?>>Admin Only</option>
+                            </select>
+                        </label>
+                        <div class="align-middle"><a href="#" class="locale-delete-item canceller"><i class="fas fa-trash-alt"></i></a></div>
+                    </td>
+                </tr>
+            </table>
 
             <?php endforeach ?>
         </div>
 
         <h5 class="margin-top-2">Languages</h5>
         <p>The default is EN. If you are adding languages besides EN then you need to add EN if you intend to use it.</a>
-        <div id="edit-language-dropper" class="col-count-3 gapped-2">
+        <div id="edit-language-dropper" class="col-count-3 gapped-2 col-c1-lg">
             <?php foreach($Locale->getActiveLanguages() as $langAttr): ?>
 
-            <div class="col-count- gapped-half locale-item" style="grid-template: 1fr / 100px 100px 1fr;">
-                <div>
-                    <label>
-                        <input type="text" name="language[name][]" value="<?php echo strtoupper($langAttr['option_attribute']) ?>" class="nbr" placeholder="Create a language" />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input type="text" name="language[page_order][]" value="<?php echo $langAttr['page_order'] ?>" placeholder="Order" class="nbr auto-width" />
-                    </label>
-                </div>
-                <div class="flexor">
-                    <label>
-                        <select name="language[page_live][]" class="nbr auto-width">
-                            <option value="off" <?php if($langAttr['page_live'] == 'off') echo 'selected="selected"' ?>>Off</option>
-                            <option value="on" <?php if($langAttr['page_live'] == 'on') echo 'selected="selected"' ?>>On</option>
-                            <option value="adm" <?php if($langAttr['page_live'] == 'adm') echo 'selected="selected"' ?>>Admin Only</option>
-                        </select>
-                    </label>
-                    <div class="align-middle"><a href="#" class="locale-delete-item canceller"><i class="fas fa-trash-alt"></i></a></div>
-                </div>
-            </div>
+            <table class="locale-item">
+                <tr>
+                    <td>
+                        <input type="text" name="language[name][]" value="<?php echo strtoupper($langAttr['option_attribute']) ?>" class="nbr auto-all" placeholder="Create a language" />
+                    </td>
+                    <td>
+                        <input type="text" name="language[page_order][]" value="<?php echo $langAttr['page_order'] ?>" placeholder="Order" class="nbr auto-all" />
+                    </td>
+                    <td class="flexor">
+                        <label>
+                            <select name="language[page_live][]" class="nbr auto-all">
+                                <option value="off" <?php if($langAttr['page_live'] == 'off') echo 'selected="selected"' ?>>Off</option>
+                                <option value="on" <?php if($langAttr['page_live'] == 'on') echo 'selected="selected"' ?>>On</option>
+                                <option value="adm" <?php if($langAttr['page_live'] == 'adm') echo 'selected="selected"' ?>>Admin Only</option>
+                            </select>
+                        </label>
+                        <div class="align-middle"><a href="#" class="locale-delete-item canceller"><i class="fas fa-trash-alt"></i></a></div>
+                    </td>
+                
+                </tr>
+            </table>
 
             <?php endforeach ?>
         </div>
@@ -94,28 +91,26 @@ use \Nubersoft\ {
         $('.locale-edit').on('click', function(){
             let thisAttr =   $(this).data('addattr');
             $(`#edit-${thisAttr}-dropper`).append(`
-    <div class="col-count- gapped-half locale-item" style="grid-template: 1fr / 100px 100px 1fr;">
-        <div>
-            <label>
-                <input type="text" name="${thisAttr}[name][]" value="" class="nbr" placeholder="Create a ${thisAttr}" />
-            </label>
-        </div>
-        <div>
-            <label>
-                <input type="text" name="${thisAttr}[page_order][]" value="1" placeholder="Order" class="nbr auto-width" />
-            </label>
-        </div>
-        <div class="flexor">
-            <label>
-                <select name="${thisAttr}[page_live][]" class="nbr auto-width">
-                    <option value="off">Off</option>
-                    <option value="on">On</option>
-                    <option value="admin">Admin Only</option>
-                </select>
-            </label>
-            <div class="align-middle"><a href="#" class="locale-delete-item canceller"><i class="fas fa-trash-alt"></i></a></div>
-        </div>
-    </div>`);
+    <table class="locale-item">
+        <tr>
+            <td>
+                <input type="text" name="${thisAttr}[name][]" value="" class="nbr auto-all" placeholder="Create a ${thisAttr}" />
+            </td>
+            <td>
+                <input type="text" name="${thisAttr}[page_order][]" value="1" placeholder="Order" class="nbr auto-all" />
+            </td>
+            <tdd class="flexor">
+                <label>
+                    <select name="${thisAttr}[page_live][]" class="nbr auto-all">
+                        <option value="off">Off</option>
+                        <option value="on">On</option>
+                        <option value="admin">Admin Only</option>
+                    </select>
+                </label>
+                <div class="align-middle"><a href="#" class="locale-delete-item canceller"><i class="fas fa-trash-alt"></i></a></div>
+            </td>
+        </tr>
+    </table>`);
         });
         
         $('#admin-content').on('click', '.locale-delete-item', function(){

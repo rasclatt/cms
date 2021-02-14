@@ -64,22 +64,26 @@ $Form	=	@$this->nForm();
 
     <?php else: ?>
     <?php
+    $Render =   \Nubersoft\nReflect::instantiate('\Nubersoft\nRender');
     $cols	=	array_map(function($v){
-        return \Nubersoft\nReflect::instantiate('\Nubersoft\nRender')->colToTitle($v['Field']);
+        return $v['Field'];
     }, @$this->nQuery()->describe($this->getRequest('table')));
 
     ?>
 
-        <div style="overflow: auto;">
+        <div style="overflow: auto;" class="admin-table-<?php echo $this->getRequest('table') ?>">
             <table class="generic-table" cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                    <td><?php echo implode('</td>'.PHP_EOL.'<td>',array_merge($cols, ['&nbsp;'])) ?></td>
+                <tr class="hide-on-md">
+                    <?php foreach($cols as $col): ?>
+                    <td class="field-name-<?php echo $col ?>"><?php echo $Render->colToTitle($col) ?></td>
+                    <?php endforeach ?>
+                    <td class="field-name-edit"></td>
                 </tr>
             <?php foreach($page_details['results'] as $row): ?>
                 <tr onClick="window.location='?table=<?php echo $this->getRequest('table') ?>&edit=<?php echo $row["ID"] ?>'" class="table-body-row">
             <?php foreach($row as $key => $value): ?>
-                    <td>
-                        <?php echo $value ?>
+                    <td class="field-name-<?php echo $key ?>">
+                        <span class="hide"><strong><?php echo $Render->colToTitle($key) ?>:</strong>&nbsp;</span><?php echo $value ?>
                     </td>
             <?php endforeach ?>
 

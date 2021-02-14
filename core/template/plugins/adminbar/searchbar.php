@@ -144,7 +144,9 @@ $page_details['total_pages']    =   ($page_details['total_pages'])?? false;
             <?php endif ?>
             <div id="search-bar">
                 <?php echo $Form->text(['name' => 'search', 'value' => $this->getGet('search'), 'class'=>'nbr']) ?>
-                <?php echo $Form->submit(['value' => 'Search', 'class'=>'button']) ?>
+                <div class="align-middle">
+                    <input type="submit" value="Search" class="button">
+                </div>
             </div>
         <?php echo $Form->close() ?>
     </div>

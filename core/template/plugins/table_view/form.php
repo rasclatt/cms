@@ -8,7 +8,7 @@ echo $Form->fullhide(['name' => 'action', 'value' => 'edit_table_rows_details'])
 echo $Form->fullhide(['name' => 'token[nProcessor]', 'value' => '']);
 ?>
 
-	<div class="table-row col-count-3 gapped lrg-2 med-1">
+	<div class="table-row col-count-3 gapped col-c2-lg col-c1-md">
 <?php
 foreach($user as $field => $value):
 	if(in_array($field, ['ID','unique_id'])) {

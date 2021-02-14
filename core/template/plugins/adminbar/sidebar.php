@@ -1,5 +1,7 @@
 
-<a href="<?php echo $this->localeUrl($this->getPage('full_path')) ?>" class="pointer margin-bottom-lrg"><?php echo $this->getSiteLogo(URL_CORE_IMAGES.'/logo/nubersoft.png') ?></a>
+<div class="admin-left-logo margin-bottom-2">
+    <a href="<?php echo $this->localeUrl($this->getPage('full_path')) ?>" class="pointer margin-bottom-2"><?php echo $this->getSiteLogo(URL_CORE_IMAGES.'/logo/nubersoft.png') ?></a>
+</div>
 
 <?php
 if($this->userGet('usergroup') > 1)

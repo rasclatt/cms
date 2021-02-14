@@ -1,0 +1,61 @@
+/* CSS Document */
+.fx {
+    &.fx-pulsar {
+        animation-name: pulsar;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+    }
+    transition: 1s;
+    position: relative;
+    
+    &.fx-trans,
+    &.fx-zoomin,
+    &.fx-zoomout,
+    &.fx-slidedown {
+        opacity: 0;
+    }
+    &.fx-zoomin {
+        transform: scale(5);
+    }
+    &.fx-zoomout {
+        transform: scale(0);
+    }
+    &.fx-slidedown {
+        top: 10em;
+    }
+    &.fx-slideup,
+    &.fx-infocus,
+    &.fx-leftin,
+    &.fx-rightin {
+        opacity: 1;
+    }
+    &.fx-slideup {
+        top: 0;
+    }
+    &.fx-infocus {
+        transform: scale(1);
+    }
+    &.fx-leftout {
+        left: -10em;
+    }
+    &.fx-leftin {
+        left: 0;
+    }
+    &.fx-rightout {
+        right: -10em;
+    }
+    &.fx-rightin {
+        right: 0;
+    }
+}
+@keyframes pulsar {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

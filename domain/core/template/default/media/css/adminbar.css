@@ -272,11 +272,7 @@ img.active-status {
     transition: All ease-in-out 1s;
 }
 #admin-sidebar > div a {
-    margin-bottom: 0.25em;
-}
-#admin-sidebar > div a {
     display: block;
-    width: calc(100% - 0.5em) !important;
 }
 #admin-sidebar > div a span {
     cursor: pointer;
@@ -341,11 +337,13 @@ img.active-status {
     #admin-sidebar > div.icn-plugin a::after {
         content: "\f1e6";
     }
-    #admin-sidebar > div a:hover {
-        transform: scale(0.9);
-        background-color: transparent !important;
-        padding-left: 0 !important;
-        opacity: 0.7 !important;
+    .sidebar > div.icn-table a::after {
+        content: "\f0ce";
+    }
+    @media all and (max-width: 655px) {
+        .sidebar > div.icn-table a i {
+            display: none;
+        }
     }
     #admin-content-wrap {
         grid-template-columns: 5em 1fr !important;
