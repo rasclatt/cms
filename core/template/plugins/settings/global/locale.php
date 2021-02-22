@@ -99,7 +99,7 @@ use \Nubersoft\ {
             <td>
                 <input type="text" name="${thisAttr}[page_order][]" value="1" placeholder="Order" class="nbr auto-all" />
             </td>
-            <tdd class="flexor">
+            <td class="flexor">
                 <label>
                     <select name="${thisAttr}[page_live][]" class="nbr auto-all">
                         <option value="off">Off</option>

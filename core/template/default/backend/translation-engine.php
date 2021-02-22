@@ -52,7 +52,7 @@ $page_details	=	$Pagination->get();
     
     <div>
         <?php
-        if(empty($this->getGet('edit')) && empty($this->getGet('search')))
+        if(empty($this->getGet('edit')))
             echo str_replace('name="search"', 'name="search" autocomplete="off"', $this->setPluginContent('page_details', $page_details)
             ->getPlugin('adminbar', 'searchbar.php'));
 
