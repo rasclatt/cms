@@ -179,7 +179,7 @@ class CartSentinel
         $.each(this.Cart.get(), function(k, v){
             if(self.isActive(k)) {
                 let shortDesc   =   (typeof self.itemList[k].title !== "undefined")? self.itemList[k].title : false;
-                let doTranslation = (this.transStatus)? `<i class="fas fa-spinner spinner"></i>`: (shortDesc != false)? shortDesc : self.itemList[k].description;
+                let doTranslation = (self.transStatus)? `<i class="fas fa-spinner spinner"></i>`: (shortDesc != false)? shortDesc : self.itemList[k].description;
                 // Update subtoal
                 subtotal    +=  self.tally(k, v);
                 // Do any on-the-fly functions
