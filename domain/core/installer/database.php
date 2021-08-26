@@ -147,7 +147,7 @@ INSERT INTO `components` (`ID`, `unique_id`, `ref_page`, `parent_id`, `ref_ancho
 ";
 
 $insert[]	=	preg_replace('/\([\d]+,/', '(',"
-INSERT INTO `dropdown_menus` (`ID`, `unique_id`, `assoc_column`, `menuName`, `menuVal`, `page_order`, `restriction`, `page_live`) VALUES
+INSERT INTO `dropdown_menus` (`unique_id`, `assoc_column`, `menuName`, `menuVal`, `page_order`, `restriction`, `page_live`) VALUES
 (1, '2014072705035210000', 'column_type', 'Text Box', 'text', '', '', 'on'),
 (2, '20150109182049800000', 'column_type', 'Radio Buttons', 'radio', '', '', 'on'),
 (3, '2014072705041030000', 'column_type', 'Text Area', 'textarea', '', '', 'on'),
@@ -255,7 +255,7 @@ CREATE TABLE `form_builder` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
 
 $insert[]	=	preg_replace('/\([\d]+,/', '(', "
-INSERT INTO `form_builder` (`ID`, `unique_id`, `column_type`, `column_name`, `size`, `default_setting`, `restriction`, `page_order`, `page_live`) VALUES
+INSERT INTO `form_builder` (`unique_id`, `column_type`, `column_name`, `size`, `default_setting`, `restriction`, `page_order`, `page_live`) VALUES
 (1, '20150109190421300000', 'text', 'title', '', '', '0', 0, 'on'),
 (2, '20150109190413900000', 'text', 'width', '', '', '0', 0, 'on'),
 (3, '20150113135135600000', 'select', 'page_element', '', '', '', 0, 'on'),
@@ -581,7 +581,4 @@ ALTER TABLE `users`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 ";
 $create[]	=	"
-ALTER TABLE `user_roles`
-  MODIFY `ID` int(20) NOT NULL AUTO_INCREMENT;
-COMMIT;
-";
+ALTER TABLE `user_roles` MODIFY `ID` int(20) NOT NULL AUTO_INCREMENT;";
