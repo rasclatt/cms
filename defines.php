@@ -27,6 +27,9 @@ define("NBR_FUNCTIONS", NBR_VENDOR.DS.'Nubersoft'.DS.'functions');
 define("NBR_ENGINE_CORE", NBR_CORE.DS.'engine');
 define("NBR_ENGINE_CLIENT", NBR_CLIENT_SETTINGS.DS.'engine');
 
+define("NBR_CLIENT_FUNCTIONS", NBR_CLIENT_DIR.DS.'functions');
+define("NBR_CORE_FUNCTIONS", NBR_CORE.DS.'functions');
+
 define("NBR_DOMAIN_ROOT", NBR_ROOT_DIR.DS.'domain');
 define("NBR_DOMAIN_CLIENT_DIR", NBR_DOMAIN_ROOT.DS.'client');
 define("NBR_THUMB_DIR", NBR_DOMAIN_CLIENT_DIR.DS.'thumbs');

@@ -26,12 +26,11 @@ if(!empty($this->getRequest('create'))):
 elseif(is_numeric($this->getRequest('edit'))):
 	$user	=	$this->getHelper('nUser')->getUser($this->getRequest('edit'), 'ID');
 
-	if(empty($user)) {
-		$this->toError('User is invalid.'); ?>
-		<?php
+	if(empty($user)):
+		$this->toError('User is invalid.');
 		echo $this->getPlugin('notifications');
 		return false;
-	}
+	endif;
    
    	$this->setNode('user_data', $user);
 	echo $this->getPlugin('admintools', DS.'users'.DS.'form.php');

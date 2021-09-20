@@ -97,10 +97,11 @@ foreach($user as $field => $value):
     </script>
     
     <h2 style="font-weight: normal; margin-top: 0;">User Profile</h2>
+    <p class="legal">Record ID: <?php echo $user['ID'] ?></p>
     <section class="profile about-me col-count-3 gapped col-c1-lg">
         
         <div style="background-color: #FFF; padding: 1em;">
-            <div class="photo" style="width: 100%; overflow: hidden; background-image:url('/core/template/default/media/images/ui/transparent-grid.gif'); display: inline-block; border: 1px solid #CCC; background-size: 20px;">
+            <div class="photo align-middle" style="width: 100%; overflow: hidden; background-image:url('/core/template/default/media/images/ui/transparent-grid.gif'); display: inline-block; border: 1px solid #CCC; background-size: 20px;">
                 <?php if($user['file']): ?>
                 <img src="<?php echo $user['file'] ?>" alt="User profile" />
                 <?php endif ?>
