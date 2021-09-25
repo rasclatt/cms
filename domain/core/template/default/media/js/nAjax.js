@@ -70,8 +70,9 @@ class nAjax
         if(typeof ajaxDataObj.data.jwtToken === "undefined")
             ajaxDataObj.data.jwtToken   =   getCsrfToken();
 		// Add a doBefore if set
-		if(!empty(this.doBeforeAttr))
-			ajaxDataObj.beforeSend	=	this.doBefore();
+		if(!empty(this.doBeforeAttr)) {
+			ajaxDataObj.beforeSend	=	this.doBeforeAttr;//this.doBefore();
+		}
 		// If this is set as a formData Obj, create prefs
 		if(isFormData) {
 			ajaxDataObj.processData	=	false;

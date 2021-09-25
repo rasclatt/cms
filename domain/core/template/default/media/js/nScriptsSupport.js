@@ -629,6 +629,8 @@ function writeToInput(obj)
 }
 function doAjaxAction(activeBtn, obj, ajaxFunc, doBefore, dispatcher)
 {
+	let AjaxEngine = new nAjax($);
+
 	if (!empty(dispatcher) || !empty(eEngine.getData('ajax_disp'))) {
 		if (!empty(eEngine.getData('ajax_disp')))
 			AjaxEngine.setUrl(eEngine.getData('ajax_disp'));
