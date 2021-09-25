@@ -1,11 +1,7 @@
-const show_path   =   true;
-
 class CookieJar
 {
     static destroy(cname)
     {
-        if(show_path)
-            console.log({"Cookie":"destroy","v":cname});
         let d = new Date();
         d.setTime(d.getTime() - (1 * 24 * 60 * 60 * 1000));
         let expires = "expires="+d.toUTCString();
@@ -18,10 +14,6 @@ class CookieJar
             exdays  =   1;
         if(typeof cvalue === "undefined")
             cvalue  =   false;
-        
-        if(show_path)
-            console.log({"Cookie":"set","n": cname, "v":cvalue,"exp":exdays});
-        
         let d = new Date();
         d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
         let expires = "expires="+d.toUTCString();

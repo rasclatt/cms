@@ -47,6 +47,32 @@
 		<include is_local="true">
 			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/js/nControl.js</path>
 		</include>
+		
+		<include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/js/Eventer.js</path>
+		</include>
+		<include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/js/nScriptsSupport.js</path>
+		</include>
+		<include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/js/nAjax.js</path>
+		</include>
+		<include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/js/nExpire.js</path>
+		</include>
+		<include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/js/nScroll.js</path>
+		</include>
+		<include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/js/nCountDown.js</path>
+		</include>
+		<include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/js/QuickFx.js</path>
+		</include>
+		<include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
+			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/js/nAutomation.js</path>
+		</include>
+		
 		<include is_local="true" is_admin="true" is_frontend="true" is_backend="true">
 			<path>~CONSTANT::NBR_DOMAIN_ROOT~/core/template/default/media/js/nScripts.js</path>
 		</include>	

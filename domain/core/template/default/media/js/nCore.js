@@ -1,7 +1,3 @@
-// JavaScript Document
-const show_path   =   true;
-
-
 class CartEngine
 {
     constructor()
@@ -19,9 +15,6 @@ class CartEngine
     {
         let data    =   JSON.parse(CookieJar.get('cart'));
         
-        if(show_path)
-            console.log(CookieJar.get('cart'));
-        
         if(typeof sku !== "undefined")
             return (isset(data, sku))? data[sku] : false;
         
@@ -30,11 +23,8 @@ class CartEngine
     
     add(sku, qty)
     {
-        if(show_path)
-            console.log({"Cart":"add","sku": sku, "qty": qty});
         let curr    =   this.get();
         curr[sku]   =   qty;
-        //console.log({"Cart":"Add","sku":sku,"qty":qty});
         this.clear();
         CookieJar.set('cart', this.toString(curr));
         return this;
