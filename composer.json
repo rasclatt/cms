@@ -19,7 +19,7 @@
     ],
     "require": {
         "rasclatt/nubersoft": "*",
-        "rasclatt/nubersoft-cms": "*",
-        "firebase/php-jwt": "*"
+        "firebase/php-jwt": "*",
+        "rasclatt/nubersoft-cms": "*"
     }
 }
