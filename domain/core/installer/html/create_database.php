@@ -78,26 +78,4 @@ if(!empty($err)): ?>
         </td>
     </table>
     <?php echo $Form->close() ?>
-
-<script>
-    $(function(){
-        $('form').on('change submit', function(e){
-            if(e.target != 'change') {
-                e.preventDefault();
-            }
-            
-            var validate    =   [];
-            var data    =   $(this).serializeArray();
-            $.each(data, function(k,v){
-                if(v.value != '') {
-                    validate.push(1);
-                }
-            });
-            
-            if(validate.length == data.length) {
-                $(this).clone().submit();
-            }
-        });
-    });
-</script>
 </div>
