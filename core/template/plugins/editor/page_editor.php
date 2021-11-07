@@ -12,11 +12,13 @@ if($this->getSession('editor') != 1)
 	return false;
 elseif(!$this->isAdmin())
 	return false;
-
+$page = $this->getPage();
+if(empty($page))
+	throw new \Exception('Page does not exist', 403);
 $Form =	new Form;
 $Page =	new PageSettingsModel;
 $Settings =	new Settings;
-$page =	new PageSettings($this->getPage()->toArray());
+$page =	new PageSettings($page->toArray());
 ?>
 <div class="start2 page-settings-editor">
 	<h3 class="page-edit-title"><img src="/core/template/default/media/images/core/led_<?php echo $page->page_live ?>.png" style="max-width: 20px; width: auto; display: inline;" />&nbsp;<?php echo $page->menu_name ?>&nbsp;&nbsp;<span style="color: red">|</span>&nbsp;&nbsp;<span class="white" id="path-domain"><?php echo $this->getPage('full_path') ?></span><a class="mini-btn green no-bx-shadow no-margin nTrigger" href="#" data-instructions='{"FX":{"event":["click"],"acton":["#page-settings"],"fxspeed":["fast","fast"],"fx":["slideToggle"]}}'>EDIT</a></h3>
