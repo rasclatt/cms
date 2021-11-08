@@ -271,7 +271,10 @@ $defaults			=	[
 	<h3>Backend Name</h3>
 	<p>Change your back office path name to help keep it masked from unwanted probing.</p>
 	<?php
-	extract(@$this->nRouter()->getPage(1, 'is_admin'));
+	$ap = $this->nRouter()->getPage(1, 'is_admin');
+	if($ap instanceof \SmartDto\Dto)
+		$ap = $ap->toArray();
+	extract(@$ap);
 	echo $Form->open(['enctype' => 'multipart/form-data', "action" => "?loadpage=load_settings_page&subaction=global"]);
 	echo $Form->fullhide(['name' => 'token[nProcessor]', 'value' => '']);
 	echo $Form->fullhide(['name' => 'action', 'value' => 'update_admin_url']);
