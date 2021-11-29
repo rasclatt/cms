@@ -4,7 +4,7 @@ use \Nubersoft\ {
     nReflect
 };
 
-function baseException($e, nApp $Application)
+function baseException(nApp $Application, $e)
 {
     # Create custom error page
     if (is_file($index = NBR_CLIENT_DIR . DS . 'errors.php') && !$Application->isAdmin()) {

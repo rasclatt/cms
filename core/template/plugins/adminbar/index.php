@@ -2,17 +2,14 @@
 if(!$this->isAdmin())
 	return false;
 
-$route = $this->getDataNode('routing');
-if($route instanceof \SmartDto\Dto)
-	$route = $route->toArray();
-$isAdminPg = ($route['is_admin'])?? false;
-$editActive = (!empty($this->getSession('editor')))? "off" : "on";
-$adminPage = ($this->getPage('is_admin') == 1)? '/' : $this->getAdminPage('full_path').'?action=set_edit_mode&active=off';
-$title = ($this->getPage('is_admin') == 1)? "icn_home" : "gear";
-$livetitle = ($editActive == 'off')? "View Mode" : "Edit Mode";
-$icn =	($editActive == 'off')? 'view' : 'edit';
-$imgpath = '/core/template/default/media/images';
-$iconlib = [
+$isAdminPg  =   ($this->getDataNode('routing')['is_admin'])?? false;
+$editActive	=	(!empty($this->getSession('editor')))? "off" : "on";
+$adminPage	=	($this->getPage('is_admin') == 1)? '/' : $this->getAdminPage('full_path').'?action=set_edit_mode&active=off';
+$title		=	($this->getPage('is_admin') == 1)? "icn_home" : "gear";
+$livetitle	=	($editActive == 'off')? "View Mode" : "Edit Mode";
+$icn		=	($editActive == 'off')? 'view' : 'edit';
+$imgpath	=	'/core/template/default/media/images';
+$iconlib	=	[
 	'' => $docicon = $this->localeUrl($imgpath."/core/icn_doc.png"),
 	'1' => $this->localeUrl($imgpath."/core/gear.png"),
 	'2' => $this->localeUrl($imgpath."/core/icn_home.png"),

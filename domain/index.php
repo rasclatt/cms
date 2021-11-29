@@ -81,7 +81,7 @@ try {
     } catch (HttpException | \PDOException | \Exception $e) {
         cleanBuffer();
         Logit($e);
-        baseException($e, $Application);
+        baseException($Application, $e);
     }
     # Get the normal buffer
     $data = ob_get_contents();

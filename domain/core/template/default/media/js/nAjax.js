@@ -67,12 +67,8 @@ class nAjax
 		// Assign data
 		ajaxDataObj.data = data;
         // Fetch a token
-        if(typeof ajaxDataObj.data.jwtToken === "undefined") {
-            if(typeof ajaxDataObj.data === "string")
-				ajaxDataObj.data += `&jwtToken=${getCsrfToken()}`;
-			else
-				ajaxDataObj.data.jwtToken   =   getCsrfToken();
-		}
+        if(typeof ajaxDataObj.data.jwtToken === "undefined")
+            ajaxDataObj.data.jwtToken   =   getCsrfToken();
 		// Add a doBefore if set
 		if(!empty(this.doBeforeAttr)) {
 			ajaxDataObj.beforeSend	=	this.doBeforeAttr;//this.doBefore();
@@ -127,7 +123,7 @@ class nAjax
 			// Get the message(s) if there are any
 			var	msgObj		=	findForm.find('input[name=nbr_msg]').val();
 			// Parse the messages
-			var msgVal			=	(!empty(msgObj))? JSON.parse(msgObj) : { success: "Success", fail: "Failed" };
+			msgVal			=	(!empty(msgObj))? JSON.parse(msgObj) : { success: "Success", fail: "Failed" };
 			var uSuccess	=	msgVal.success;
 			var uFail		=	msgVal.fail;
 			// Set default message
@@ -141,14 +137,14 @@ class nAjax
 			this.setResp	=	sendBack;
 			var thisDisp	=	this;
 
-			this.doBefore(function() {
+			thisObj.doBefore(function() {
 				if(!empty(thisLoader)) {
 					thisLoader.html(thisDisp.doBefore(''));
 				}
 				// Overwrite itself
 				FileInput.replaceWith(FileInput.clone(true));
 			});
-			this.ajax(formData,func,true);
+			thisObj.ajax(formData,func,true);
 		}
 		catch (Exception) {
 			console.log(Exception.message);

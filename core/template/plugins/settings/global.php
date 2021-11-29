@@ -271,22 +271,19 @@ $defaults			=	[
 	<h3>Backend Name</h3>
 	<p>Change your back office path name to help keep it masked from unwanted probing.</p>
 	<?php
-	$ap = $this->nRouter()->getPage(1, 'is_admin');
-	if($ap instanceof \SmartDto\Dto)
-		$ap = $ap->toArray();
-	extract(@$ap);
+	extract(@$this->nRouter()->getPage(1, 'is_admin'));
 	echo $Form->open(['enctype' => 'multipart/form-data', "action" => "?loadpage=load_settings_page&subaction=global"]);
 	echo $Form->fullhide(['name' => 'token[nProcessor]', 'value' => '']);
 	echo $Form->fullhide(['name' => 'action', 'value' => 'update_admin_url']);
-	echo $Form->fullhide(['name' => 'ID', 'value' => ($ID)?? null]);
+	echo $Form->fullhide(['name' => 'ID', 'value' => $ID]);
 	?>
 
 		<div class="col-count-4 lrg-2 med-1">
 			<div class="">
-				<?php echo $Form->text(['label' => 'Admin Title', 'name' => 'menu_name', 'value' => ($menu_name)?? null, 'class' => 'nbr', 'other' => ['required="required"']]) ?>
+				<?php echo $Form->text(['label' => 'Admin Title', 'name' => 'menu_name', 'value' => $menu_name, 'class' => 'nbr', 'other' => ['required="required"']]) ?>
 			</div>
 			<div class="start1">
-				<?php echo $Form->text(['label' => 'Slug / Url', 'name' => 'full_path', 'value' => ($full_path)?? null, 'class' => 'nbr', 'other' => ['required="required"']]) ?>
+				<?php echo $Form->text(['label' => 'Slug / Url', 'name' => 'full_path', 'value' => $full_path, 'class' => 'nbr', 'other' => ['required="required"']]) ?>
 			</div>
 			<div class="start1">
 				<?php echo $Form->select([

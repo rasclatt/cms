@@ -11,9 +11,6 @@ if(is_numeric($this->getGet('edit'))) {
     $action['edit'] =   $this->getGet('edit');
 }
 $user	=	$this->getDataNode("user_data");
-
-echo printpre($user);
-
 $this->removeNode("user_data");
 $inputs	=	$this->getHelper('Settings\Controller')->getFormAttr($this->getRequest('table'));
 $Form	=	$this->getHelper('nForm');
@@ -80,10 +77,11 @@ foreach($user as $field => $value):
         <?php $cfield   =   ob_get_contents();
         ob_end_clean();
         
-    $f[$field]  =   $cfield;
+        $f[$field]  =   $cfield;
         
-endforeach ?>
-
+        endforeach ?>
+    
+    
     <?php echo $f['ID'] ?>
     <?php echo $f['unique_id'] ?>
 

@@ -23,12 +23,18 @@
         align-content: center;
         align-items: center;
     }
+    .error-msg {
+        background-color: #333;
+        border-radius: 5px;
+        box-shadow: 2px 2px 10px #000;
+        padding: 2em;
+    }
 </style>
 
 <body>
-    <div>
+    <div class="m-4 error-msg">
         <h2>Whoops!</h2>
-        <p><?php echo $e->getMessage() ?></p>
+        <p><?php echo ($e)?? \Nubersoft\nApp::call()->getDataNode('_MESSAGES')['msg'] ?></p>
     </div>
 </body>
 

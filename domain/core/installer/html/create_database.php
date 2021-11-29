@@ -74,8 +74,28 @@ if(!empty($err)): ?>
         </tr>
         <?php endforeach ?>
         <tr>
-            <td class="align-right"><?php echo $Form->submit(['value' => 'Save', 'class' => 'button']) ?></td>
+            <td class="align-right"><?php echo $Form->submit(['value' => 'Save', 'class' => 'submit-form button']) ?></td>
         </td>
     </table>
     <?php echo $Form->close() ?>
+
+<script>
+    $(function(){
+        $('form').on('click', '.submit-form', function(e) {
+            e.preventDefault();
+            
+            var validate    =   [];
+            var data    =   $(this).serializeArray();
+            $.each(data, function(k,v){
+                if(v.value != '') {
+                    validate.push(1);
+                }
+            });
+            
+            if(validate.length == data.length) {
+                $('form').submit();
+            }
+        });
+    });
+</script>
 </div>

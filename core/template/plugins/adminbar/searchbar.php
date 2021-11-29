@@ -151,4 +151,3 @@ $page_details['total_pages']    =   ($page_details['total_pages'])?? false;
         <?php echo $Form->close() ?>
     </div>
 </div>
-<hr class="my-5" />
