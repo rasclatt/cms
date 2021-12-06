@@ -10,7 +10,7 @@ $plugins	=	array_values(array_diff(scandir(NBR_CLIENT_PLUGINS), ['.','..']));
 
 ?>
 <?php echo $this->getPlugin('admintools', 'admin_ui.php') ?>
-<h2>Widgets</h2>
+<h3>Widgets</h3>
 <p>Acivate and deactivate web applications.</p>
 <div class="col-count-2">
 	<div class="span-2">

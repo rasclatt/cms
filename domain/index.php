@@ -35,7 +35,7 @@ try {
         exit;
     }
     # Create instance of the main class
-    $Application = nApp::call();
+    $Application = new nApp();
     # Start buffering
     ob_start();
     try {
@@ -61,9 +61,17 @@ try {
             $server->reportMode();
             # Allow translation to get through
             if ($post->service != 'translation') {
-                # Check if action is run
-                if (!empty($post->action))
-                    jwtChecker($StarUp->nApp);
+                # Start the api POST service
+                if(!empty($post->service)) {
+                    # Only start if the api exists
+                    if(class_exists('NubersoftCms\Api'))
+                        (new \NubersoftCms\Api($StarUp->nApp))->listen();
+                }
+                else {
+                    # Check if action is run
+                    if (!empty($post->action))
+                        jwtChecker($StarUp->nApp);
+                }
             }
             # Start our program
             $StarUp->runApplication();

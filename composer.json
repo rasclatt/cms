@@ -22,6 +22,8 @@
         "rasclatt/nubersoft-cms": "*",
         "firebase/php-jwt": "*",
         "rasclatt/smart-dto": "*",
-        "rasclatt/smart-api": "*"
+        "rasclatt/smart-api": "*",
+        "phpseclib/phpseclib": "^3.0",
+        "paragonie/random_compat": "^9.99"
     }
 }

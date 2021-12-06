@@ -161,9 +161,9 @@ elseif(is_numeric($this->getRequest('edit'))):
                         </table>
 					</div>
 				</div>
-				<a href="?table=media&edit=<?php echo $row['ID'] ?>&subaction=interface" class="nbr button" style="width: auto !important; border-radius: 0;">EDIT</a>
+				<a href="?table=media&edit=<?php echo $row['ID'] ?>&subaction=interface" class="nbr small button auto text-center">EDIT</a>
 				
-				<a href="<?php echo $row['filename'] ?>" class="nbr button" style="width: auto !important; border-radius: 0;" target="_blank">VIEW</a>
+				<a href="<?php echo $row['filename'] ?>" class="nbr small auto text-center button" target="_blank">VIEW</a>
 			</div>
 		</div>
 		

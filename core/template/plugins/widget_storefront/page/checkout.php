@@ -12,7 +12,7 @@ $cart   =   json_decode($this->dec($this->getDataNode('_COOKIE')['cart']), 1);
             <table cellpadding="0" cellspacing="0" border="0" class="mt-2">
                 <tr class="cart-summary-items-hd">
                     <td>
-                        <h2 class="uppercase rule-under wide thin left normal trans-cls" data-trans="cartsummary">Cart Summary</h2>
+                        <h3 class="uppercase rule-under wide thin left normal trans-cls" data-trans="cartsummary">Cart Summary</h3>
                     </td>
                     <td class="qty align-center">Qty</td>
                     <td class="price align-center">Price</td>

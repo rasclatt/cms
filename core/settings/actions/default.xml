@@ -40,6 +40,12 @@
 		<class>
 			<name>\Nubersoft\System\Admin\Observer</name>
 			<method>saveSiteLogo</method>
+			<inject into="saveSiteLogo">
+				<class event="request">
+					<name>\Nubersoft\Dto\System\Admin\Observer\SaveSiteLogoRequest</name>
+					<method>__construct</method>
+				</class>
+			</inject>
 		</class>
 	</object>
 	
@@ -63,6 +69,7 @@
 			<method>listen</method>
 		</class>
 	</object>
+	
 	
 	<object event="edit_user_details,edit_component,update_page,create_new_page,update_admin_url,edit_table_rows_details" after="nbr_set_headers" request="post" is_admin="true">
 		<class>
@@ -151,6 +158,20 @@
 	<object event="cart" after="nbr_set_headers"  is_ajax="true" request="post">
 		<class>
 			<name>\NubersoftCms\Cart\Observer</name>
+			<method>listen</method>
+		</class>
+	</object>
+
+	<object event="system_navigation" after="nbr_set_headers" request="post" is_admin="true" is_ajax="true">
+		<class>
+			<name>\NubersoftCms\Action\FileSystem</name>
+			<method>listen</method>
+		</class>
+	</object>
+	
+	<object event="upload_plugin" after="nbr_set_headers" request="post" is_admin="true">
+		<class>
+			<name>\NubersoftCms\Action\Plugin</name>
 			<method>listen</method>
 		</class>
 	</object>

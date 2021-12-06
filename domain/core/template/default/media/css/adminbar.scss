@@ -1,0 +1,367 @@
+/* 
+Ured - #be1522
+*/
+@import url('https://fonts.googleapis.com/css?family=Cairo:300,400,700');
+
+#admin-menubar {
+	display: block;
+	background-color: #000;
+	color: #FFF;
+	font-weight: 400;
+	font-size: 0.85em;
+	text-align: center;
+	height: auto;
+
+    > div {
+        display: inline-flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        margin: 0 auto;
+    }
+}
+#window-height,
+#window-width {
+    align-self: center;
+}
+.admin-menu {
+	position: relative;
+}
+.admin-menu,
+#admin-menubar a:link,
+#admin-menubar a:visited {
+	color: #FFF;
+	transition: background-color 0.5s;
+	text-decoration: none;
+	padding: 0.35em 0.75em;
+	align-self: stretch;
+	margin: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.admin-submenu {
+    display: none;
+    flex-direction: row;
+    left: 0;
+    right: 0;
+    position: absolute;
+    top: 2.5em;
+    
+    .page-menu {
+        background: #000;
+        border-radius: 1em;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        border: 1px solid #CCC;
+    }
+    
+    img {
+        display: inline !important;
+        margin: 0;
+    }
+}
+.divider.vertical.light {
+	width: 1px;
+	background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.1))
+}
+.left-align {
+	text-align: left;
+}
+.admin-icon-menu {
+	display: inline-flex;
+	flex-direction: column;
+}
+.admin-icon-menu .admin-submenu div {
+	padding: 0.25em 0.35em;
+}
+.admin-menu:hover,
+#admin-menubar a:hover,
+.admin-icon-menu .admin-submenu div:hover {
+	background-color: #be1522;
+	cursor: pointer;
+}
+#admin-menubar {
+    z-index: 10 !important;
+    position: relative;
+}
+.container-gapped {
+    grid-row-gap: 1em;
+    
+    > div {
+        overflow: hidden;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    }
+}
+body {
+    &.edit-mode {
+        background-color: #000 !important;
+        position: relative;
+        &:not(.login) {
+            > div {
+                &.col-count-3 {
+                    &.offset {
+                        background: linear-gradient(#000, #444) !important;
+                        padding-bottom: 2em;
+                        position: fixed;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        top: 35px;
+                        overflow: auto;
+                        grid-template-rows: auto 1fr auto;
+                    }
+                }
+            }
+        }
+    }
+}
+.expander,
+input.mini-btn.dark,
+body.edit-mode .mini-btn.green {
+    font-size: 0.85rem !important;
+    border: none;
+    border-radius: 3px !important;
+    letter-spacing: normal !important;
+    text-transform: uppercase;
+}
+.item-container-editor-code_cached .component-editor-toggle > div:first-child > div > div {
+    position: relative;
+    &::before {
+        position: absolute;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content: "\f1b2";
+        color: #FFF;
+        top: 1.1em;
+        left: 2.25em;
+        margin: -1em;
+        transform: scale(0.8);
+    }
+}
+.item-container-editor-code,
+.item-container-editor-code_cached {
+    transition: box-shadow ease-in-out 0.5s;
+    padding: 0;
+}
+.item-container-editor-code_cached .editor-title > div {
+    height: 0.85em;
+    top: 0 !important;
+}
+.edit-btn {
+    a {
+        transition: All ease-in-out 0.5s;
+        font-size: 0.85rem !important;
+        color: #888 !important;
+        text-shadow: 1px 1px 3px #000;
+        background-color: #222 !important;
+        border: none !important;
+        width: auto !important;
+        
+        &:hover {
+            color: #FFF !important;
+            background-color: #22CE1C !important;
+        }
+    }
+}
+.component-editor-toggle {
+    transition: All ease-in-out 0.5s;
+    > div {
+        &:first-child {
+            height: 56%;
+            background-color: transparent;
+        }
+    }
+}
+.container-off {
+    border: 1px dotted red;
+}
+#path-domain {
+    font-family: Courier !important;
+}
+.page-editor-container h3,
+.page-edit-title {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: normal;
+}
+.page-editor-container h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+.page-edit-title span {
+    text-transform: none !important;
+}
+.page-edit-title:first-child {
+    padding-bottom: 1em;
+    border-bottom: 1px solid #444;
+}
+.editor-title div {
+    font-size: 1rem;
+    color: #CCC !important;
+    text-overflow: ellipsis;
+}
+.item-container-editor-code_cached.container-on:hover,
+.item-container-editor-code_cached.container-off:hover,
+.item-container-editor-code.container-on:hover,
+.item-container-editor-code.container-off:hover {
+    border-color: #FFF !important;
+    box-shadow: 0 0 10px rgba(255,255,255,0.50);
+}
+.component-shade .last-col {
+    font-size: 0.85rem;
+}
+.item-container-editor-div {
+    background: linear-gradient(#666, #2C393D);
+}
+img.active-status {
+    cursor: pointer !important;
+}
+.component-editor-toggle > div:first-child {
+    cursor: grab;
+}
+.component-editor-toggle > div:first-child:active {
+    cursor: grabbing;
+}
+.container-off .component-editor-toggle > div:first-child:active,
+.container-off .component-editor-toggle > div:first-child {
+    cursor: not-allowed;
+}
+.editor-title img {
+    transition: All ease-in-out 0.5s;
+}
+.editor-title img:hover {
+    transform: scale(1.2);
+    transform-origin: center;
+    cursor: help;
+}
+.page-menu li {
+    background: #000;
+    width: 200px;
+}
+.page-menu li.menu-group > a::after {
+    content: '>';
+    color: red;
+    position: absolute;
+    right: 5px;
+}
+.page-menu {
+    padding: 0;
+}
+.page-menu ul,
+.page-menu ul li {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+    text-indent: 0;
+}
+.page-menu ul ul {
+    display: none;
+}
+.page-menu li:hover ul {
+    z-index: 1;
+    display: block;
+    position: absolute;
+    height: 0;
+    overflow: visible;
+}
+.page-menu li:hover ul li {
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+}
+.page-menu li:hover ul li:last-child {
+    border-bottom: 1px solid red;
+}
+.page-menu li:hover ul li:first-child {
+    border-top: 1px solid red;
+}
+.page-menu li:hover {
+    background-color: red;
+}
+.page-menu li:hover li {
+    position: relative;
+    right: -90%;
+    top: -20px;
+}
+#admin-content-wrap {
+    transition: All ease-in-out 1s;
+}
+#admin-sidebar > div a {
+    display: block;
+}
+#admin-sidebar > div a span {
+    cursor: pointer;
+}
+#admin-sidebar .img-logo img {
+    margin-bottom: 1em;
+}
+.csm-tool-item {
+    position: relative;
+    &:hover {
+        border: 1px dashed rgba(35,195,255,0.78);
+        > .edit-btn-tools {
+            background-color: rgba(35,195,255,0.78);
+            color: #FFF;
+            font-weight: bold;
+            font-size: 1rem;
+            text-align: center;
+            padding: 0.3em;
+            position: absolute;
+            display: block !important;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000000000;
+        }
+    }
+}
+@media all and (max-width: 655px) {
+    #admin-sidebar .img-logo {
+        display: none;
+    }
+    #admin-sidebar > div {
+        text-align: center;
+    }
+    #admin-sidebar > div span {
+        display: none;
+    }
+    #admin-sidebar > div a::after {
+        display: inline-block;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        color: #FFF;
+        font-size: 2em;
+        margin: 0.15em auto;
+        text-align: center;
+    }
+    #admin-sidebar > div a {
+        transition: All ease-in-out 0.35s !important;
+    }
+    #admin-sidebar > div.icn-dashboard a::after {
+        content: "\f3fd";
+    }
+    #admin-sidebar > div.icn-globe a::after {
+        content: "\f085";
+    }
+    #admin-sidebar > div.icn-head a::after {
+        content: "\f121";
+    }
+    #admin-sidebar > div.icn-user a::after {
+        content: "\f007";
+    }
+    #admin-sidebar > div.icn-plugin a::after {
+        content: "\f1e6";
+    }
+    .sidebar > div.icn-table a::after {
+        content: "\f0ce";
+    }
+    @media all and (max-width: 655px) {
+        .sidebar > div.icn-table a i {
+            display: none;
+        }
+    }
+    #admin-content-wrap {
+        grid-template-columns: 5em 1fr !important;
+    }
+}

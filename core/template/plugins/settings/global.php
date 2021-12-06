@@ -1,9 +1,9 @@
 <?php
-use \Nubersoft\ {
-    nForm as Form
+use \Nubersoft\{
+	nForm as Form
 };
 
-$defaultVars	=	extract([
+$defaultVars = extract([
 	'sign_up' => [],
 	'maintenance_mode' => [],
 	'frontend_admin' => [],
@@ -18,46 +18,46 @@ $defaultVars	=	extract([
 	'jwt_token' => []
 ]);
 
-$system_settings	=	\Nubersoft\ArrayWorks::organizeByKey($this->getDataNode('settings')['system'],'category_id');
-$Settings			=	extract($system_settings);
+$system_settings = \Nubersoft\ArrayWorks::organizeByKey($this->getDataNode('settings')['system'], 'category_id');
+$Settings = extract($system_settings);
 
-$Setting    =   $this->getHelper('Settings');
-$composer   =   $Setting->getSystemOption('composer');
-$cfile  =   file_get_contents(NBR_ROOT_DIR.DS.'composer.json');
+$Setting = $this->getHelper('Settings');
+$composer = $Setting->getSystemOption('composer');
+$cfile = file_get_contents(NBR_ROOT_DIR . DS . 'composer.json');
 
-if(empty($composer)) {
-    if($cfile) {
-        $Setting->setOption('composer', $cfile, 'system');
-        $composer   =   $Setting->getSystemOption('composer');
-    }
+if (empty($composer)) {
+	if ($cfile) {
+		$Setting->setOption('composer', $cfile, 'system');
+		$composer = $Setting->getSystemOption('composer');
+	}
 }
-$defaults			=	[
-    [
-        'description' => '<h3>Composer Settings</h3>
-        <p>These are your Composer live and database-stored settings.</p>',
+$defaults = [
+	[
+		'description' => '<h3>Composer Settings</h3>
+ <p>These are your Composer live and database-stored settings.</p>',
 		'label' => 'Composer (Live)',
 		"name" => "",
 		"type" => "textarea",
-		'value' => file_get_contents(NBR_ROOT_DIR.DS.'composer.json'),
+		'value' => file_get_contents(NBR_ROOT_DIR . DS . 'composer.json'),
 		'class' => 'nbr textarea tabber code',
-        'style' => 'height: 500px;',
-        'other' => ['readonly']
+		'style' => 'height: 500px;',
+		'other' => ['readonly']
 	],
-    [
+	[
 		'label' => 'Composer (Stored)',
 		"name" => "setting[composer]",
 		"type" => "textarea",
-		'value' => json_encode($composer, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES),
+		'value' => json_encode($composer, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES),
 		'class' => 'nbr textarea tabber code',
-        'style' => 'height: 500px;'
+		'style' => 'height: 500px;'
 	],
-	[ 
-        'description' => '<h3>Website Settings</h3>
-        <p>These are general settings for the site</p>',
-		'label' => 'Webmaster'.((defined('WEBMASTER'))? ' (Registry: '.WEBMASTER.')':''),
+	[
+		'description' => '<h3>Website Settings</h3>
+ <p>These are general settings for the site</p>',
+		'label' => 'Webmaster' . ((defined('WEBMASTER')) ? ' (Registry: ' . WEBMASTER . ')' : ''),
 		"name" => "setting[webmaster]",
 		"type" => "text",
-		'value' => (!empty($webmaster['option_attribute']))? $webmaster['option_attribute'] : (defined('WEBMASTER')? WEBMASTER : ""),
+		'value' => (!empty($webmaster['option_attribute'])) ? $webmaster['option_attribute'] : (defined('WEBMASTER') ? WEBMASTER : ""),
 		'class' => 'nbr',
 		'other' => [
 			'required="required"'
@@ -67,14 +67,14 @@ $defaults			=	[
 		'label' => 'Allow Public Sign Up?',
 		"name" => "setting[sign_up]",
 		"type" => "select",
-		"options" => array_map(function($v) use ($sign_up) {
-			if(isset($sign_up['option_attribute']) && $v['value'] == $sign_up['option_attribute'])
-				$v['selected']	=	true;
-			
+		"options" => array_map(function ($v) use ($sign_up) {
+			if (isset($sign_up['option_attribute']) && $v['value'] == $sign_up['option_attribute'])
+				$v['selected'] = true;
+
 			return $v;
 		}, [
-			["name" => "No","value" => "off"],
-			["name" => "Yes","value" => "on"]
+			["name" => "No", "value" => "off"],
+			["name" => "Yes", "value" => "on"]
 		]),
 		'class' => 'nbr'
 	],
@@ -82,16 +82,16 @@ $defaults			=	[
 		'label' => '2 Factor Authentiation',
 		"name" => "setting[two_factor_auth]",
 		"type" => "select",
-		"options" => array_map(function($v) use ($two_factor_auth) {
-			if(!empty($two_factor_auth) && ($v['value'] == $two_factor_auth['option_attribute']))
-				$v['selected']	=	true;
-			
+		"options" => array_map(function ($v) use ($two_factor_auth) {
+			if (!empty($two_factor_auth) && ($v['value'] == $two_factor_auth['option_attribute']))
+				$v['selected'] = true;
+
 			return $v;
 		}, [
 			["name" => "Disabled (Use Basic Login)", 'value' => 'off'],
-			["name" => "Admin Only","value" => "admin"],
-			["name" => "Frontend Only","value" => "frontend"],
-			["name" => "Admin and Frontend","value" => "both"]
+			["name" => "Admin Only", "value" => "admin"],
+			["name" => "Frontend Only", "value" => "frontend"],
+			["name" => "Admin and Frontend", "value" => "both"]
 		]),
 		'class' => 'nbr'
 	],
@@ -99,31 +99,31 @@ $defaults			=	[
 		'label' => 'Allow Frontend Admin Login?',
 		'name' => 'setting[frontend_admin]',
 		'type' => 'select',
-		"options" => array_map(function($v) use ($frontend_admin) {
-			if(!empty($frontend_admin['option_attribute']) && ($v['value'] == $frontend_admin['option_attribute']))
-				$v['selected']	=	true;
-			
+		"options" => array_map(function ($v) use ($frontend_admin) {
+			if (!empty($frontend_admin['option_attribute']) && ($v['value'] == $frontend_admin['option_attribute']))
+				$v['selected'] = true;
+
 			return $v;
-		},[
-			["name" => "No","value" => "off"],
-			["name" => "Yes","value" => "on"]
+		}, [
+			["name" => "No", "value" => "off"],
+			["name" => "Yes", "value" => "on"]
 		]),
 		'class' => 'nbr'
 	],
 	[
-        'description' => '<h3>Website Activation Modes</h3>
-        <p>These effect how your website is displayed to the public.</p>',
+		'description' => '<h3>Website Activation Modes</h3>
+ <p>These effect how your website is displayed to the public.</p>',
 		'label' => 'Maintenance Mode',
 		'name' => 'setting[maintenance_mode]',
 		'type' => 'select',
-		"options" => array_map(function($v) use ($maintenance_mode) {
-			if(!empty($maintenance_mode['option_attribute']) && ($v['value'] == $maintenance_mode['option_attribute']))
-				$v['selected']	=	true;
-			
+		"options" => array_map(function ($v) use ($maintenance_mode) {
+			if (!empty($maintenance_mode['option_attribute']) && ($v['value'] == $maintenance_mode['option_attribute']))
+				$v['selected'] = true;
+
 			return $v;
-		},[
-			["name" => "Off","value" => "off"],
-			["name" => "On","value" => "on"]
+		}, [
+			["name" => "Off", "value" => "off"],
+			["name" => "On", "value" => "on"]
 		]),
 		'class' => 'nbr'
 	],
@@ -131,14 +131,14 @@ $defaults			=	[
 		'label' => 'Site Status',
 		'name' => 'setting[site_live]',
 		'type' => 'select',
-		"options" => array_map(function($v) use ($site_live) {
-			if(isset($site_live['option_attribute']) && ($v['value'] == $site_live['option_attribute']))
-				$v['selected']	=	true;
-			
+		"options" => array_map(function ($v) use ($site_live) {
+			if (isset($site_live['option_attribute']) && ($v['value'] == $site_live['option_attribute']))
+				$v['selected'] = true;
+
 			return $v;
-		},[
-			["name" => "Inactive","value" => "off"],
-			["name" => "Live","value" => "on"]
+		}, [
+			["name" => "Inactive", "value" => "off"],
+			["name" => "Live", "value" => "on"]
 		]),
 		'class' => 'nbr'
 	],
@@ -147,52 +147,52 @@ $defaults			=	[
 		'name' => 'setting[template]',
 		'type' => 'select',
 		'options' =>
-			$this->createContainer(function(\Nubersoft\Settings\Page\Controller $Page) use ($system_settings){
-				$val	=	(!empty($system_settings['template']['option_attribute']))? $system_settings['template']['option_attribute'] : false;
-				
-				return array_map(function($v) use ($val) {
-					if($v['value'] == $val)
-						$v['selected']	=	true;
-					
-					return $v;
-				},$Page->getTemplateList());
-			}),
+		$this->createContainer(function (\Nubersoft\Settings\Page\Controller $Page) use ($system_settings) {
+			$val = (!empty($system_settings['template']['option_attribute'])) ? $system_settings['template']['option_attribute'] : false;
+
+			return array_map(function ($v) use ($val) {
+				if ($v['value'] == $val)
+					$v['selected'] = true;
+
+				return $v;
+			}, $Page->getTemplateList());
+		}),
 		'class' => 'nbr'
 	],
 	[
-        'description' => '<h3>Server Settings</h3>
-        <p>Set some server preferences.</p>',
-		'label' => 'Site Timezone ('.date('Y-m-d H:i:s').')',
+		'description' => '<h3>Server Settings</h3>
+ <p>Set some server preferences.</p>',
+		'label' => 'Site Timezone (' . date('Y-m-d H:i:s') . ')',
 		'name' => 'setting[timezone]',
 		'type' => 'select',
-		'options' => array_map(function($v) use ($timezone) {
+		'options' => array_map(function ($v) use ($timezone) {
 			return [
-				'name' => str_replace(['/', '_'],[' – ', ' '],$v),
+				'name' => str_replace(['/', '_'], [' – ', ' '], $v),
 				'value' => $v,
 				'selected' => (isset($timezone['option_attribute']) && ($timezone['option_attribute'] == $v))
 			];
-		},\DateTimeZone::listIdentifiers()),
+		}, \DateTimeZone::listIdentifiers()),
 		'class' => 'nbr'
 	],
 	[
 		'label' => 'Server Rewriting',
 		'name' => 'setting[htaccess]',
 		'type' => 'textarea',
-		'value' => (!empty($htaccess['option_attribute']))? $htaccess['option_attribute'] : $this->enc(file_get_contents(NBR_DOMAIN_ROOT.DS.'.htaccess')),
+		'value' => (!empty($htaccess['option_attribute'])) ? $htaccess['option_attribute'] : $this->enc(file_get_contents(NBR_DOMAIN_ROOT . DS . '.htaccess')),
 		'class' => 'nbr tabber code required',
 		'other' => ['required="required"'],
 		'style' => 'height: 300px;'
 	],
 	[
-        'description' => '<h3>Development / Production Settings</h3>
-        <p>Help develop the site using server-side warnings in dev mode. Toggle to production when you want to silence server-side errors.</p>',
+		'description' => '<h3>Development / Production Settings</h3>
+ <p>Help develop the site using server-side warnings in dev mode. Toggle to production when you want to silence server-side errors.</p>',
 		'label' => 'Show File Inclusions',
 		'name' => 'setting[fileid]',
 		'type' => 'select',
-		'options' => array_map(function($v) use ($fileid) {
-			if(!empty($fileid['option_attribute']) && $fileid['option_attribute'] == $v['value'])
-				$v['selected']	=	true;
-				
+		'options' => array_map(function ($v) use ($fileid) {
+			if (!empty($fileid['option_attribute']) && $fileid['option_attribute'] == $v['value'])
+				$v['selected'] = true;
+
 			return $v;
 		}, [
 			[
@@ -211,10 +211,10 @@ $defaults			=	[
 		'label' => 'Production Mode',
 		'name' => 'setting[devmode]',
 		'type' => 'select',
-		'options' => array_map(function($v) use ($devmode) {
-			if(!empty($devmode['option_attribute']) && $devmode['option_attribute'] == $v['value'])
-				$v['selected']	=	true;
-				
+		'options' => array_map(function ($v) use ($devmode) {
+			if (!empty($devmode['option_attribute']) && $devmode['option_attribute'] == $v['value'])
+				$v['selected'] = true;
+
 			return $v;
 		}, [
 			[
@@ -232,13 +232,13 @@ $defaults			=	[
 ];
 ?>
 <?php echo $this->getPlugin('admintools', 'admin_ui.php') ?>
-<h2>Global Settings</h2>
+<h3>Global Settings</h3>
 <p>These settings adjust various website settings that effect the site's behaviour.</p>
 <div class="section-head nTrigger margin-top-0 arrow-down white" data-instructions='{"FX":{"fx":["slideUp","accordian"],"event":["click","click"],"acton":[".section","next::slideToggle"],"fxspeed":["fast","fast"]}}'>General Settings</div>
 <div class="section hide section-general">
-    
+
 	<?php
-	$Form	=	@$this->nForm();
+	$Form = @$this->nForm();
 	echo $Form->open(["action" => "?loadpage=load_settings_page&subaction=global"]);
 	echo $Form->fullhide(['name' => 'token[nProcessor]', 'value' => '']);
 	echo $Form->fullhide(['name' => 'action', 'value' => 'save_settings']);
@@ -246,23 +246,23 @@ $defaults			=	[
 	echo $Form->fullhide(['name' => 'option_group_name', 'value' => 'system']);
 	?>
 
-		<?php
-		foreach($defaults as $row):
-			$type	=	$row['type'];
-			unset($row['type']);
-    
-            if(isset($row['description'])) {
-                echo $row['description'];
-                unset($row['description']);
-            }
-		?>
+	<?php
+	foreach ($defaults as $row) :
+		$type = $row['type'];
+		unset($row['type']);
 
-        <?php echo $Form->{$type}($row) ?>
-		
-		<?php endforeach ?>
+		if (isset($row['description'])) {
+			echo $row['description'];
+			unset($row['description']);
+		}
+	?>
 
-        <?php echo $Form->submit(['value' => 'Save', 'class' => 'medi-btn dark settings']) ?>
-			
+		<?php echo $Form->{$type}($row) ?>
+
+	<?php endforeach ?>
+
+	<?php echo $Form->submit(['value' => 'Save', 'class' => 'medi-btn dark settings']) ?>
+
 	<?php echo $Form->close() ?>
 </div>
 
@@ -278,42 +278,42 @@ $defaults			=	[
 	echo $Form->fullhide(['name' => 'ID', 'value' => $ID]);
 	?>
 
-		<div class="col-count-4 lrg-2 med-1">
-			<div class="">
-				<?php echo $Form->text(['label' => 'Admin Title', 'name' => 'menu_name', 'value' => $menu_name, 'class' => 'nbr', 'other' => ['required="required"']]) ?>
-			</div>
-			<div class="start1">
-				<?php echo $Form->text(['label' => 'Slug / Url', 'name' => 'full_path', 'value' => $full_path, 'class' => 'nbr', 'other' => ['required="required"']]) ?>
-			</div>
-			<div class="start1">
-				<?php echo $Form->select([
+	<div class="col-count-4 lrg-2 med-1">
+		<div class="">
+			<?php echo $Form->text(['label' => 'Admin Title', 'name' => 'menu_name', 'value' => $menu_name, 'class' => 'nbr', 'other' => ['required="required"']]) ?>
+		</div>
+		<div class="start1">
+			<?php echo $Form->text(['label' => 'Slug / Url', 'name' => 'full_path', 'value' => $full_path, 'class' => 'nbr', 'other' => ['required="required"']]) ?>
+		</div>
+		<div class="start1">
+			<?php echo $Form->select([
 				'label' => 'Template',
 				'name' => 'template',
 				'type' => 'select',
 				'options' =>
-					$this->createContainer(function(\Nubersoft\Settings\Page\Controller $Page) use ($template) {
-						
-						return array_map(function($v) use ($template) {
-							if($v['value'] == $template)
-								$v['selected']	=	true;
+				$this->createContainer(function (\Nubersoft\Settings\Page\Controller $Page) use ($template) {
 
-							return $v;
-						},$Page->getTemplateList());
-					}),
+					return array_map(function ($v) use ($template) {
+						if ($v['value'] == $template)
+							$v['selected'] = true;
+
+						return $v;
+					}, $Page->getTemplateList());
+				}),
 				'class' => 'nbr'
 			]) ?>
-			</div>
-			<div class="start1">
-				<?php echo $Form->submit(['value' => 'Save', 'class' => 'medi-btn dark settings']) ?>
-			</div>
 		</div>
+		<div class="start1">
+			<?php echo $Form->submit(['value' => 'Save', 'class' => 'medi-btn dark settings']) ?>
+		</div>
+	</div>
 
 	<?php echo $Form->close() ?>
 </div>
 
 <div class="section-head nTrigger arrow-down white" data-instructions='{"FX":{"fx":["slideUp","accordian"],"event":["click","click"],"acton":[".section","next::slideToggle"],"fxspeed":["fast","fast"]}}'>Site Logo</div>
 <div class="section hide show">
-    <h3>Corporate Logo</h3>
+	<h3>Corporate Logo</h3>
 	<p>Update your web site logo (jpeg, jpg, gif, png). This logo will be available in the front end as well as the back end, depending on your template.</p>
 	<?php
 	echo $Form->open(['enctype' => 'multipart/form-data', "action" => "?loadpage=load_settings_page&subaction=global"]);
@@ -322,89 +322,90 @@ $defaults			=	[
 	echo $Form->fullhide(['name' => 'category_id', 'value' => 'site']);
 	echo $Form->fullhide(['name' => 'option_group_name', 'value' => 'system']);
 	?>
-		<div class="col-count-3 col-c1-lg">
-			<div class="start1">
-				<?php
-				$header_company_logo_toggle	=	(isset($header_company_logo_toggle))? $header_company_logo_toggle : false;
-				echo $Form->select([
-					'label' => 'Site Logo On?',
-					'name' => 'setting[header_company_logo_toggle]',
-					'type' => 'select',
-					'options' => array_map(function($v) use ($header_company_logo_toggle) {
-						return [
-							'name' => $v['name'],
-							'value' => $v['value'],
-							'selected' => (!empty($header_company_logo_toggle['option_attribute']) && $header_company_logo_toggle['option_attribute'] == $v['value'])
-						];
-					},[
-						["name" => "Off","value" => "off"],
-						["name" => "On","value" => "on"]
-					]),
-					'class' => 'nbr'
-				]) ?>
-			</div>
+	<div class="col-count-3 col-c1-lg">
+		<div class="start1">
+			<?php
+			$header_company_logo_toggle = (isset($header_company_logo_toggle)) ? $header_company_logo_toggle : false;
+			echo $Form->select([
+				'label' => 'Site Logo On?',
+				'name' => 'setting[header_company_logo_toggle]',
+				'type' => 'select',
+				'options' => array_map(function ($v) use ($header_company_logo_toggle) {
+					return [
+						'name' => $v['name'],
+						'value' => $v['value'],
+						'selected' => (!empty($header_company_logo_toggle['option_attribute']) && $header_company_logo_toggle['option_attribute'] == $v['value'])
+					];
+				}, [
+					["name" => "Off", "value" => "off"],
+					["name" => "On", "value" => "on"]
+				]),
+				'class' => 'nbr'
+			]) ?>
 		</div>
-		<div class="col-count-3 col-c1-lg">
-			<?php if(!empty($header_company_logo['option_attribute']) && is_file(NBR_DOMAIN_ROOT.DS.ltrim(str_replace('/',DS,$header_company_logo['option_attribute']), DS))): ?>
+	</div>
+	<div class="col-count-3 col-c1-lg">
+		<?php if (!empty($header_company_logo['option_attribute']) && is_file(NBR_DOMAIN_ROOT . DS . ltrim(str_replace('/', DS, $header_company_logo['option_attribute']), DS))) : ?>
 			<div class="start1" style="background-image: url('/core/template/default/media/images/ui/transparent-grid.gif'); background-repeat: repeat; background-size: 8px; padding: 2em; margin-top: 1em;">
-				<img src="<?php echo $header_company_logo['option_attribute'] ?>" />
+				<img src="<?php echo $cologo = $header_company_logo['option_attribute'] ?>" />
+				<p class="mt-4 align-middle">File Size: <?php echo @$this->Conversion_Data()->getByteSize(filesize(NBR_DOMAIN_ROOT . DS . $header_company_logo['option_attribute']), ['from' => 'b', 'to' => 'kb', 'round' => 2]) ?>KB</p>
 			</div>
-			<div class="span-3 push-col-1 large">
-				<p>
-				File Size: <?php echo @$this->Conversion_Data()->getByteSize(filesize(NBR_DOMAIN_ROOT.DS.$header_company_logo['option_attribute']),[
-					'from' => 'b',
-					'to' => 'kb',
-					'round' => 2
-	]) ?>KB</p>
+			<div class="span3 span1-lg">
 			</div>
-			<?php endif ?>
-			<div class="start1">
-				<?php echo $Form->file(['name' => 'file', 'class' => 'nbr']) ?>
-			</div>
+		<?php endif ?>
+		<div class="start1">
+			<?php echo $Form->file(['name' => 'file', 'class' => 'nbr']) ?>
 		</div>
-		<div class="col-count-4 lrg-2 med-1">
-			<div class="start1">
-				<?php echo $Form->submit(['value' => 'Save', 'class' => 'medi-btn dark settings']) ?>
-			</div>
+	</div>
+	<div class="col-count-4 lrg-2 med-1 pt-4">
+		<?php if (!empty($cologo)) : ?>
+
+			<?php echo $this->setPluginContent('check_id', 'delete-corp-logo')->getPlugin('widget_html', 'delete_checkbox.php') ?>
+			
+		<?php endif ?>
+		<div class="start1">
+			<?php echo $Form->submit(['value' => 'Save', 'class' => 'medi-btn dark settings']) ?>
 		</div>
+	</div>
 
 	<?php echo $Form->close() ?>
 </div>
 
 <div class="section-head nTrigger arrow-down white" data-instructions='{"FX":{"fx":["slideUp","accordian"],"event":["click","click"],"acton":[".section","next::slideToggle"],"fxspeed":["fast","fast"]}}'>Security</div>
 <div class="section hide show">
-    <h3>JWT Settings</h3>
-    
-    <p class="margin-top-1">JWT Tokens are generated on each load of the page but because they do not persist, they can not be matched from page load to page submit. Create a static token for matching page-to-page tokens.</p>
-    
-    <?php $jwt  =   \Nubersoft\JWT\Controller::getJwtTokenSecret() ?>
-    <?php echo Form::getOpen(['class' => 'ajax']) ?>
-        <?php echo Form::getFullhide(['name' => 'action', 'value' => 'create_jwtoken']) ?>
-        <div class="col-count-3 gapped col-c2-md col-c1-sm">
-            <?php echo Form::getPassword(['label' => 'JWT Secret', 'name' => 'token_name', 'value' => $jwt, 'class' => 'nbr']) ?>
-        </div>
-            
-        <div style="align-self: end;"><?php echo Form::getSubmit(['value' => 'SAVE', 'class' => 'medi-btn dark settings margin-bottom-0']) ?></div>
-        
-    <?php echo Form::getClose() ?>
-    <script>
-        $(function(){
-            $('input[name="token_name"]').on('focus focusout', function(e){
-                $(this).attr('type', (e.type == 'focus')? 'text' : 'password');
-            });
+	<h3>JWT Settings</h3>
 
-           $('.ajax').on('submit', function(e) {
-               e.preventDefault();
-               AjaxEngine.ajax($(this).serialize(), (r) => {
-                   default_action($(this), r);
-               });
-           });
-        });
-        // Calls the form token
-        fetchAllTokens($);
-    </script>
+	<p class="margin-top-1">JWT Tokens are generated on each load of the page but because they do not persist, they can not be matched from page load to page submit. Create a static token for matching page-to-page tokens.</p>
+
+	<?php $jwt = \Nubersoft\JWT\Controller::getJwtTokenSecret() ?>
+	<?php echo Form::getOpen(['class' => 'ajax']) ?>
+	<?php echo Form::getFullhide(['name' => 'action', 'value' => 'create_jwtoken']) ?>
+	<div class="col-count-3 gapped col-c2-md col-c1-sm">
+		<?php echo Form::getPassword(['label' => 'JWT Secret', 'name' => 'token_name', 'value' => $jwt, 'class' => 'nbr']) ?>
+	</div>
+
+	<div style="align-self: end;"><?php echo Form::getSubmit(['value' => 'SAVE', 'class' => 'medi-btn dark settings margin-bottom-0']) ?></div>
+
+	<?php echo Form::getClose() ?>
+	<script>
+		$(function() {
+			$('input[name="token_name"]').on('focus focusout', function(e) {
+				$(this).attr('type', (e.type == 'focus') ? 'text' : 'password');
+			});
+
+			$('.ajax').on('submit', function(e) {
+				e.preventDefault();
+				AjaxEngine.ajax($(this).serialize(), (r) => {
+					default_action($(this), r);
+				});
+			});
+		});
+		// Calls the form token
+		fetchAllTokens($);
+	</script>
 </div>
 
-<?php echo $this->getPlugin('settings', 'global'.DS.'locale.php') ?>
+<?php echo $this->getPlugin('settings', 'global' . DS . 'locale.php') ?>
 
-<?php // echo printpre($this->query("select * from system_settings")->getResults()) ?>
+<?php // echo printpre($this->query("select * from system_settings")->getResults()) 
+?>
