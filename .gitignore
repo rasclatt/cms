@@ -9,3 +9,4 @@ client/**
 vendor/
 vendor/**
 **/.vscode
+*.pem
