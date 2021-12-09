@@ -1459,4 +1459,22 @@ button.button:hover,
     display: none;
   }
 }
+
+.tag-beta {
+  position: relative;
+}
+
+.tag-beta::after {
+  right: 0;
+  display: inline-block;
+  content: 'Beta';
+  text-transform: uppercase;
+  font-size: 0.6rem;
+  background-color: orange;
+  color: orangered;
+  border-radius: 5px;
+  border: 1px solid orangered;
+  padding: 0.2rem 0.5rem;
+  margin-left: 0.5rem;
+}
 /*# sourceMappingURL=styles.css.map */

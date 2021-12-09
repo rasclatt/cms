@@ -104,3 +104,10 @@ body {
     background-color: #222;
     color: #FFF;
 }
+.site-image,
+#admin-logo {
+    max-width: 300px;
+    max-height: 100px;
+    width: 100%;
+    height: auto;
+}

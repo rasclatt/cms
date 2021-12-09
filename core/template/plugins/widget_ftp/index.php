@@ -18,8 +18,8 @@ define('SFTP_SERVER_ROOT', $Settings->getSettings()->remoteftproot);
 define('REMOTE_FTPSSERVER', $Settings->getSettings()->remoteftpuri);
 define('REMOTE_FTPSIP', $Settings->getSettings()->remoteftpip);
 ?>
-<h3>sFTP Downloader</h3>
-<p>This plugin is meant to download your your live content to your local folder to mirror your live site.</p>
+<h3 class="tag-beta">sFTP Downloader</h3>
+<p>This plugin is meant to download your your live content to your local folder to mirror your live site. Requires a local copy of your RSA private key.</p>
 <?php if (empty(REMOTE_FTPSIP || empty(REMOTE_FTPSSERVER))) : ?>
     <div class="alert alert-danger">Ip Address is missing for remote host.</div>
     <p>In order to create a file mirror, you must create system components (4) with the following attributes:</p>

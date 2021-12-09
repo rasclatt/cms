@@ -1,4 +1,4 @@
-/* CSS Document */
+@import 'colors';
 #admin-interface {
   display: grid;
   grid-template-rows: 36px auto;
@@ -10,7 +10,7 @@
       &:nth-child(2) {
           display: grid;
           grid-template-columns: 240px auto;
-        background-color: #000;
+          background-color: $admin-nav;
       }
   }
 }

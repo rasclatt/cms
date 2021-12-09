@@ -8,5 +8,4 @@ client/
 client/**
 vendor/
 vendor/**
-**/.vscode
 *.pem

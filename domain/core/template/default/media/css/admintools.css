@@ -1,4 +1,3 @@
-/* CSS Document */
 #admin-interface {
   display: -ms-grid;
   display: grid;
@@ -17,7 +16,7 @@
   display: grid;
   -ms-grid-columns: 240px auto;
       grid-template-columns: 240px auto;
-  background-color: #000;
+  background-color: #241f1f;
 }
 
 #admin-sidebar {

@@ -1,3 +1,4 @@
+@import 'colors';
 /* 
 Ured - #be1522
 */
@@ -5,7 +6,7 @@ Ured - #be1522
 
 #admin-menubar {
 	display: block;
-	background-color: #000;
+	background-color: $admin-nav;
 	color: #FFF;
 	font-weight: 400;
 	font-size: 0.85em;
