@@ -1,9 +1,21 @@
 <?php
 use \phpseclib3\Crypt\PublicKeyLoader as RSA;
 use \phpseclib3\Net\SFTP;
-use \Nubersoft\nForm as Form;
 use \Widget\WidgetFtp;
-use \Nubersoft\JWTFactory;
+use \Nubersoft\ {
+    JWTFactory,
+    nForm as Form,
+    Settings
+};
+
+$plugin_id = basename(__DIR__);
+
+if($this->getPost('action') == 'widget_admin_ftp_settings') {
+    foreach($this->getPost('settings') as $k => $v) {
+        (new Settings)->deleteOption($k, 'system')->setOption($k, $v, 'system');
+    }
+    $this->redirect('?load='.$plugin_id);
+}
 
 spl_autoload_register(function ($class) {
     if (preg_match('/^Widget/', $class)) {
@@ -13,37 +25,61 @@ spl_autoload_register(function ($class) {
     }
 });
 $Settings = new WidgetFtp($this);
+$form = $Settings->getSettings();
+
 # Set define for the remote system
-define('SFTP_SERVER_ROOT', $Settings->getSettings()->remoteftproot);
-define('REMOTE_FTPSSERVER', $Settings->getSettings()->remoteftpuri);
-define('REMOTE_FTPSIP', $Settings->getSettings()->remoteftpip);
+define('SFTP_SERVER_ROOT', $form->remoteftproot);
+define('REMOTE_FTPSSERVER', $form->remoteftpuri);
+define('REMOTE_FTPSIP', $form->remoteftpip);
 ?>
-<h3 class="tag-beta">sFTP Downloader</h3>
-<p>This plugin is meant to download your your live content to your local folder to mirror your live site. Requires a local copy of your RSA private key.</p>
-<?php if (empty(REMOTE_FTPSIP || empty(REMOTE_FTPSSERVER))) : ?>
+<h3>sFTP Downloader</h3>
+<p>This plugin is meant to download your your live content to your local folder to mirror your live site.</p>
+<?php if (count(array_filter($form->toArray())) != 5) : ?>
     <div class="alert alert-danger">Ip Address is missing for remote host.</div>
-    <p>In order to create a file mirror, you must create system components (4) with the following attributes:</p>
+    <p>In order to create a file mirror, you must create <a href="?table=system_settings">system settings</a> with the following attributes:</p>
     <code>
-        <?php if (empty($Settings->getSettings()->remoteftpip)) : ?>
+        <?php if (empty($form->remoteftpip)) : ?>
             category_id = remoteftpip | option_attribute = {{the ip of your server}}<br />
         <?php endif ?>
-        <?php if (empty($Settings->getSettings()->remoteftproot)) : ?>
+        
+        <?php if (empty($form->remoteftproot)) : ?>
             category_id = remoteftproot | option_attribute = {{the server root path to your domain root}}<br />
         <?php endif ?>
-        <?php if (empty($Settings->getSettings()->remoteftppriv)) : ?>
+        
+        <?php if (empty($form->remoteftppriv)) : ?>
             category_id = remoteftppriv | option_attribute = {{the local path to the private key}}<br />
         <?php endif ?>
-        <?php if (empty($Settings->getSettings()->remoteftpuri)) : ?>
-            category_id = remoteftpuri | option_attribute = {{https://www.example.com}}
+        
+        <?php if (empty($form->remoteftpuri)) : ?>
+            category_id = remoteftpuri | option_attribute = {{https://www.example.com}}<br />
         <?php endif ?>
-        <?php if (empty($Settings->getSettings()->remoteftpuser)) : ?>
-            category_id = remoteftpuser | option_attribute = {{username}}
+        
+        <?php if (empty($form->remoteftpuser)) : ?>
+            category_id = remoteftpuser | option_attribute = {{username}}<br />
         <?php endif ?>
+
     </code>
-<?php
-    return false;
+
+    <?php return false;
 endif;
-# If the copy request is made
+?>
+    <?php echo Form::getOpen([ 'action' => '#', 'enctype' => 'multipart/form-data' ]) ?>
+        <?php echo Form::getFullhide([ 'name' => 'action', 'value' => 'widget_admin_ftp_settings' ]) ?>
+        
+        <?php echo Form::getText([ 'label' => 'Remote Ip', 'name' => 'settings[remoteftpip]', 'value' => $form->remoteftpip, 'class' => 'nbr' ]) ?>
+        
+        <?php echo Form::getText([ 'label' => 'Remote FTP Root', 'name' => 'settings[remoteftproot]', 'value' => $form->remoteftproot, 'class' => 'nbr' ]) ?>
+        
+        <?php echo Form::getText([ 'label' => 'Private Key', 'name' => 'settings[remoteftppriv]', 'value' => $form->remoteftppriv, 'class' => 'nbr' ]) ?>
+        
+        <?php echo Form::getText([ 'label' => 'Remote Username', 'name' => 'settings[remoteftpuser]', 'value' => $form->remoteftpuser, 'class' => 'nbr' ]) ?>
+        
+        <?php echo Form::getText([ 'label' => 'Remote URI', 'name' => 'settings[remoteftpuri]', 'value' => $form->remoteftpuri, 'class' => 'nbr' ]) ?>
+        
+        <?php echo Form::getSubmit([ 'value' => 'Save', 'class' => 'button standard' ]) ?>
+    <?php echo Form::getClose() ?>
+
+<?php # If the copy request is made
 if ($this->getPost('action') == 'copyftp') {
     $page = $this->getPost('dir');
 
@@ -73,21 +109,19 @@ if ($this->getPost('action') == 'copyftp') {
             }
         }
     } else {
-        $key = __DIR__.DS.'remotekey.pem';
-        if(is_file($key) && !is_readable($key)) {
-            throw new \Exception('You need to make your key readable.', 403);
-        }
+        $key = $form->remoteftppriv;
         $sftp = new SFTP(REMOTE_FTPSIP);
-        $key = RSA::loadPrivateKey(file_get_contents($key));
-        if (!$sftp->login($Settings->getSettings()->remoteftpusername, $key)) {
+        $key = RSA::load(file_get_contents($key));
+        if (!$sftp->login($Settings->getSettings()->remoteftpuser, $key)) {
             throw new Exception('Login failed');
         }
         $pg = str_replace('//', '/', SFTP_SERVER_ROOT . '/' . ltrim($page, '/'));
         $Ftp = new \Widget\Ftp($sftp, $pg);
-        //$Ftp//->addIgnore('path', '/domain/phpMyAdmin')
-        //->addIgnore('path', '/client/settings/cache')->fetch()
-        //->setRoot(SFTP_SERVER_ROOT.$page);//->fetch();
-        $response = $Ftp->addIgnore('path', '/domain/phpMyAdmin')->fetch()->toLocal(NBR_ROOT_DIR, $this);
+        $response = $Ftp
+        ->addIgnore('path', '/vendor')
+        ->addIgnore('path', '/domain/core')
+        ->addIgnore('path', '/domain/phpMyAdmin')->fetch()->toLocal(NBR_ROOT_DIR, $this);
+        echo '<code>'.printpre($response, 1).'</code>';
     }
 }
 ?>

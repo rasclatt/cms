@@ -7,5 +7,5 @@ class DataResponse extends \SmartDto\Dto
     public string $remoteftproot = '';
     public string $remoteftppriv = '';
     public string $remoteftpuri = '';
-    public string $remoteftpusername = '';
+    public string $remoteftpuser = '';
 }
