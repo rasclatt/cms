@@ -18,7 +18,7 @@
 		<base_url>{domain}</base_url>
 		<base_url_ssl>{domain}</base_url_ssl>
 		<force_url_ssl>false</force_url_ssl>
-		<session_expire_time>1600</session_expire_time>
+		<session_expire_time>3200</session_expire_time>
 		<temp_dir>/client/settings/tempfiles/</temp_dir>
 		<cache_dir>/client/settings/cache/</cache_dir>
 		<sys_prefs_temp>false</sys_prefs_temp>
@@ -28,7 +28,7 @@
 		<nbr_admin>2</nbr_admin>
 		<nbr_web>3</nbr_web>
 		<open_admin>false</open_admin>
-		<error_mode>0</error_mode>
+		<error_mode>E_ALL</error_mode>
 		<server_mode>live</server_mode>
 		<force_mode>true</force_mode>
 	</ondefine>
