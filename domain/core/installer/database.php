@@ -218,12 +218,12 @@ CREATE TABLE `emailer` (
   `ID` int(20) NOT NULL,
   `unique_id` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `content` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `content_back` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `return_copy` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
-  `return_address` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `return_response` text COLLATE utf8_unicode_ci NOT NULL,
+  `content_back` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `return_copy` varchar(3) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `return_address` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `return_response` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `email_id` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `page_live` varchar(3) COLLATE utf8_unicode_ci NOT NULL
+  `page_live` varchar(3) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;";
 
 $insert[]	=	preg_replace('/\([\d]+,/', '(', "

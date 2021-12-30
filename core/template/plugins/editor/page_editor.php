@@ -3,7 +3,6 @@ if ($this->getSession('editor') != 1)
 	return false;
 elseif (!$this->isAdmin())
 	return false;
-
 $page = $this->getPage()->toArray();
 $Form = $this->getHelper('nForm');
 $Page = $this->getHelper('Settings\Page\Controller');
