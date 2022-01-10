@@ -59,8 +59,13 @@ class nAjax {
 		// Assign data
 		ajaxDataObj.data = data;
 		// Fetch a token
-		if (typeof ajaxDataObj.data.jwtToken === "undefined")
-			ajaxDataObj.data.jwtToken = getCsrfToken();
+		if (typeof ajaxDataObj.data.jwtToken === "undefined") {
+			if (typeof ajaxDataObj.data === "object")
+				ajaxDataObj.data.jwtToken = getCsrfToken();
+			else {
+				ajaxDataObj.data += `&jwtToken=${getCsrfToken()}`;
+			}
+		}
 		// Add a doBefore if set
 		if (!empty(this.doBeforeAttr)) {
 			ajaxDataObj.beforeSend = this.doBeforeAttr;//this.doBefore();
