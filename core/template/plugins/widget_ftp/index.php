@@ -3,7 +3,7 @@ use \phpseclib3\Crypt\PublicKeyLoader as RSA;
 use \phpseclib3\Net\SFTP;
 use \Widget\WidgetFtp;
 use \Nubersoft\{
-    JWTFactory,
+    nQuery,
     nForm as Form,
     Settings
 };
@@ -34,6 +34,7 @@ define('REMOTE_FTPSIP', $form->remoteftpip);
 ?>
 <h3>sFTP Downloader</h3>
 <p>This plugin is meant to download your your live content to your local folder to mirror your live site.</p>
+<div class="alert alert-info">In order for the database to be copied, the local JWT and remote JWT secret needs to be the same.</div>
 <?php if (count(array_filter($form->toArray())) != 5) : ?>
     <div class="alert alert-danger">Ip Address is missing for remote host.</div>
     <p>In order to create a file mirror, you must create <a href="?table=system_settings">system settings</a> with the following attributes:</p>
@@ -76,35 +77,38 @@ endif;
 
 <?php echo Form::getText(['label' => 'Remote URI', 'name' => 'settings[remoteftpuri]', 'value' => $form->remoteftpuri, 'class' => 'nbr']) ?>
 
-<?php echo Form::getSubmit(['value' => 'Save', 'class' => 'button standard']) ?>
+<?php echo Form::getSubmit(['value' => 'Save', 'class' => 'button standard mt-4']) ?>
 <?php echo Form::getClose() ?>
 
 <?php # If the copy request is made
 if ($this->getPost('action') == 'copyftp') {
     $page = $this->getPost('dir');
-
     if ($page == 'dump') {
-        $database = @json_decode(file_get_contents(REMOTE_FTPSSERVER, false, stream_context_create([
+        $fetch = file_get_contents(REMOTE_FTPSSERVER, false, stream_context_create([
             'http' => [
                 'method' => 'POST',
                 'header' => [
                     'Content-Type: application/x-www-form-urlencoded',
                     'Authorization: Bearer ' . \NubersoftCms\Model\Api::generateKey()
                 ],
-                'content' => [
-                    'service' => 'Admin.generateKey'
-                ]
+                'content' => http_build_query([
+                    'service' => 'Admin.getDatabaseContents'
+                ])
             ]
-        ])), 1);
-
+        ]));
+        $database = @json_decode($fetch, 1);
         if (!empty($database) && empty($database['alert'])) {
-            $nQuery = $this->nQuery();
+            $nQuery = new nQuery;
             foreach ($nQuery->query("show tables")->getResults() as $table) {
                 $table = array_values($table)[0];
-                $nQuery->query("DROP TABLE `{$table}`");
+                if ($table != 'system_settings')
+                    $nQuery->query("DROP TABLE `{$table}`");
             }
 
             foreach ($database as $insert) {
+                if (strpos($insert, '`system_settings`') !== false)
+                    continue;
+
                 $nQuery->query($insert);
             }
         }
