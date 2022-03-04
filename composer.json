@@ -20,7 +20,7 @@
     "require": {
         "rasclatt/nubersoft": "*",
         "rasclatt/nubersoft-cms": "*",
-        "firebase/php-jwt": "*",
+        "firebase/php-jwt": "v5.5.1",
         "rasclatt/smart-dto": "*",
         "rasclatt/smart-api": "*",
         "phpseclib/phpseclib": "^3.0",
