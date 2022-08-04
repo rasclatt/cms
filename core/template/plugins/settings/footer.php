@@ -31,7 +31,7 @@ $defaults	=	[
 ];
 ?>
 <?php echo $this->getPlugin('admintools', 'admin_ui.php') ?>
-<h2>Footer Settings</h2>
+<h3>Footer Settings</h3>
 <p>Change footer settings for your site.</p>
 <?php
 $Form	=	@$this->nForm();

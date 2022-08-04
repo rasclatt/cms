@@ -100,19 +100,24 @@ if(!function_exists('fetch_and_install')) {
 }
 $err	=	$this->getDataNode('update_error');
 if(!empty($err)): ?>
-<div class="nbr_error"><?php echo $err ?></div>
+<div class="alert alert-danger"><?php echo $err ?></div>
 <?php endif ?>
 
-<h1>Update system software</h1>
 <form action="?load=coreinstaller&action=update_system_software" method="post">
-	<label style="font-size: 1.25em; margin-bottom: 0.5em;">
+	<label style="font-size: 1em; margin-bottom: 0.5em;">
 		<input type="checkbox" name="update[cms]" checked="checked" value="cms" />&nbsp;CMS Updater v.<?php echo file_get_contents(realpath(__DIR__.DS.'..'.DS.'..'.DS.'..'.DS.'..'.DS.'core').DS.'settings'.DS.'version.flag') ?> (<a href="https://github.com/rasclatt/cms/" target="_blank">rasclatt/cms</a>)
 	</label>
-	<label style="font-size: 1.25em; margin-bottom: 0.5em;">
+	<label style="font-size: 1em; margin-bottom: 0.5em;">
 		<input type="checkbox" name="update[nubersoft]" value="nubersoft" />&nbsp;Framework Updater (<a href="https://github.com/rasclatt/nubersoft/" target="_blank">rasclatt/nubersoft</a>)
 	</label>
-	<?php if(is_dir(NBR_ROOT_DIR.DS.'vendor'.DS.'rasclatt'.DS.'nubersoft')): ?><div class="nbr_error stay">The class library appears to be installed by Composer! You can use <code style="font-family: Courier; background-color: #888; padding: 0 5px;">composer update rasclatt/nubersoft</code> in the terminal. If you update this way, it will still work, but Composer is preferred.</div><?php endif ?>
-	<input type="submit" class="button" value="Update Nubersoft" style="text-transform: uppercase;" />
+	<?php if(is_dir(NBR_ROOT_DIR.DS.'vendor'.DS.'rasclatt'.DS.'nubersoft')): ?>
+		
+		<div class="mt-5 alert alert-info">The class library appears to be installed by Composer! You can use <code style="font-family: Courier; background-color: #888; padding: 0 5px;">composer update rasclatt/nubersoft</code> in the terminal. If you update this way, it will still work, but Composer is preferred.</div>
+		
+	<?php endif ?>
+	<div class="align-middle">
+		<input type="submit" class="nbr auto mt-4" value="Update Nubersoft" style="text-transform: uppercase;" />
+	</div>
 </form>
 <div class="pad-top" id="update-log">
 <?php

@@ -55,7 +55,7 @@ $defaults	=	[
 ];
 ?>
 <?php echo $this->getPlugin('admintools', 'admin_ui.php') ?>
-<h2>Header Settings</h2>
+<h3>Header Settings</h3>
 <p>Change header settings for your site.</p>
 <?php
 $Form	=	@$this->nForm();

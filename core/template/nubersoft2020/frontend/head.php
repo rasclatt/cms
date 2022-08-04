@@ -2,6 +2,7 @@
 <?php echo $this->getTitle($this->siteUrl($this->getPage('full_path'))) ?>
 <?php echo $this->getMeta(['viewport' => 'width=device-width', 'Author' => 'Rasclatt']) ?>
 <?php echo $this->Helpers->Html->createMeta('charset', 'utf-8', true) ?>
+<?php echo $this->getPlugin('admin_securitypolicy_editor') ?>
 <?php echo $this->styleSheets() ?>
 <!-- CREATE BOOTSTRAP -->
 <?php echo $this->Helpers->Html->createLinkRel('//stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css',null,null,null,' integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"') ?>

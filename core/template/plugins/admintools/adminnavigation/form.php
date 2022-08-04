@@ -84,7 +84,7 @@ foreach($media as $field => $value):
 <div class="pad-bottom-3 col-count-2 gapped med-1">
     <?php foreach($fields as $k => $row): ?>
         <?php if(preg_match('/^file|cached|page_order|group|admin|ref|parent|time|component/', $k)) continue; ?>
-    <?php if($k == 'content') echo '<div class="span-2 push-col-1 medium">' ?>
+    <?php if($k == 'content') echo '<div class="span2 span1-md">' ?>
         <?php echo $row ?>
     <?php if($k == 'content') echo '</div>' ?>
 

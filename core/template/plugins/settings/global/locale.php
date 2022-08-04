@@ -134,12 +134,4 @@ use \Nubersoft\ {
         
         <div style="align-self: end;"><?php echo Form::getSubmit(['value' => 'SAVE', 'class' => 'medi-btn dark settings margin-bottom-0']) ?></div>
     </form>
-
-    <script>
-        $(function(){
-	       $('#transhosts-list').on('submit', function(){
-               
-           };
-        });
-    </script>
 </div>

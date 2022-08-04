@@ -20,6 +20,8 @@
     "require": {
         "rasclatt/nubersoft": "*",
         "rasclatt/nubersoft-cms": "*",
+        "rasclatt/smart-dto": "*",
+        "rasclatt/smart-api": "*",
         "firebase/php-jwt": "*"
     }
 }

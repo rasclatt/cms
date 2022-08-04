@@ -1,0 +1,496 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "0641c657de53d0f60a4cec91d5668472",
+    "packages": [
+        {
+            "name": "firebase/php-jwt",
+            "version": "v5.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/firebase/php-jwt.git",
+                "reference": "83b609028194aa042ea33b5af2d41a7427de80e6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/83b609028194aa042ea33b5af2d41a7427de80e6",
+                "reference": "83b609028194aa042ea33b5af2d41a7427de80e6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=4.8 <=9"
+            },
+            "suggest": {
+                "paragonie/sodium_compat": "Support EdDSA (Ed25519) signatures when libsodium is not present"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Firebase\\JWT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Neuman Vong",
+                    "email": "neuman+pear@twilio.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Anant Narayanan",
+                    "email": "anant@php.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
+            "homepage": "https://github.com/firebase/php-jwt",
+            "keywords": [
+                "jwt",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/firebase/php-jwt/issues",
+                "source": "https://github.com/firebase/php-jwt/tree/v5.5.1"
+            },
+            "time": "2021-11-08T20:18:51+00:00"
+        },
+        {
+            "name": "paragonie/constant_time_encoding",
+            "version": "v2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/constant_time_encoding.git",
+                "reference": "f34c2b11eb9d2c9318e13540a1dbc2a3afbd939c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/constant_time_encoding/zipball/f34c2b11eb9d2c9318e13540a1dbc2a3afbd939c",
+                "reference": "f34c2b11eb9d2c9318e13540a1dbc2a3afbd939c",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7|^8"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6|^7|^8|^9",
+                "vimeo/psalm": "^1|^2|^3|^4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ParagonIE\\ConstantTime\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com",
+                    "homepage": "https://paragonie.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Steve 'Sc00bz' Thomas",
+                    "email": "steve@tobtu.com",
+                    "homepage": "https://www.tobtu.com",
+                    "role": "Original Developer"
+                }
+            ],
+            "description": "Constant-time Implementations of RFC 4648 Encoding (Base-64, Base-32, Base-16)",
+            "keywords": [
+                "base16",
+                "base32",
+                "base32_decode",
+                "base32_encode",
+                "base64",
+                "base64_decode",
+                "base64_encode",
+                "bin2hex",
+                "encoding",
+                "hex",
+                "hex2bin",
+                "rfc4648"
+            ],
+            "support": {
+                "email": "info@paragonie.com",
+                "issues": "https://github.com/paragonie/constant_time_encoding/issues",
+                "source": "https://github.com/paragonie/constant_time_encoding"
+            },
+            "time": "2020-12-06T15:14:20+00:00"
+        },
+        {
+            "name": "paragonie/random_compat",
+            "version": "v9.99.100",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/random_compat.git",
+                "reference": "996434e5492cb4c3edcb9168db6fbb1359ef965a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/996434e5492cb4c3edcb9168db6fbb1359ef965a",
+                "reference": "996434e5492cb4c3edcb9168db6fbb1359ef965a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">= 7"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*|5.*",
+                "vimeo/psalm": "^1"
+            },
+            "suggest": {
+                "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com",
+                    "homepage": "https://paragonie.com"
+                }
+            ],
+            "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
+            "keywords": [
+                "csprng",
+                "polyfill",
+                "pseudorandom",
+                "random"
+            ],
+            "support": {
+                "email": "info@paragonie.com",
+                "issues": "https://github.com/paragonie/random_compat/issues",
+                "source": "https://github.com/paragonie/random_compat"
+            },
+            "time": "2020-10-15T08:29:30+00:00"
+        },
+        {
+            "name": "phpseclib/phpseclib",
+            "version": "3.0.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpseclib/phpseclib.git",
+                "reference": "89bfb45bd8b1abc3b37e910d57f5dbd3174f40fb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/89bfb45bd8b1abc3b37e910d57f5dbd3174f40fb",
+                "reference": "89bfb45bd8b1abc3b37e910d57f5dbd3174f40fb",
+                "shasum": ""
+            },
+            "require": {
+                "paragonie/constant_time_encoding": "^1|^2",
+                "paragonie/random_compat": "^1.4|^2.0|^9.99.99",
+                "php": ">=5.6.1"
+            },
+            "require-dev": {
+                "phing/phing": "~2.7",
+                "phpunit/phpunit": "^5.7|^6.0|^9.4",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "suggest": {
+                "ext-gmp": "Install the GMP (GNU Multiple Precision) extension in order to speed up arbitrary precision integer arithmetic operations.",
+                "ext-libsodium": "SSH2/SFTP can make use of some algorithms provided by the libsodium-php extension.",
+                "ext-mcrypt": "Install the Mcrypt extension in order to speed up a few other cryptographic operations.",
+                "ext-openssl": "Install the OpenSSL extension in order to speed up a wide variety of cryptographic operations."
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "phpseclib/bootstrap.php"
+                ],
+                "psr-4": {
+                    "phpseclib3\\": "phpseclib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Wigginton",
+                    "email": "terrafrost@php.net",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Patrick Monnerat",
+                    "email": "pm@datasphere.ch",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Andreas Fischer",
+                    "email": "bantu@phpbb.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Hans-Jürgen Petrich",
+                    "email": "petrich@tronic-media.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Graham Campbell",
+                    "email": "graham@alt-three.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP Secure Communications Library - Pure-PHP implementations of RSA, AES, SSH2, SFTP, X.509 etc.",
+            "homepage": "http://phpseclib.sourceforge.net",
+            "keywords": [
+                "BigInteger",
+                "aes",
+                "asn.1",
+                "asn1",
+                "blowfish",
+                "crypto",
+                "cryptography",
+                "encryption",
+                "rsa",
+                "security",
+                "sftp",
+                "signature",
+                "signing",
+                "ssh",
+                "twofish",
+                "x.509",
+                "x509"
+            ],
+            "support": {
+                "issues": "https://github.com/phpseclib/phpseclib/issues",
+                "source": "https://github.com/phpseclib/phpseclib/tree/3.0.12"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/terrafrost",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/phpseclib",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/phpseclib/phpseclib",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-11-28T23:46:03+00:00"
+        },
+        {
+            "name": "rasclatt/nubersoft",
+            "version": "1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rasclatt/nubersoft.git",
+                "reference": "74d88a2d41d337d519a0d92b934efddeff7d4cc5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rasclatt/nubersoft/zipball/74d88a2d41d337d519a0d92b934efddeff7d4cc5",
+                "reference": "74d88a2d41d337d519a0d92b934efddeff7d4cc5",
+                "shasum": ""
+            },
+            "require": {
+                "firebase/php-jwt": "*",
+                "rasclatt/smart-dto": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Nubersoft\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan Rayner",
+                    "email": "rasclatt@me.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Mini framework and class library for PHP.",
+            "homepage": "https://github.com/rasclatt/nubersoft",
+            "keywords": [
+                "Nubersoft",
+                "cms",
+                "framework",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/rasclatt/nubersoft/issues",
+                "source": "https://github.com/rasclatt/nubersoft/tree/1.3.1"
+            },
+            "time": "2021-11-07T06:50:07+00:00"
+        },
+        {
+            "name": "rasclatt/nubersoft-cms",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rasclatt/nubersoft-cms.git",
+                "reference": "932b4176e7ec7dc9d83e07435731e79d8f734e4f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rasclatt/nubersoft-cms/zipball/932b4176e7ec7dc9d83e07435731e79d8f734e4f",
+                "reference": "932b4176e7ec7dc9d83e07435731e79d8f734e4f",
+                "shasum": ""
+            },
+            "require": {
+                "rasclatt/smart-dto": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NubersoftCms\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan Rayner",
+                    "email": "rasclatt@me.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Support for the Nubersoft CMS.",
+            "homepage": "https://github.com/rasclatt/nubersoft-cms",
+            "keywords": [
+                "Nubersoft",
+                "cms",
+                "framework",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/rasclatt/nubersoft-cms/issues",
+                "source": "https://github.com/rasclatt/nubersoft-cms/tree/0.0.2"
+            },
+            "time": "2021-09-20T05:10:35+00:00"
+        },
+        {
+            "name": "rasclatt/smart-api",
+            "version": "0.0.5.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rasclatt/smart-api.git",
+                "reference": "8f8f22f5796b5f274cef5e389e805868b0384c3c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rasclatt/smart-api/zipball/8f8f22f5796b5f274cef5e389e805868b0384c3c",
+                "reference": "8f8f22f5796b5f274cef5e389e805868b0384c3c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "rasclatt/nubersoft": "1.*",
+                "rasclatt/smart-dto": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SmartApi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan Rayner",
+                    "email": "rasclatt@me.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Class Library For the Nubersoft API Service",
+            "homepage": "https://github.com/rasclatt/api",
+            "keywords": [
+                "Nubersoft",
+                "api",
+                "framework",
+                "mlm"
+            ],
+            "support": {
+                "issues": "https://github.com/rasclatt/smart-api/issues",
+                "source": "https://github.com/rasclatt/smart-api/tree/0.0.5.4"
+            },
+            "time": "2021-08-25T08:36:38+00:00"
+        },
+        {
+            "name": "rasclatt/smart-dto",
+            "version": "0.0.6.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rasclatt/smart-dto.git",
+                "reference": "7ffd8b964bacd199297e37bb9f152596130d89b2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rasclatt/smart-dto/zipball/7ffd8b964bacd199297e37bb9f152596130d89b2",
+                "reference": "7ffd8b964bacd199297e37bb9f152596130d89b2",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SmartDto\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan Rayner",
+                    "email": "rasclatt@me.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Fill Dtos with data using the mapping. Also allows rendering to different array key formats.",
+            "homepage": "https://github.com/rasclatt/nubersoft",
+            "keywords": [
+                "Data Transfer Object",
+                "Nubersoft",
+                "dto",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/rasclatt/smart-dto/issues",
+                "source": "https://github.com/rasclatt/smart-dto/tree/0.0.6.3"
+            },
+            "time": "2021-11-22T04:25:30+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.1.0"
+}

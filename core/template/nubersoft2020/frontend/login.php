@@ -11,7 +11,7 @@
             <div class="abs-auto left-0 right-0 top-0 margin-top-1">
                 <?php echo $this->getPlugin('notifications') ?>
             </div>
-            <div<?php if(!$this->siteLogoActive()): ?> class="col-count-3"<?php else: ?> style="padding: 0 2em 2em 2em;"<?php endif ?>>
+            <div class="align-middle">
                 <a href="<?php echo $this->localeUrl() ?>" id="admin-logo" class="start2"><?php echo $this->getSiteLogo(false, true) ?></a>
             </div>
             <div class="login-dialogue-wrapper align-middle">

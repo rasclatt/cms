@@ -21,16 +21,16 @@ $Settings	=	$this->getHelper('Settings\Controller');
 			<?php echo $Form->fullhide(["name" => "link", "value" => $page->link, "class" => "nbr"]) ?>
 			<div class="col-count-4 gapped col-c2-md col-c1-sm page-editor-container">
 				
-				<div class="span4 push-col-2 medium push-col-1 small nTrigger pointer page-editor-header" data-instructions='{"FX":{"fx":["hide","accordian"],"acton":[".hide","next::slideDown"],"event":["click","click"],"fxspeed":["fast","fast"]}}'>
+				<div class="span4 span2-md span1-sm nTrigger pointer page-editor-header" data-instructions='{"FX":{"fx":["hide","accordian"],"acton":[".hide","next::slideDown"],"event":["click","click"],"fxspeed":["fast","fast"]}}'>
 					<h3 class="no-margin no-padding">Template Setup</h3>
 				</div>
-				<div class="span4 push-col-2 medium push-col-1 small hide" style="display: none;">
+				<div class="span4 span2-md span1-sm hide" style="display: none;">
 					<div class="col-count-2 gapped col-c1-md gapped">
-						<div class="span2 push-col-1 medium">
+						<div class="span2 span1-md">
                             <p class="white" style="margin: 0;">This is what displays on the browser window title bar.</p>
 							<?php echo $Form->text(['label' => 'Page Title', "name" => "menu_name", "value" => $page->menu_name, "class" => "nbr", 'other' =>['required="required"']]) ?>
 						</div>
-						<div class="span2 push-col-1 medium">
+						<div class="span2 span1-md">
                             <p class="white" style="margin: 0;">This is the browser url path.</p>
 							<?php echo $Form->text(['label' => 'Slug (URL Path)', "name" => "full_path", "value" => $page->full_path, "class" => "nbr", 'other' =>['required="required"']]) ?>
 						</div>
@@ -68,10 +68,10 @@ $Settings	=	$this->getHelper('Settings\Controller');
 				</div>
 				
 				
-				<div class="start1 span4 push-col-2 medium push-col-1 small nTrigger pointer page-editor-header" data-instructions='{"FX":{"fx":["hide","accordian"],"acton":[".hide","next::slideDown"],"event":["click","click"],"fxspeed":["fast","fast"]}}'>
+				<div class="start1 span4 span2-md span1-sm nTrigger pointer page-editor-header" data-instructions='{"FX":{"fx":["hide","accordian"],"acton":[".hide","next::slideDown"],"event":["click","click"],"fxspeed":["fast","fast"]}}'>
 					<h3 class="no-margin no-padding">Page Caching</h3>
 				</div>
-				<div class="span4 push-col-2 medium push-col-1 small hide" style="display: none;">
+				<div class="span4 span2-md span1-sm hide" style="display: none;">
 					<div class="col-count-4 gapped col-c2-md col-c1-sm">
 						<div class="start1">
 						<?php echo $Form->select(['label' => 'Cache Page?', "name" => "auto_cache", "options" => [
@@ -82,10 +82,10 @@ $Settings	=	$this->getHelper('Settings\Controller');
 					</div>
 				</div>
 				
-				<div class="start1 span4 push-col-2 medium push-col-1 small nTrigger pointer page-editor-header" data-instructions='{"FX":{"fx":["hide","accordian"],"acton":[".hide","next::slideDown"],"event":["click","click"],"fxspeed":["fast","fast"]}}'>
+				<div class="start1 span4 span2-md span1-sm nTrigger pointer page-editor-header" data-instructions='{"FX":{"fx":["hide","accordian"],"acton":[".hide","next::slideDown"],"event":["click","click"],"fxspeed":["fast","fast"]}}'>
 					<h3 class="no-margin no-padding">Activation Settings</h3>
 				</div>
-				<div class="span4 push-col-2 medium push-col-1 small hide" style="display: none;">
+				<div class="span4 span2-md span1-sm hide" style="display: none;">
 					<div class="col-count-4 gapped col-c2-md col-c1-sm">
 						<?php echo $Form->select(['label' => 'Page Live?', "name" => "page_live", "options" => [
 							['name' => 'Off', 'value' => 'off', 'selected' => ($page->page_live == 'off')],
@@ -99,10 +99,10 @@ $Settings	=	$this->getHelper('Settings\Controller');
 					</div>
 				</div>
 				
-				<div class="start1 span4 push-col-2 medium push-col-1 small nTrigger pointer page-editor-header" data-instructions='{"FX":{"fx":["hide","accordian"],"acton":[".hide","next::slideDown"],"event":["click","click"],"fxspeed":["fast","fast"]}}'>
+				<div class="start1 span4 span2-md span1-sm nTrigger pointer page-editor-header" data-instructions='{"FX":{"fx":["hide","accordian"],"acton":[".hide","next::slideDown"],"event":["click","click"],"fxspeed":["fast","fast"]}}'>
 					<h3 class="no-margin no-padding">Forwarding Settings</h3>
 				</div>
-				<div class="span4 push-col-2 medium push-col-1 small hide" style="display: none;">
+				<div class="span4 span2-md span1-sm hide" style="display: none;">
 					<div class="col-count-4 gapped col-c2-md col-c1-sm">
 						<?php echo $Form->text(['label' => 'Forward to', "name" => "auto_fwd", "value" => $page->auto_fwd, "class" => "nbr"]) ?>
 						<?php echo $Form->select(['label' => 'Forward After Login?', "name" => "auto_fwd_post", "options" => [
@@ -112,10 +112,10 @@ $Settings	=	$this->getHelper('Settings\Controller');
 					</div>
 				</div>
 				
-				<div class="start1 span4 push-col-2 medium push-col-1 small nTrigger pointer page-editor-header" data-instructions='{"FX":{"fx":["hide","accordian"],"acton":[".hide","next::slideDown"],"event":["click","click"],"fxspeed":["fast","fast"]}}'>
+				<div class="start1 span4 span2-md span1-sm nTrigger pointer page-editor-header" data-instructions='{"FX":{"fx":["hide","accordian"],"acton":[".hide","next::slideDown"],"event":["click","click"],"fxspeed":["fast","fast"]}}'>
 					<h3 class="no-margin no-padding">Permission Settings</h3>
 				</div>
-				<div class="span4 push-col-2 medium push-col-1 small hide" style="display: none;">
+				<div class="span4 span2-md span1-sm hide" style="display: none;">
 					<div class="col-count-4 gapped col-c2-md col-c1-sm">
 						<?php echo $Form->select(['label' => 'Require Login?', "name" => "session_status", "options" => [
 							['name' => 'Off', 'value' => 'off', 'selected' => ($page->session_status == 'off')],
@@ -134,7 +134,7 @@ $Settings	=	$this->getHelper('Settings\Controller');
 				
 				<div class="start1 col-count-3 col-c2-lg col-c1-md"><?php echo $Form->checkbox(['label' => 'Delete Page?', 'name'=>'delete', 'value' => 'on']) ?></div>
 				
-				<div class="start1 span3 push-col-2 medium push-col-1 small col-count-6 col-c4-lg col-c2-md col-c1-sm">
+				<div class="start1 span3 span2-md span1-sm col-count-6 col-c4-lg col-c2-md col-c1-sm">
 				<?php echo $Form->submit(["name" => "", "value" => "SAVE", "class" => "nbr medi-btn dark"]) ?>
 				</div>
 			</div>

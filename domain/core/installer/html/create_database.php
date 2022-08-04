@@ -74,17 +74,15 @@ if(!empty($err)): ?>
         </tr>
         <?php endforeach ?>
         <tr>
-            <td class="align-right"><?php echo $Form->submit(['value' => 'Save', 'class' => 'button']) ?></td>
+            <td class="align-right"><?php echo $Form->submit(['value' => 'Save', 'class' => 'submit-form button']) ?></td>
         </td>
     </table>
     <?php echo $Form->close() ?>
 
 <script>
     $(function(){
-        $('form').on('change submit', function(e){
-            if(e.target != 'change') {
-                e.preventDefault();
-            }
+        $('form').on('click', '.submit-form', function(e) {
+            e.preventDefault();
             
             var validate    =   [];
             var data    =   $(this).serializeArray();
@@ -95,7 +93,7 @@ if(!empty($err)): ?>
             });
             
             if(validate.length == data.length) {
-                $(this).clone().submit();
+                $('form').submit();
             }
         });
     });

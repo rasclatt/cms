@@ -1,60 +1,80 @@
 .csm-tool-item {
-  position: relative; }
-  .csm-tool-item:hover {
-    border: 1px dashed rgba(35, 195, 255, 0.78); }
-    .csm-tool-item:hover > .edit-btn-tools {
-      background-color: rgba(35, 195, 255, 0.78);
-      color: #FFF;
-      font-weight: bold;
-      font-size: 1rem;
-      text-align: center;
-      padding: 0.3em;
-      position: absolute;
-      display: block !important;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000000000; }
+  position: relative;
+}
+
+.csm-tool-item:hover {
+  border: 1px dashed rgba(35, 195, 255, 0.78);
+}
+
+.csm-tool-item:hover > .edit-btn-tools {
+  background-color: rgba(35, 195, 255, 0.78);
+  color: #FFF;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  padding: 0.3em;
+  position: absolute;
+  display: block !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000000000;
+}
 
 .component-editor-form label,
 .component-editor-form input[type="text"],
 .component-editor-form textarea {
-  width: 100% !important; }
+  width: 100% !important;
+}
+
 .component-editor-form input[type="text"],
 .component-editor-form textarea {
-  border: 1px solid #CCC; }
+  border: 1px solid #CCC;
+}
+
 .component-editor-form label {
-  margin-top: 1em; }
+  margin-top: 1em;
+}
+
 .component-editor-form textarea.nbr.code {
   background-color: #222;
-  color: #FFF; }
+  color: #FFF;
+}
+
 .component-editor-form > div:nth-child(6) > div:nth-child(17) {
   background-color: #F0F0F0 !important;
-  text-align: center !important; }
+  text-align: center !important;
+}
 
-.nbr:not(input[type="submit"], input[type="checkbox"], input[type="radio"]) {
+.nbr {
   border: 1px solid #CCC;
-  appearance: none;
+  -moz-appearance: none;
+       appearance: none;
   -webkit-appearance: none;
   font-size: 1em;
   padding: 0.75em 1.2em;
   border-left: 5px solid #00a3ff;
-  font-family: 'Montserrat', sans-serif; }
+  font-family: 'Montserrat', sans-serif;
+}
 
 textarea.code {
-  font-family: Courier !important; }
+  font-family: Courier !important;
+}
 
 form select.nbr {
   font-size: 1em;
   padding: 0.75em 1.2em;
   border-radius: 0px;
   position: relative;
-  border-left: 5px solid red !important; }
-  form select.nbr::after {
-    content: 'v';
-    color: #000;
-    position: absolute;
-    right: 0; }
+  border-left: 5px solid red !important;
+}
+
+form select.nbr::after {
+  content: 'v';
+  color: #000;
+  position: absolute;
+  right: 0;
+}
 
 .medi-btn,
 .mini-btn,
@@ -67,14 +87,17 @@ input[type="submit"].nbr {
   font-weight: 600;
   background-color: #333;
   color: #FFF;
-  border: 1px solid transparent; }
+  border: 1px solid transparent;
+}
 
 input[type="submit"].nbr:hover {
   background-color: #666;
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 html {
-  counter-reset: fileids; }
+  counter-reset: fileids;
+}
 
 .file-id-backtrace {
   counter-increment: fileids;
@@ -83,114 +106,167 @@ html {
   color: #FFF;
   padding: 0.25em 0.25em 0.25em 2em;
   display: inline-block;
-  border-left: 5px solid rgba(102, 12, 12, 0.8); }
-  .file-id-backtrace::before {
-    background-color: rgba(102, 12, 12, 0.8);
-    position: absolute;
-    left: -5px;
-    top: 0em;
-    bottom: 0;
-    content: counter(fileids);
-    padding: 0.25em 0.5em 0.25em 0.25em; }
+  border-left: 5px solid rgba(102, 12, 12, 0.8);
+}
+
+.file-id-backtrace::before {
+  background-color: rgba(102, 12, 12, 0.8);
+  position: absolute;
+  left: -5px;
+  top: 0em;
+  bottom: 0;
+  content: counter(fileids);
+  padding: 0.25em 0.5em 0.25em 0.25em;
+}
 
 .medi-btn,
 .mini-btn {
-  margin: 1em !important;
+  margin: 1em 0 !important;
   color: #00a3ff;
   font-size: 0.65em;
   padding: 0.5em 1em;
   border: 1px solid #00a3ff;
   background-color: transparent;
-  display: inline-block; }
+  display: inline-block;
+}
 
 .medi-btn {
   font-size: 0.85em;
-  padding: 0.75em 1.25em; }
+  padding: 0.75em 1.25em;
+}
 
 .page-menu li {
   background: #000;
   position: relative;
-  overflow: visible; }
-  .page-menu li a:link, .page-menu li a:visited {
-    color: #FFF;
-    background-color: transparent;
-    text-align: center !important;
-    text-transform: uppercase;
-    font-size: 0.85em;
-    padding: 0.75em;
-    display: block;
-    white-space: nowrap;
-    overflow: visible; }
+  overflow: visible;
+}
+
+.page-menu li a:link, .page-menu li a:visited {
+  color: #FFF;
+  background-color: transparent;
+  text-align: center !important;
+  text-transform: uppercase;
+  font-size: 0.85em;
+  padding: 0.75em;
+  display: block;
+  white-space: nowrap;
+  overflow: visible;
+}
 
 .arrow-down {
-  position: relative; }
-  .arrow-down::after {
-    color: #888;
-    position: absolute;
-    right: 1em;
-    transition: 0.35s;
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    content: "\f077";
-    transform: rotate(180deg); }
-  .arrow-down.white {
-    color: #FFF; }
-    .arrow-down.white::after {
-      color: #FFF; }
+  position: relative;
+}
+
+.arrow-down::after {
+  color: #888;
+  position: absolute;
+  right: 1em;
+  -webkit-transition: 0.35s;
+  transition: 0.35s;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f077";
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.arrow-down.white {
+  color: #FFF;
+}
+
+.arrow-down.white::after {
+  color: #FFF;
+}
 
 .page-menu {
-  padding: 0; }
-  .page-menu li:hover li {
-    position: relative;
-    left: 1em;
-    bottom: 0.5em; }
-  .page-menu li:hover ul {
-    z-index: 1;
-    display: block;
-    position: absolute;
-    height: 0;
-    overflow: visible; }
-    .page-menu li:hover ul li {
-      border-left: 1px solid red;
-      border-right: 1px solid red; }
-      .page-menu li:hover ul li:last-child {
-        border-bottom: 1px solid red; }
-      .page-menu li:hover ul li:first-child {
-        border-top: 1px solid red; }
-  .page-menu li.menu-group {
-    position: relative; }
-    .page-menu li.menu-group > ul {
-      position: relative;
-      right: -80%;
-      bottom: -0.5em; }
-    .page-menu li.menu-group:hover > a:after,
-    .page-menu li.menu-group > a:hover::after {
-      transform: rotate(180deg); }
-    .page-menu li.menu-group > a::after {
-      color: red;
-      position: absolute;
-      right: 0;
-      transition: 0.35s;
-      font-family: "Font Awesome 5 Free";
-      font-weight: 900;
-      content: "\f077"; }
-  .page-menu li a:hover {
-    background-color: red; }
-  .page-menu ul,
-  .page-menu ul li {
-    list-style: none;
-    margin-left: 0;
-    padding-left: 0;
-    text-indent: 0; }
-  .page-menu > ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap; }
-  .page-menu ul ul {
-    display: none; }
+  padding: 0;
+}
+
+.page-menu li:hover li {
+  position: relative;
+  left: 1em;
+  bottom: 0.5em;
+}
+
+.page-menu li:hover ul {
+  z-index: 1;
+  display: block;
+  position: absolute;
+  height: 0;
+  overflow: visible;
+}
+
+.page-menu li:hover ul li {
+  border-left: 1px solid red;
+  border-right: 1px solid red;
+}
+
+.page-menu li:hover ul li:last-child {
+  border-bottom: 1px solid red;
+}
+
+.page-menu li:hover ul li:first-child {
+  border-top: 1px solid red;
+}
+
+.page-menu li.menu-group {
+  position: relative;
+}
+
+.page-menu li.menu-group > ul {
+  position: relative;
+  right: -80%;
+  bottom: -0.5em;
+}
+
+.page-menu li.menu-group:hover > a:after,
+.page-menu li.menu-group > a:hover::after {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.page-menu li.menu-group > a::after {
+  color: red;
+  position: absolute;
+  right: 0;
+  -webkit-transition: 0.35s;
+  transition: 0.35s;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f077";
+}
+
+.page-menu li a:hover {
+  background-color: red;
+}
+
+.page-menu ul,
+.page-menu ul li {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+  text-indent: 0;
+}
+
+.page-menu > ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.page-menu ul ul {
+  display: none;
+}
 
 .active-contextual {
-  display: block !important; }
+  display: block !important;
+}
 
 .contextual-menu {
   position: relative;
@@ -199,87 +275,125 @@ html {
   font-size: 0.8em;
   border-radius: 10px;
   border: 1px solid #CCC;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
-  padding: 0.5em 0; }
-  .contextual-menu .close-x {
-    transform: translateZ(0);
-    position: relative;
-    top: -1.75em;
-    right: -1.5em; }
-    .contextual-menu .close-x:hover i {
-      transform-origin: center;
-      transform: rotate(0deg); }
-    .contextual-menu .close-x i {
-      transform: rotate(45deg);
-      font-size: 1.5em;
-      position: absolute;
-      transition: All 0.35s;
-      right: 0;
-      top: 0;
-      color: #CCC;
-      mix-blend-mode: multiply;
-      -webkit-mix-blend-mode: multiply; }
-  .contextual-menu button,
-  .contextual-menu a {
-    font-size: 0.85em !important;
-    transition: 0.35s;
-    color: #FFF !important;
-    border: none !important;
-    background-color: transparent;
-    width: 100%;
-    display: inline-block;
-    margin: 0;
-    padding: 0.2em; }
-    .contextual-menu button:hover,
-    .contextual-menu a:hover {
-      color: #1176df !important;
-      cursor: pointer;
-      text-decoration: none;
-      color: rgba(255, 255, 255, 0.78) !important; }
-  .contextual-menu .nbr {
-    padding: 5px !important;
-    margin: 5px !important;
-    width: calc(100% - 10px); }
+  -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+          box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  padding: 0.5em 0;
+}
+
+.contextual-menu .close-x {
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  position: relative;
+  top: -1.75em;
+  right: -1.5em;
+}
+
+.contextual-menu .close-x:hover i {
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+
+.contextual-menu .close-x i {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  font-size: 1.5em;
+  position: absolute;
+  -webkit-transition: All 0.35s;
+  transition: All 0.35s;
+  right: 0;
+  top: 0;
+  color: #CCC;
+  mix-blend-mode: multiply;
+  -webkit-mix-blend-mode: multiply;
+}
+
+.contextual-menu button,
+.contextual-menu a {
+  font-size: 0.85em !important;
+  -webkit-transition: 0.35s;
+  transition: 0.35s;
+  color: #FFF !important;
+  border: none !important;
+  background-color: transparent;
+  width: 100%;
+  display: inline-block;
+  margin: 0;
+  padding: 0.2em;
+}
+
+.contextual-menu button:hover,
+.contextual-menu a:hover {
+  color: #1176df !important;
+  cursor: pointer;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+.contextual-menu .nbr {
+  padding: 5px !important;
+  margin: 5px !important;
+  width: calc(100% - 10px);
+}
 
 div.hr {
   height: 2px;
   background-color: #888;
-  margin: 0.5em 0; }
+  margin: 0.5em 0;
+}
 
 .csm-tool-item .trans-cls:hover {
-  cursor: pointer; }
-  .csm-tool-item .trans-cls:hover::after {
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    content: "\f1ab";
-    font-size: 20px;
-    position: absolute;
-    mix-blend-mode: difference; }
+  cursor: pointer;
+}
+
+.csm-tool-item .trans-cls:hover::after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f1ab";
+  font-size: 20px;
+  position: absolute;
+  mix-blend-mode: difference;
+}
 
 .draggable {
-  cursor: grab; }
-  .draggable:active {
-    cursor: grabbing; }
-  .draggable .nodrag {
-    cursor: default; }
-  .draggable::before {
-    position: absolute;
-    left: -1em;
-    top: -1em;
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    content: "\f0b2";
-    font-size: 20px;
-    color: #CCC; }
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.draggable:active {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
+.draggable .nodrag {
+  cursor: default;
+}
+
+.draggable::before {
+  position: absolute;
+  left: -1em;
+  top: -1em;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f0b2";
+  font-size: 20px;
+  color: #CCC;
+}
 
 a.green,
 button.green {
   border: none !important;
   border-radius: 0px !important;
-  margin: auto !important; }
+  margin: auto !important;
+}
+
 a.nbr,
 button.nbr {
-  border-left: none !important; }
+  border-left: none !important;
+}
 
 tr.table-body-row td {
-  font-size: 0.85em; }
+  font-size: 0.85em;
+}
+/*# sourceMappingURL=nubersoft-tools.css.map */

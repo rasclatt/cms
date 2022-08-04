@@ -1,38 +1,93 @@
 /* CSS Document */
 .fx {
+  -webkit-transition: 1s;
   transition: 1s;
-  position: relative; }
-  .fx.fx-pulsar {
-    animation-name: pulsar;
-    animation-duration: 1s;
-    animation-iteration-count: infinite; }
-  .fx.fx-trans, .fx.fx-zoomin, .fx.fx-zoomout, .fx.fx-slidedown {
-    opacity: 0; }
-  .fx.fx-zoomin {
-    transform: scale(5); }
-  .fx.fx-zoomout {
-    transform: scale(0); }
-  .fx.fx-slidedown {
-    top: 10em; }
-  .fx.fx-slideup, .fx.fx-infocus, .fx.fx-leftin, .fx.fx-rightin {
-    opacity: 1; }
-  .fx.fx-slideup {
-    top: 0; }
-  .fx.fx-infocus {
-    transform: scale(1); }
-  .fx.fx-leftout {
-    left: -10em; }
-  .fx.fx-leftin {
-    left: 0; }
-  .fx.fx-rightout {
-    right: -10em; }
-  .fx.fx-rightin {
-    right: 0; }
+  position: relative;
+}
+
+.fx.fx-pulsar {
+  -webkit-animation-name: pulsar;
+          animation-name: pulsar;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+.fx.fx-trans, .fx.fx-zoomin, .fx.fx-zoomout, .fx.fx-slidedown {
+  opacity: 0;
+}
+
+.fx.fx-zoomin {
+  -webkit-transform: scale(5);
+          transform: scale(5);
+}
+
+.fx.fx-zoomout {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+.fx.fx-slidedown {
+  top: 10em;
+}
+
+.fx.fx-slideup, .fx.fx-infocus, .fx.fx-leftin, .fx.fx-rightin {
+  opacity: 1;
+}
+
+.fx.fx-slideup {
+  top: 0;
+}
+
+.fx.fx-infocus {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.fx.fx-leftout {
+  left: -10em;
+}
+
+.fx.fx-leftin {
+  left: 0;
+}
+
+.fx.fx-rightout {
+  right: -10em;
+}
+
+.fx.fx-rightin {
+  right: 0;
+}
+
+@-webkit-keyframes pulsar {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
 
 @keyframes pulsar {
   0% {
-    transform: scale(1); }
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
   50% {
-    transform: scale(1.2); }
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
   100% {
-    transform: scale(1); } }
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+/*# sourceMappingURL=nubersoft-fx.css.map */

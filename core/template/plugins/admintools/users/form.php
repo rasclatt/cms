@@ -96,7 +96,7 @@ foreach($user as $field => $value):
         });
     </script>
     
-    <h2 style="font-weight: normal; margin-top: 0;">User Profile</h2>
+    <h3 style="font-weight: normal; margin-top: 0;">User Profile</h3>
     <p class="legal">Record ID: <?php echo $user['ID'] ?></p>
     <section class="profile about-me col-count-3 gapped col-c1-lg">
         
@@ -171,7 +171,7 @@ foreach($user as $field => $value):
             
             <div class="last-col">
                 <?php if(empty($this->getRequest('create'))): ?>
-                <div><?php echo $Form->checkbox(['label' => 'Mark for deletion?','name'=>'delete', 'value'=>'on', 'class' => 'nbr']) ?></div>
+                <div><?php echo $this->setPluginContent('check_id', 'delete-corp-logo')->getPlugin('widget_html', 'delete_checkbox.php') ?></div>
                 <?php endif ?>
                 
                 <?php echo $Form->submit(['name'=>'','value'=>'SAVE', 'class' => 'nbr button green token_button', 'disabled'=>'disabled', 'other'=> ['data-token="nProcessor"']]) ?>
